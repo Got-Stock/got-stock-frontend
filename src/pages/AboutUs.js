@@ -2,29 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Heart, Globe, Shield, Sparkles } from 'lucide-react';
 import Banner from '../components/Banner';
-import CartBadge from '../components/CartBadge';
+import Header from '../components/Header';
 import CategoryNav from '../components/CategoryNav';
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="px-4 py-3">
-          <div className="flex items-center justify-between max-w-7xl mx-auto">
-            <Link to="/" className="flex items-center flex-shrink-0">
-              <img src="/GSwhiteonblack.png" alt="GOT-STOCK" className="h-10" />
-            </Link>
-            
-            <nav className="hidden md:flex items-center space-x-4 ml-8">
-              <Link to="/" className="text-gray-600 hover:text-brand-600 transition text-sm">Home</Link>
-              <Link to="/shop" className="text-gray-600 hover:text-brand-600 transition text-sm">Shop</Link>
-              <CartBadge />
-              <Link to="/customer-login" className="text-gray-600 hover:text-brand-600 transition text-sm">Sign In</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Sticky Category Navigation with Search */}
       <CategoryNav />
@@ -90,7 +75,7 @@ export default function AboutUs() {
 
         {/* Values */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">What We Stand For</h2>
+          <h2 className="text-4xl font-bold text-white mb-8 text-center">What We Stand For</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
               <Globe className="h-12 w-12 text-brand-600 mb-4" />

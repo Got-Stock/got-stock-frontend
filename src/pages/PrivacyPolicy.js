@@ -1,28 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
-import CartBadge from '../components/CartBadge';
+import Header from '../components/Header';
 import CategoryNav from '../components/CategoryNav';
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="px-4 py-3">
-          <div className="flex items-center justify-between max-w-7xl mx-auto">
-            <Link to="/" className="flex items-center flex-shrink-0">
-              <img src="/GSwhiteonblack.png" alt="GOT-STOCK" className="h-10" />
-            </Link>
-            
-            <nav className="hidden md:flex items-center space-x-4 ml-8">
-              <Link to="/" className="text-gray-600 hover:text-brand-600 transition text-sm">Home</Link>
-              <Link to="/shop" className="text-gray-600 hover:text-brand-600 transition text-sm">Shop</Link>
-              <CartBadge />
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <CategoryNav />
 
