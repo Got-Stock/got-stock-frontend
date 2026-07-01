@@ -211,7 +211,7 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
 
@@ -235,7 +235,7 @@ export default function ProductDetail() {
         <Button
           variant="ghost"
           onClick={() => navigate(-1, { state: { preserveScroll: true } })}
-          className="mb-6"
+          className="mb-6 text-gray-700 hover:text-gray-900 hover:bg-gray-200"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back
