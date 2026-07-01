@@ -42,17 +42,17 @@ export default function ContactUs() {
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
         {/* Contact Information */}
         <div>
-          <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
           
           <div className="space-y-6">
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <div className="flex items-start gap-4">
-                <div className="h-12 w-12 bg-gradient-to-b from-[#FF3CFE] to-black rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="h-12 w-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Email Support</h3>
-                  <a href="mailto:admin@got-stock.com" className="text-[#FF3CFE] hover:text-black font-medium">
+                  <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-medium">
                     admin@got-stock.com
                   </a>
                   <p className="text-gray-600 mt-2 text-sm">
@@ -64,7 +64,7 @@ export default function ContactUs() {
 
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <div className="flex items-start gap-4">
-                <div className="h-12 w-12 bg-gradient-to-b from-[#FF3CFE] to-black rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="h-12 w-12 bg-gray-900 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MessageCircle className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export default function ContactUs() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-b from-[#FF3CFE] to-black hover:opacity-90 text-white py-6 text-lg font-semibold"
+                className="w-full bg-brand-600 hover:bg-brand-700 text-white py-6 text-lg font-semibold"
               >
                 {loading ? 'Sending...' : (
                   <>

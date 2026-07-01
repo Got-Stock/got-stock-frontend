@@ -6,16 +6,19 @@ import CategoryNav from '../components/CategoryNav';
 
 export default function TermsOfSale() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       <CategoryNav />
 
-      <section className="bg-gradient-to-r from-brand-900 to-brand-900 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <FileText className="h-20 w-20 mx-auto mb-6" />
-          <h1 className="text-5xl font-bold mb-4">Terms of Sale</h1>
-          <p className="text-xl text-gray-100">Clear terms for a transparent shopping experience</p>
+      <section className="relative bg-gray-950 text-white py-20 overflow-hidden">
+        <div className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-64 w-[40rem] rounded-full bg-brand-500/20 blur-3xl" />
+        <div className="relative container mx-auto px-4 text-center">
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 mb-6">
+            <FileText className="h-8 w-8 text-brand-400" />
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Terms of Sale</h1>
+          <p className="text-lg text-gray-400">Clear terms for a transparent shopping experience</p>
         </div>
       </section>
 
@@ -66,8 +69,8 @@ export default function TermsOfSale() {
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <CreditCard className="h-5 w-5 text-blue-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <CreditCard className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">3. Payment</h2>
               </div>
@@ -79,8 +82,8 @@ export default function TermsOfSale() {
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Truck className="h-5 w-5 text-green-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <Truck className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">4. Shipping</h2>
               </div>
@@ -93,8 +96,8 @@ export default function TermsOfSale() {
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <RefreshCw className="h-5 w-5 text-orange-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <RefreshCw className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">5. Returns & Refunds</h2>
               </div>
@@ -135,7 +138,7 @@ export default function TermsOfSale() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-r from-brand-50 to-brand-50 rounded-xl p-6 border-2 border-brand-200">
+            <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
               <div className="flex items-center gap-3 mb-3">
                 <Mail className="h-6 w-6 text-brand-600" />
                 <h2 className="text-2xl font-bold text-gray-900">8. Contact</h2>

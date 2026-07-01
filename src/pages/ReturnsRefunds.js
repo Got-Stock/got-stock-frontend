@@ -23,7 +23,7 @@ export default function ReturnsRefunds() {
         {/* Returns Eligibility */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
               <CheckCircle className="h-6 w-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Returns Eligibility</h2>
@@ -33,29 +33,29 @@ export default function ReturnsRefunds() {
             <h3 className="text-xl font-bold text-gray-900 mb-3">Sellers MUST accept returns when products are:</h3>
             <ul className="space-y-2 ml-4">
               <li className="flex items-start gap-2">
-                <span className="text-[#FF3CFE] mt-1">✓</span>
+                <span className="text-brand-600 mt-1">✓</span>
                 <span className="text-gray-700">Faulty</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#FF3CFE] mt-1">✓</span>
+                <span className="text-brand-600 mt-1">✓</span>
                 <span className="text-gray-700">Damaged</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#FF3CFE] mt-1">✓</span>
+                <span className="text-brand-600 mt-1">✓</span>
                 <span className="text-gray-700">Unsafe</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#FF3CFE] mt-1">✓</span>
+                <span className="text-brand-600 mt-1">✓</span>
                 <span className="text-gray-700">Not as described in the product listing</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#FF3CFE] mt-1">✓</span>
+                <span className="text-brand-600 mt-1">✓</span>
                 <span className="text-gray-700">Incorrectly delivered</span>
               </li>
             </ul>
           </div>
 
-          <div className="bg-brand-50 rounded-lg p-4 border-2 border-[#FF3CFE]">
+          <div className="bg-brand-50 rounded-lg p-4 border border-brand-200">
             <h3 className="text-lg font-bold text-gray-900 mb-2">Change-of-Mind Returns</h3>
             <p className="text-gray-700">
               May be offered at the discretion of the Seller. Must be clearly stated on the product listing.
@@ -66,34 +66,34 @@ export default function ReturnsRefunds() {
         {/* Timeframes */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
               <Clock className="h-6 w-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Return Timeframes</h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-brand-200">
               <h3 className="font-bold text-gray-900 mb-2">Acknowledgement</h3>
-              <p className="text-2xl font-bold text-[#FF3CFE]">2 business days</p>
+              <p className="text-2xl font-bold text-brand-600">2 business days</p>
               <p className="text-sm text-gray-600 mt-1">Sellers must acknowledge return requests</p>
             </div>
             
-            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-brand-200">
               <h3 className="font-bold text-gray-900 mb-2">Return Label</h3>
-              <p className="text-2xl font-bold text-[#FF3CFE]">1 business day</p>
+              <p className="text-2xl font-bold text-brand-600">1 business day</p>
               <p className="text-sm text-gray-600 mt-1">Prepaid return labels provided</p>
             </div>
             
-            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-brand-200">
               <h3 className="font-bold text-gray-900 mb-2">Inspection</h3>
-              <p className="text-2xl font-bold text-[#FF3CFE]">3 business days</p>
+              <p className="text-2xl font-bold text-brand-600">3 business days</p>
               <p className="text-sm text-gray-600 mt-1">After return is received</p>
             </div>
             
-            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-brand-200">
               <h3 className="font-bold text-gray-900 mb-2">Refund Approval</h3>
-              <p className="text-2xl font-bold text-[#FF3CFE]">1 business day</p>
+              <p className="text-2xl font-bold text-brand-600">1 business day</p>
               <p className="text-sm text-gray-600 mt-1">After inspection complete</p>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function ReturnsRefunds() {
         {/* Return Shipping */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
               <Truck className="h-6 w-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Return Shipping</h2>
@@ -128,7 +128,7 @@ export default function ReturnsRefunds() {
         {/* Refund Method */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
               <Shield className="h-6 w-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Refund Method</h2>
@@ -136,11 +136,11 @@ export default function ReturnsRefunds() {
           
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-[#FF3CFE] mt-1">✓</span>
+              <span className="text-brand-600 mt-1">✓</span>
               <span>Refunds <strong>must be processed via the Got-Stock payment system</strong></span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#FF3CFE] mt-1">✓</span>
+              <span className="text-brand-600 mt-1">✓</span>
               <span>Issued to the <strong>original payment method</strong> used for purchase</span>
             </li>
             <li className="flex items-start gap-2">
@@ -151,9 +151,9 @@ export default function ReturnsRefunds() {
         </div>
 
         {/* Customer Tips */}
-        <div className="bg-gradient-to-b from-brand-50 to-white rounded-2xl p-8 border-2 border-[#FF3CFE]">
+        <div className="bg-white rounded-2xl p-8 border border-brand-200 shadow-sm">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center">
               <AlertCircle className="h-6 w-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">Customer Tips for Smooth Returns</h2>
@@ -161,15 +161,15 @@ export default function ReturnsRefunds() {
           
           <ul className="space-y-3 text-gray-700">
             <li className="flex items-start gap-2">
-              <span className="text-[#FF3CFE] mt-1">•</span>
+              <span className="text-brand-600 mt-1">•</span>
               <span>Keep all original tags and packaging</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#FF3CFE] mt-1">•</span>
+              <span className="text-brand-600 mt-1">•</span>
               <span>Take photos if the item is faulty or damaged</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#FF3CFE] mt-1">•</span>
+              <span className="text-brand-600 mt-1">•</span>
               <span>Contact the Seller promptly for any issues</span>
             </li>
           </ul>

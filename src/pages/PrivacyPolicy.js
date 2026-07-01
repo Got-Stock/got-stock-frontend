@@ -6,18 +6,21 @@ import CategoryNav from '../components/CategoryNav';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
 
       <CategoryNav />
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-brand-900 to-brand-900 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <Shield className="h-20 w-20 mx-auto mb-6" />
-          <h1 className="text-5xl font-bold mb-4">Privacy Policy</h1>
-          <p className="text-xl text-gray-100">Your privacy matters to us</p>
+      <section className="relative bg-gray-950 text-white py-20 overflow-hidden">
+        <div className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-64 w-[40rem] rounded-full bg-brand-500/20 blur-3xl" />
+        <div className="relative container mx-auto px-4 text-center">
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 mb-6">
+            <Shield className="h-8 w-8 text-brand-400" />
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Privacy Policy</h1>
+          <p className="text-lg text-gray-400">Your privacy matters to us</p>
         </div>
       </section>
 
@@ -100,8 +103,8 @@ export default function PrivacyPolicy() {
           {/* Section 3 */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Shield className="h-5 w-5 text-blue-600" />
+              <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                <Shield className="h-5 w-5 text-brand-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">3. Sharing of Information</h2>
             </div>
@@ -157,7 +160,7 @@ export default function PrivacyPolicy() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-brand-50 to-brand-50 rounded-xl p-6 border-2 border-brand-200">
+            <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-3">8. Contact Us</h2>
               <p className="text-gray-700 mb-2">For privacy concerns or questions, please contact:</p>
               <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-bold text-lg">

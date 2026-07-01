@@ -62,7 +62,7 @@ const BecomeSeller = () => {
             Setup is free and takes less than 10 minutes. No credit card required to start.
           </p>
           <Link to="/seller/register">
-            <Button size="lg" className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white text-lg px-12 py-6">
+            <Button size="lg" className="bg-brand-600 hover:bg-brand-700 text-white text-lg px-12 py-6">
               Register Now
             </Button>
           </Link>

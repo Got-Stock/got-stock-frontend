@@ -7,7 +7,7 @@ import CategoryNav from '../components/CategoryNav';
 
 export default function AboutUs() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
 
@@ -15,11 +15,12 @@ export default function AboutUs() {
       <CategoryNav />
 
       {/* Hero Section */}
-      <section className="relative py-16 bg-gradient-to-r from-brand-900 to-brand-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <section className="relative py-24 bg-gray-950 text-white overflow-hidden">
+        <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-[48rem] rounded-full bg-brand-500/20 blur-3xl" />
         <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Your Marketplace for Quality, Trusted Brands</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+          <div className="h-1 w-12 rounded-full bg-brand-500 mx-auto mb-6" />
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Your Marketplace for Quality, Trusted Brands</h1>
+          <p className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Got-Stock unites value-conscious shoppers with reputable brands, ensuring affordability never comes at the expense of quality.
           </p>
         </div>
@@ -40,8 +41,8 @@ export default function AboutUs() {
         {/* Dual Purpose */}
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-brand-50 to-brand-50 rounded-2xl p-8 border-2 border-brand-200">
-              <div className="h-16 w-16 bg-brand-600 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+              <div className="h-16 w-16 bg-gray-900 rounded-full flex items-center justify-center mb-4">
                 <Target className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">For Sellers</h3>
@@ -50,8 +51,8 @@ export default function AboutUs() {
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-blue-50 to-brand-50 rounded-2xl p-8 border-2 border-blue-200">
-              <div className="h-16 w-16 bg-brand-600 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+              <div className="h-16 w-16 bg-gray-900 rounded-full flex items-center justify-center mb-4">
                 <Heart className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">For Consumers</h3>
@@ -64,8 +65,9 @@ export default function AboutUs() {
 
         {/* Mission Statement */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-brand-600 to-brand-600 rounded-2xl p-12 text-white text-center shadow-2xl">
-            <Sparkles className="h-16 w-16 mx-auto mb-6" />
+          <div className="relative overflow-hidden bg-gray-950 rounded-2xl p-12 text-white text-center shadow-xl">
+            <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-56 w-[36rem] rounded-full bg-brand-500/20 blur-3xl" />
+            <Sparkles className="relative h-14 w-14 mx-auto mb-6 text-brand-400" />
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
             <p className="text-xl leading-relaxed max-w-4xl mx-auto">
               To optimise stock flow and revenue for sellers while providing consumers with an outlet for quality big-brand goods at affordable prices. We deliver a frictionless marketplace that feels modern, simple, and efficient — without compromising the e-commerce optimisation that sellers expect and consumers need.
@@ -75,7 +77,7 @@ export default function AboutUs() {
 
         {/* Values */}
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-white mb-8 text-center">What We Stand For</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">What We Stand For</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
               <Globe className="h-12 w-12 text-brand-600 mb-4" />
@@ -109,14 +111,14 @@ export default function AboutUs() {
 
         {/* CTA Section */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-slate-100 to-brand-100 rounded-2xl p-12">
+          <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Discover Quality Brands?</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Join thousands of smart shoppers finding premium products at unbeatable prices.
             </p>
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-brand-700 hover:to-brand-700 transition shadow-lg"
+              className="inline-flex items-center gap-2 bg-brand-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-700 transition shadow-sm"
             >
               Start Shopping
               <ArrowRight className="h-5 w-5" />

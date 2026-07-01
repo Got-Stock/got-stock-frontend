@@ -9,7 +9,7 @@ const Accessibility = () => {
       subtitle="Our commitment to making Got-Stock accessible to everyone"
     >
       <div className="space-y-12">
-        <div className="bg-gradient-to-br from-brand-50 to-brand-50 p-8 rounded-xl">
+        <div className="bg-brand-50 p-8 rounded-xl border border-brand-100">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment</h2>
           <p className="text-gray-700 text-lg">
             Got-Stock is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.
@@ -19,8 +19,8 @@ const Accessibility = () => {
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Accessibility Features</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white border-2 border-brand-200 p-6 rounded-xl">
-              <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Eye className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-bold text-xl text-gray-900 mb-3">Visual Accessibility</h3>
@@ -32,8 +32,8 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border-2 border-brand-200 p-6 rounded-xl">
-              <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Keyboard className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-bold text-xl text-gray-900 mb-3">Keyboard Navigation</h3>
@@ -45,8 +45,8 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border-2 border-brand-200 p-6 rounded-xl">
-              <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Smartphone className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-bold text-xl text-gray-900 mb-3">Mobile Accessibility</h3>
@@ -58,8 +58,8 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border-2 border-brand-200 p-6 rounded-xl">
-              <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Volume2 className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-bold text-xl text-gray-900 mb-3">Audio & Content</h3>
@@ -96,7 +96,7 @@ const Accessibility = () => {
           </ul>
         </section>
 
-        <section className="bg-blue-50 border-2 border-blue-200 p-6 rounded-xl">
+        <section className="bg-brand-50 border border-brand-100 p-6 rounded-xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Feedback and Contact</h2>
           <p className="text-gray-700 mb-4">
             We welcome your feedback on the accessibility of Got-Stock. If you encounter any accessibility barriers or have suggestions for improvement, please contact us:
