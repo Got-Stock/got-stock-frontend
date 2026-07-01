@@ -1,13 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import Logo from '../components/Logo';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -104,164 +103,164 @@ const SellerLogin = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image - Right half (retail stores) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-right"
-        style={{ 
-          backgroundImage: `url(https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/3rezo3gm_generated-imaxge%20%284%29.png)`,
-          backgroundSize: '200% auto',
-          backgroundPosition: 'right center'
-        }}
-      />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-brand-900/60 to-[#FF3CFE]/40" />
-      
-      {/* Content */}
-      <div className="relative z-10">
-      <div className="container mx-auto px-4 py-8">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="mb-4 text-white hover:text-[#FF3CFE]"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Home
-        </Button>
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+      {/* Left brand panel */}
+      <div className="relative md:w-[45%] bg-black text-white flex flex-col justify-between overflow-hidden p-8 md:p-12">
+        <div className="gs-aurora gs-glow pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-[#FF3CFE]/25 blur-3xl" />
+        <div className="gs-aurora gs-glow pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#FF3CFE]/15 blur-3xl" />
 
-        <div className="flex items-center justify-center min-h-[80vh]">
-          <Card className="w-full max-w-md border-[#FF3CFE]/30 bg-black/80 backdrop-blur-sm shadow-xl">
-            <CardHeader>
-              <div className="flex items-center justify-center mb-4">
-                <Link to="/">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_product-gateway/artifacts/tabee7q7_GSwhiteonblack.png" 
-                    alt="GOT-STOCK - Brands for Hustlers"
-                    className="w-full max-w-[300px] h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                  />
-                </Link>
-              </div>
-              <CardTitle className="text-2xl text-white">{isLogin ? 'Seller Sign In' : 'Create Seller Account'}</CardTitle>
-              <CardDescription className="text-white/70">
-                {isLogin ? 'Access your seller dashboard' : 'Join GOT-STOCK as a seller'}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {!isLogin && (
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-white">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                    />
-                  </div>
-                )}
+        <div className="relative z-10">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white transition">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+        </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-white">Email Address</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                  />
-                </div>
+        <div className="relative z-10 py-10 md:py-0">
+          <Logo to="/" size="lg" priority className="mb-6" />
+          <h2 className="text-3xl md:text-4xl font-black leading-tight">
+            Turn dead stock
+            <br />
+            <span className="gs-gradient-text">into revenue.</span>
+          </h2>
+          <p className="mt-4 text-gray-400 max-w-sm">
+            Reach thousands of Australian shoppers. List your big-brand overstock and start selling in minutes.
+          </p>
+        </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="password" className="text-white">Password</Label>
-                  <Input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder={isLogin ? 'Enter your password' : 'Minimum 8 characters'}
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                    className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                  />
-                </div>
-
-                {!isLogin && (
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="text-white">Confirm Password</Label>
-                    <Input
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      type="password"
-                      placeholder="Re-enter your password"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      required
-                      className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                    />
-                  </div>
-                )}
-
-                {!isLogin && (
-                  <div className="bg-[#FF3CFE]/10 border border-[#FF3CFE]/30 rounded-lg p-3 text-sm">
-                    <div className="flex items-start">
-                      <AlertCircle className="w-4 h-4 text-[#FF3CFE] mr-2 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <p className="font-medium text-white">Password Requirements:</p>
-                        <ul className="list-disc list-inside mt-1 text-white/70">
-                          <li>At least 8 characters long</li>
-                          <li>Mix of letters and numbers recommended</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-to-r from-[#FF3CFE] to-black hover:opacity-90 text-white py-6 text-base rounded-lg transition-opacity"
-                >
-                  {loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Create Account')}
-                </Button>
-              </form>
-
-              <div className="mt-6 space-y-3">
-                <button
-                  onClick={() => {
-                    setIsLogin(!isLogin);
-                    setFormData({ email: '', password: '', name: '', confirmPassword: '' });
-                  }}
-                  className="text-sm text-white/70 hover:text-white w-full text-center"
-                >
-                  {isLogin ? (
-                    <>
-                      Don't have an account? <span className="text-[#FF3CFE] font-medium hover:underline">Sign up</span>
-                    </>
-                  ) : (
-                    <>
-                      Already have an account? <span className="text-[#FF3CFE] font-medium hover:underline">Sign in</span>
-                    </>
-                  )}
-                </button>
-
-                <div className="border-t border-white/20 pt-3 mt-3 text-center text-sm text-white/70">
-                  <Link to="/customer-login" className="text-[#FF3CFE] hover:underline">
-                    Are you a customer? Login here
-                  </Link>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="relative z-10 hidden md:flex items-center gap-3 text-xs text-gray-500">
+          <span>No setup fees</span>
+          <span className="text-[#FF3CFE]">•</span>
+          <span>Secure payments</span>
+          <span className="text-[#FF3CFE]">•</span>
+          <span>Dedicated support</span>
         </div>
       </div>
+
+      {/* Right form panel */}
+      <div className="md:w-[55%] flex items-center justify-center p-6 py-10 md:p-12">
+        <div className="w-full max-w-md">
+          <div className="mb-8 text-center md:text-left">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {isLogin ? 'Seller Sign In' : 'Create Seller Account'}
+            </h1>
+            <p className="text-gray-500">
+              {isLogin ? 'Access your seller dashboard' : 'Join GOT-STOCK as a seller'}
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {!isLogin && (
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full"
+                />
+              </div>
+            )}
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="your.email@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder={isLogin ? 'Enter your password' : 'Minimum 8 characters'}
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full"
+              />
+            </div>
+
+            {!isLogin && (
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                <Input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Re-enter your password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                  className="w-full"
+                />
+              </div>
+            )}
+
+            {!isLogin && (
+              <div className="bg-[#FF3CFE]/10 border border-[#FF3CFE]/30 rounded-lg p-3 text-sm">
+                <div className="flex items-start">
+                  <AlertCircle className="w-4 h-4 text-[#FF3CFE] mr-2 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-gray-900">Password Requirements:</p>
+                    <ul className="list-disc list-inside mt-1 text-gray-600">
+                      <li>At least 8 characters long</li>
+                      <li>Mix of letters and numbers recommended</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white py-6 text-base font-semibold rounded-full gs-glow-btn"
+            >
+              {loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Create Account')}
+            </Button>
+          </form>
+
+          <div className="mt-6 space-y-3">
+            <button
+              type="button"
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setFormData({ email: '', password: '', name: '', confirmPassword: '' });
+              }}
+              className="text-sm text-gray-600 hover:text-gray-900 w-full text-center"
+            >
+              {isLogin ? (
+                <>
+                  Don't have an account? <span className="text-[#FF3CFE] font-semibold hover:underline">Sign up</span>
+                </>
+              ) : (
+                <>
+                  Already have an account? <span className="text-[#FF3CFE] font-semibold hover:underline">Sign in</span>
+                </>
+              )}
+            </button>
+
+            <div className="border-t border-gray-200 pt-3 mt-3 text-center text-sm text-gray-500">
+              <Link to="/customer-login" className="text-[#FF3CFE] hover:underline font-medium">
+                Are you a customer? Login here
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

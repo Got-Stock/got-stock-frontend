@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { ShoppingBag, Eye, EyeOff, ArrowLeft, Heart, ShoppingCart, User } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 import Logo from "../components/Logo";
 
@@ -36,7 +36,6 @@ export default function CustomerSignup() {
     e.preventDefault();
     setError("");
 
-    // Validation
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       setError("All fields are required");
       return;
@@ -65,11 +64,8 @@ export default function CustomerSignup() {
       );
 
       if (response.data.success) {
-        // Use AuthContext login to handle wishlist merge
         await login(response.data.user);
-        // Store user data
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        // Redirect to shop
         navigate("/shop");
       }
     } catch (err) {
@@ -80,87 +76,55 @@ export default function CustomerSignup() {
   };
 
   return (
-    <div className="min-h-screen relative py-12 px-4">
-      {/* Background Image - Left half (atrium/lobby) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-left"
-        style={{ 
-          backgroundImage: `url(https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/3rezo3gm_generated-imaxge%20%284%29.png)`,
-          backgroundSize: '200% auto',
-          backgroundPosition: 'left center'
-        }}
-      />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#00ffef]/40" />
-      
-      {/* Content */}
-      <div className="relative z-10">
-      {/* Header with Back Button and Icons */}
-      <div className="container mx-auto mb-8">
-        <div className="flex items-center justify-between">
-          {/* Back Button */}
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/')}
-            className="text-[#00ffef] hover:text-cyan-300"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+      {/* Left brand panel */}
+      <div className="relative md:w-[45%] bg-black text-white flex flex-col justify-between overflow-hidden p-8 md:p-12">
+        <div className="gs-aurora gs-glow pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-[#FF3CFE]/25 blur-3xl" />
+        <div className="gs-aurora gs-glow pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#FF3CFE]/15 blur-3xl" />
+
+        <div className="relative z-10">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white transition">
+            <ArrowLeft className="h-4 w-4" />
             Back to Home
-          </Button>
+          </Link>
+        </div>
 
-          {/* Right Side: Navigation Links + Icons */}
-          <div className="flex items-center gap-6">
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-4 text-[#00ffef]" style={{ fontFamily: 'Roboto, sans-serif', fontSize: '10px' }}>
-              <Link to="/help-centre" className="hover:text-cyan-300 transition">
-                FAQs
-              </Link>
-              <Link to="/shipping-info" className="hover:text-cyan-300 transition">
-                Delivery
-              </Link>
-              <Link to="/returns-refunds" className="hover:text-cyan-300 transition">
-                Returns
-              </Link>
-              <Link to="/contact-us" className="hover:text-cyan-300 transition">
-                Contact
-              </Link>
-            </div>
+        <div className="relative z-10 py-10 md:py-0">
+          <Logo to="/" size="lg" priority className="mb-6" />
+          <h2 className="text-3xl md:text-4xl font-black leading-tight">
+            Join the hunt for
+            <br />
+            <span className="gs-gradient-text">big brands, less.</span>
+          </h2>
+          <p className="mt-4 text-gray-400 max-w-sm">
+            Create an account to save your wishlist, track orders and check out in seconds.
+          </p>
+        </div>
 
-            {/* Icons */}
-            <div className="flex items-center space-x-4">
-              <Link to="/wishlist" className="p-2 hover:opacity-80 transition">
-                <Heart className="h-6 w-6 text-[#00ffef]" fill="none" strokeWidth={1.5} />
-              </Link>
-              <Link to="/cart" className="p-2 hover:opacity-80 transition">
-                <ShoppingCart className="h-6 w-6 text-[#00ffef]" strokeWidth={1.5} />
-              </Link>
-              <Link to="/login" className="p-2 hover:opacity-80 transition">
-                <User className="h-6 w-6 text-[#00ffef]" strokeWidth={1.5} />
-              </Link>
-            </div>
-          </div>
+        <div className="relative z-10 hidden md:flex items-center gap-3 text-xs text-gray-500">
+          <span>Easy shopping</span>
+          <span className="text-[#FF3CFE]">•</span>
+          <span>Order tracking</span>
+          <span className="text-[#FF3CFE]">•</span>
+          <span>Fast delivery</span>
         </div>
       </div>
 
-      <div className="flex items-center justify-center">
-        <div className="max-w-md w-full">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <Logo to="/" size="hero" priority className="mb-4" />
-            <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-            <p className="text-gray-200">Join GOT-STOCK and start shopping</p>
+      {/* Right form panel */}
+      <div className="md:w-[55%] flex items-center justify-center p-6 py-10 md:p-12">
+        <div className="w-full max-w-md">
+          <div className="mb-8 text-center md:text-left">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
+            <p className="text-gray-500">Join GOT-STOCK and start shopping</p>
           </div>
 
-        {/* Signup Form */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="signup-name" className="block text-sm font-medium text-gray-700 mb-2">
                 Full Name
@@ -251,7 +215,7 @@ export default function CustomerSignup() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-b from-black to-[#00ffef] hover:opacity-90 text-white py-6 text-base font-semibold"
+              className="w-full bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white py-6 text-base font-semibold rounded-full gs-glow-btn"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
@@ -264,55 +228,19 @@ export default function CustomerSignup() {
             </Button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-white text-sm">
-              Already have an account?{" "}
-              <Link
-                to="/customer-login"
-                className="text-[#00ffef] hover:text-cyan-300 font-semibold"
-              >
-                Sign In
-              </Link>
-            </p>
-          </div>
+          <p className="mt-6 text-center text-gray-600 text-sm">
+            Already have an account?{" "}
+            <Link to="/customer-login" className="text-[#FF3CFE] hover:text-[#FF3CFE]/80 font-semibold">
+              Sign In
+            </Link>
+          </p>
 
-          <div className="mt-4 text-center">
-            <Link
-              to="/shop"
-              className="text-gray-500 hover:text-gray-700 text-sm"
-            >
+          <div className="mt-3 text-center">
+            <Link to="/shop" className="text-gray-500 hover:text-gray-800 text-sm">
               Continue as Guest
             </Link>
           </div>
         </div>
-
-        {/* Features */}
-        <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-          <div>
-            <div className="text-[#00ffef] mb-2">
-              <ShoppingBag size={24} className="mx-auto" />
-            </div>
-            <p className="text-xs text-gray-200">Easy Shopping</p>
-          </div>
-          <div>
-            <div className="text-[#00ffef] mb-2">
-              <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <p className="text-xs text-gray-200">Order Tracking</p>
-          </div>
-          <div>
-            <div className="text-[#00ffef] mb-2">
-              <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-              </svg>
-            </div>
-            <p className="text-xs text-gray-200">Fast Delivery</p>
-          </div>
-        </div>
-      </div>
-      </div>
       </div>
     </div>
   );
