@@ -385,12 +385,11 @@ export default function CategoryNav() {
     <div className="bg-black z-30" style={{ fontFamily: 'Roboto, sans-serif' }}>
       <div className="bg-black container mx-auto px-4 pr-0">
         <div className="flex flex-col md:flex-row md:items-center gap-3 pt-2 pb-4 bg-black md:pr-4">
-          {/* Spacer to push nav further right */}
-          <div className="hidden md:block flex-1"></div>
-          
-          {/* Category Navigation + Search Bar - Aligned to far right */}
-          <div className="flex items-center gap-3 md:ml-auto">
-            <nav className="flex items-center space-x-1 relative overflow-x-auto md:overflow-visible scrollbar-hide">
+          {/* Left reserve so the centered nav clears the homepage brand logo (absolutely positioned) */}
+          <div className="hidden md:block w-24 lg:w-32 flex-shrink-0" aria-hidden="true"></div>
+
+          {/* Category Navigation (mega menu) — centered between the logo and the search box */}
+          <nav className="flex items-center justify-start md:justify-center md:flex-1 space-x-1 relative overflow-x-auto md:overflow-visible scrollbar-hide">
               <button
                 onClick={() => handleCategoryClick("All")}
                 className="text-sm font-semibold bg-white text-black hover:bg-gray-100 transition whitespace-nowrap px-4 py-2 rounded-lg flex-shrink-0"
@@ -538,7 +537,6 @@ export default function CategoryNav() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             </div>
           </form>
-          </div>
         </div>
       </div>
     </div>
