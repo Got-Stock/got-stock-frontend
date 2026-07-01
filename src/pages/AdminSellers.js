@@ -144,7 +144,7 @@ const AdminSellers = () => {
               <Card key={seller.seller_id} className="bg-white/90 backdrop-blur-sm">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-purple-600" />
+                    <Building2 className="w-5 h-5 text-brand-600" />
                     <span>{seller.business_name}</span>
                   </CardTitle>
                   {seller.legal_entity_name && (

@@ -92,14 +92,14 @@ const SellerOrderTracking = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black py-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black py-8">
       <div className="container mx-auto px-4">
         <Button
           variant="ghost"

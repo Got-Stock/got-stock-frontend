@@ -40,14 +40,14 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Shop</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/shop?category=Women" className="text-gray-300 hover:text-purple-400 transition">Women</Link></li>
-              <li><Link to="/shop?category=Men" className="text-gray-300 hover:text-purple-400 transition">Men</Link></li>
-              <li><Link to="/shop?category=Kids & Baby" className="text-gray-300 hover:text-purple-400 transition">Kids & Baby</Link></li>
-              <li><Link to="/shop?category=Home & Living" className="text-gray-300 hover:text-purple-400 transition">Home & Living</Link></li>
-              <li><Link to="/shop?category=Health & Beauty" className="text-gray-300 hover:text-purple-400 transition">Health & Beauty</Link></li>
-              <li><Link to="/shop?category=Electronics & Tech" className="text-gray-300 hover:text-purple-400 transition">Electronics & Tech</Link></li>
-              <li><Link to="/shop?category=Sports & Outdoors" className="text-gray-300 hover:text-purple-400 transition">Sports & Outdoors</Link></li>
-              <li><Link to="/shop?category=Watches & Jewellery" className="text-gray-300 hover:text-purple-400 transition">Watches & Jewellery</Link></li>
+              <li><Link to="/shop?category=Women" className="text-gray-300 hover:text-brand-400 transition">Women</Link></li>
+              <li><Link to="/shop?category=Men" className="text-gray-300 hover:text-brand-400 transition">Men</Link></li>
+              <li><Link to="/shop?category=Kids & Baby" className="text-gray-300 hover:text-brand-400 transition">Kids & Baby</Link></li>
+              <li><Link to="/shop?category=Home & Living" className="text-gray-300 hover:text-brand-400 transition">Home & Living</Link></li>
+              <li><Link to="/shop?category=Health & Beauty" className="text-gray-300 hover:text-brand-400 transition">Health & Beauty</Link></li>
+              <li><Link to="/shop?category=Electronics & Tech" className="text-gray-300 hover:text-brand-400 transition">Electronics & Tech</Link></li>
+              <li><Link to="/shop?category=Sports & Outdoors" className="text-gray-300 hover:text-brand-400 transition">Sports & Outdoors</Link></li>
+              <li><Link to="/shop?category=Watches & Jewellery" className="text-gray-300 hover:text-brand-400 transition">Watches & Jewellery</Link></li>
             </ul>
           </div>
 
@@ -55,12 +55,12 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Customer Care</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/help-centre" className="text-gray-300 hover:text-purple-400 transition">Help Centre</Link></li>
-              <li><Link to="/shipping-info" className="text-gray-300 hover:text-purple-400 transition">Shipping Info</Link></li>
-              <li><Link to="/returns-refunds" className="text-gray-300 hover:text-purple-400 transition">Returns & Refunds</Link></li>
-              <li><Link to="/size-guide" className="text-gray-300 hover:text-purple-400 transition">Size Guide</Link></li>
-              <li><Link to="/contact-us" className="text-gray-300 hover:text-purple-400 transition">Contact Us</Link></li>
-              <li><Link to="/track-order" className="text-gray-300 hover:text-purple-400 transition">Track My Order</Link></li>
+              <li><Link to="/help-centre" className="text-gray-300 hover:text-brand-400 transition">Help Centre</Link></li>
+              <li><Link to="/shipping-info" className="text-gray-300 hover:text-brand-400 transition">Shipping Info</Link></li>
+              <li><Link to="/returns-refunds" className="text-gray-300 hover:text-brand-400 transition">Returns & Refunds</Link></li>
+              <li><Link to="/size-guide" className="text-gray-300 hover:text-brand-400 transition">Size Guide</Link></li>
+              <li><Link to="/contact-us" className="text-gray-300 hover:text-brand-400 transition">Contact Us</Link></li>
+              <li><Link to="/track-order" className="text-gray-300 hover:text-brand-400 transition">Track My Order</Link></li>
             </ul>
           </div>
 
@@ -68,10 +68,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">About</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about-us" className="text-gray-300 hover:text-purple-400 transition">About Us</Link></li>
-              <li><Link to="/mission" className="text-gray-300 hover:text-purple-400 transition">Mission</Link></li>
-              <li><Link to="/sustainability" className="text-gray-300 hover:text-purple-400 transition">Sustainability</Link></li>
-              <li><Link to="/media-kit" className="text-gray-300 hover:text-purple-400 transition">Media Kit</Link></li>
+              <li><Link to="/about-us" className="text-gray-300 hover:text-brand-400 transition">About Us</Link></li>
+              <li><Link to="/mission" className="text-gray-300 hover:text-brand-400 transition">Mission</Link></li>
+              <li><Link to="/sustainability" className="text-gray-300 hover:text-brand-400 transition">Sustainability</Link></li>
+              <li><Link to="/media-kit" className="text-gray-300 hover:text-brand-400 transition">Media Kit</Link></li>
             </ul>
           </div>
 
@@ -79,10 +79,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Sell With Us</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/become-seller" className="text-gray-300 hover:text-purple-400 transition">Become a Seller</Link></li>
-              <li><Link to="/seller-terms" className="text-gray-300 hover:text-purple-400 transition">Seller T&Cs</Link></li>
-              <li><Link to="/seller-resources" className="text-gray-300 hover:text-purple-400 transition">Seller Resources</Link></li>
-              <li><Link to="/partnerships" className="text-gray-300 hover:text-purple-400 transition">Partnerships</Link></li>
+              <li><Link to="/become-seller" className="text-gray-300 hover:text-brand-400 transition">Become a Seller</Link></li>
+              <li><Link to="/seller-terms" className="text-gray-300 hover:text-brand-400 transition">Seller T&Cs</Link></li>
+              <li><Link to="/seller-resources" className="text-gray-300 hover:text-brand-400 transition">Seller Resources</Link></li>
+              <li><Link to="/partnerships" className="text-gray-300 hover:text-brand-400 transition">Partnerships</Link></li>
             </ul>
           </div>
 
@@ -90,12 +90,12 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-purple-400 transition">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-gray-300 hover:text-purple-400 transition">Terms & Conditions</Link></li>
-              <li><Link to="/terms-of-sale" className="text-gray-300 hover:text-purple-400 transition">Terms of Sale</Link></li>
-              <li><Link to="/accessibility" className="text-gray-300 hover:text-purple-400 transition">Accessibility</Link></li>
+              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-brand-400 transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-gray-300 hover:text-brand-400 transition">Terms & Conditions</Link></li>
+              <li><Link to="/terms-of-sale" className="text-gray-300 hover:text-brand-400 transition">Terms of Sale</Link></li>
+              <li><Link to="/accessibility" className="text-gray-300 hover:text-brand-400 transition">Accessibility</Link></li>
               <li className="pt-2 border-t border-gray-700">
-                <Link to="/admin-login" className="text-purple-300 hover:text-purple-100 font-semibold transition">
+                <Link to="/admin-login" className="text-brand-300 hover:text-brand-100 font-semibold transition">
                   🔐 Admin Login
                 </Link>
               </li>
@@ -119,7 +119,7 @@ const Footer = () => {
               <Button 
                 type="submit" 
                 disabled={loading}
-                className="bg-purple-600 hover:bg-purple-700 text-white"
+                className="bg-brand-600 hover:bg-brand-700 text-white"
               >
                 <Mail className="h-4 w-4 mr-2" />
                 {loading ? 'Subscribing...' : 'Subscribe'}
@@ -137,7 +137,7 @@ const Footer = () => {
                 href="https://facebook.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-purple-400 transition"
+                className="text-gray-400 hover:text-brand-400 transition"
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
@@ -146,7 +146,7 @@ const Footer = () => {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-purple-400 transition"
+                className="text-gray-400 hover:text-brand-400 transition"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
@@ -155,7 +155,7 @@ const Footer = () => {
                 href="https://twitter.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-purple-400 transition"
+                className="text-gray-400 hover:text-brand-400 transition"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
@@ -164,7 +164,7 @@ const Footer = () => {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-purple-400 transition"
+                className="text-gray-400 hover:text-brand-400 transition"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />

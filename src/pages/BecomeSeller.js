@@ -14,11 +14,11 @@ const BecomeSeller = () => {
         {/* Hero Stats */}
         <div className="grid md:grid-cols-3 gap-8 text-center">
           <div className="p-6">
-            <div className="text-4xl font-bold text-purple-600 mb-2">100k+</div>
+            <div className="text-4xl font-bold text-brand-600 mb-2">100k+</div>
             <div className="text-gray-600">Active Monthly Shoppers</div>
           </div>
           <div className="p-6">
-            <div className="text-4xl font-bold text-pink-600 mb-2">$50M+</div>
+            <div className="text-4xl font-bold text-brand-600 mb-2">$50M+</div>
             <div className="text-gray-600">Seller Revenue Generated</div>
           </div>
           <div className="p-6">
@@ -32,14 +32,14 @@ const BecomeSeller = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Why Sell With Us?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-sm">
-              <TrendingUp className="h-10 w-10 text-purple-600 mb-6" />
+              <TrendingUp className="h-10 w-10 text-brand-600 mb-6" />
               <h3 className="font-bold text-xl mb-4">Reach More Customers</h3>
               <p className="text-gray-600">
                 Access a massive audience of engaged shoppers looking for products just like yours.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm">
-              <Shield className="h-10 w-10 text-pink-600 mb-6" />
+              <Shield className="h-10 w-10 text-brand-600 mb-6" />
               <h3 className="font-bold text-xl mb-4">Secure Payments</h3>
               <p className="text-gray-600">
                 Get paid fast and securely. We handle fraud protection so you can focus on selling.
@@ -62,7 +62,7 @@ const BecomeSeller = () => {
             Setup is free and takes less than 10 minutes. No credit card required to start.
           </p>
           <Link to="/seller/register">
-            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-12 py-6">
+            <Button size="lg" className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white text-lg px-12 py-6">
               Register Now
             </Button>
           </Link>

@@ -27,16 +27,16 @@ const Mission = () => {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-8 rounded-2xl my-12">
+        <div className="bg-brand-50 p-8 rounded-2xl my-12">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Our Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🤝</div>
+              <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🤝</div>
               <h3 className="font-bold mb-2">Trust First</h3>
               <p className="text-sm">We verify every seller and guarantee every purchase.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm text-center">
-              <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🚀</div>
+              <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🚀</div>
               <h3 className="font-bold mb-2">Innovation</h3>
               <p className="text-sm">Constantly improving the shopping experience through technology.</p>
             </div>

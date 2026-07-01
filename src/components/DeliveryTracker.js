@@ -61,9 +61,9 @@ const DeliveryTracker = ({ order, variant = 'buyer' }) => {
       return {
         primary: 'purple-500',
         secondary: 'purple-600',
-        bg: 'from-purple-50 to-white',
+        bg: 'from-brand-50 to-white',
         card: 'bg-white',
-        text: 'text-purple-600',
+        text: 'text-brand-600',
         textSecondary: 'text-gray-600'
       };
     }

@@ -145,7 +145,7 @@ export default function BecomeASeller() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-blue-50 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -592,7 +592,7 @@ export default function BecomeASeller() {
           </Card>
 
           {/* Terms Agreement */}
-          <Card className="border-purple-200 bg-purple-50">
+          <Card className="border-brand-200 bg-brand-50">
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div className="text-sm text-gray-600 space-y-2">
@@ -632,7 +632,7 @@ export default function BecomeASeller() {
             <Button
               type="submit"
               disabled={loading}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700"
             >
               {loading ? 'Submitting...' : (
                 <>

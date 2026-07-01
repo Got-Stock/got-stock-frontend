@@ -76,7 +76,7 @@ export default function CustomerAccount() {
       case "PROCESSING":
         return "bg-blue-100 text-blue-800";
       case "SHIPPED":
-        return "bg-purple-100 text-purple-800";
+        return "bg-brand-100 text-brand-800";
       case "CANCELLED":
         return "bg-red-100 text-red-800";
       default:
@@ -126,7 +126,7 @@ export default function CustomerAccount() {
               onClick={() => setActiveTab("orders")}
               className={`px-6 py-4 font-medium text-sm transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeTab === "orders"
-                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  ? 'text-brand-600 border-b-2 border-brand-600'
                   : 'text-gray-600 hover:text-gray-900 border-b-2 border-transparent'
               }`}
             >
@@ -137,7 +137,7 @@ export default function CustomerAccount() {
               onClick={() => setActiveTab("profile")}
               className={`px-6 py-4 font-medium text-sm transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeTab === "profile"
-                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  ? 'text-brand-600 border-b-2 border-brand-600'
                   : 'text-gray-600 hover:text-gray-900 border-b-2 border-transparent'
               }`}
             >
@@ -148,7 +148,7 @@ export default function CustomerAccount() {
               onClick={() => setActiveTab("addresses")}
               className={`px-6 py-4 font-medium text-sm transition-all whitespace-nowrap flex items-center gap-2 ${
                 activeTab === "addresses"
-                  ? 'text-purple-600 border-b-2 border-purple-600'
+                  ? 'text-brand-600 border-b-2 border-brand-600'
                   : 'text-gray-600 hover:text-gray-900 border-b-2 border-transparent'
               }`}
             >
@@ -175,19 +175,19 @@ export default function CustomerAccount() {
                     <h2 className="text-xl font-bold text-gray-900">Order History</h2>
                     <p className="text-gray-600 text-sm mt-1">View and track your orders</p>
                   </div>
-                  <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg px-6 py-3 text-white">
+                  <div className="bg-gradient-to-br from-brand-600 to-brand-600 rounded-lg px-6 py-3 text-white">
                     <div className="flex items-center gap-2">
                       <ShoppingBag size={20} />
                       <span className="text-2xl font-bold">{orders.length}</span>
                     </div>
-                    <p className="text-xs text-purple-100">Total Orders</p>
+                    <p className="text-xs text-brand-100">Total Orders</p>
                   </div>
                 </div>
               </div>
 
               {loading ? (
                 <div className="p-12 text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto"></div>
                   <p className="text-gray-600 mt-4">Loading orders...</p>
                 </div>
               ) : orders.length === 0 ? (
@@ -196,7 +196,7 @@ export default function CustomerAccount() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">No orders yet</h3>
                   <p className="text-gray-600 mb-6">Start shopping to see your orders here</p>
                   <Link to="/shop">
-                    <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                    <Button className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700">
                       Start Shopping
                     </Button>
                   </Link>

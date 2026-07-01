@@ -16,8 +16,8 @@ export default function PrivacyPolicy() {
             </Link>
             
             <nav className="hidden md:flex items-center space-x-4 ml-8">
-              <Link to="/" className="text-gray-600 hover:text-purple-600 transition text-sm">Home</Link>
-              <Link to="/shop" className="text-gray-600 hover:text-purple-600 transition text-sm">Shop</Link>
+              <Link to="/" className="text-gray-600 hover:text-brand-600 transition text-sm">Home</Link>
+              <Link to="/shop" className="text-gray-600 hover:text-brand-600 transition text-sm">Shop</Link>
               <CartBadge />
             </nav>
           </div>
@@ -27,7 +27,7 @@ export default function PrivacyPolicy() {
       <CategoryNav />
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-purple-900 to-pink-900 text-white py-16">
+      <section className="bg-gradient-to-r from-brand-900 to-brand-900 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <Shield className="h-20 w-20 mx-auto mb-6" />
           <h1 className="text-5xl font-bold mb-4">Privacy Policy</h1>
@@ -46,8 +46,8 @@ export default function PrivacyPolicy() {
           {/* Section 1 */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                <FileText className="h-5 w-5 text-purple-600" />
+              <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                <FileText className="h-5 w-5 text-brand-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">1. Information We Collect</h2>
             </div>
@@ -95,8 +95,8 @@ export default function PrivacyPolicy() {
           {/* Section 2 */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-10 w-10 bg-pink-100 rounded-lg flex items-center justify-center">
-                <Eye className="h-5 w-5 text-pink-600" />
+              <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                <Eye className="h-5 w-5 text-brand-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">2. How We Use Your Information</h2>
             </div>
@@ -160,7 +160,7 @@ export default function PrivacyPolicy() {
                 <li>Opt out of marketing emails</li>
               </ul>
               <p className="text-gray-700 mt-4">
-                Contact us at <a href="mailto:admin@got-stock.com" className="text-purple-600 hover:text-purple-700 font-medium">admin@got-stock.com</a> to make a request.
+                Contact us at <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-medium">admin@got-stock.com</a> to make a request.
               </p>
             </div>
 
@@ -171,10 +171,10 @@ export default function PrivacyPolicy() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+            <div className="bg-gradient-to-r from-brand-50 to-brand-50 rounded-xl p-6 border-2 border-brand-200">
               <h2 className="text-2xl font-bold text-gray-900 mb-3">8. Contact Us</h2>
               <p className="text-gray-700 mb-2">For privacy concerns or questions, please contact:</p>
-              <a href="mailto:admin@got-stock.com" className="text-purple-600 hover:text-purple-700 font-bold text-lg">
+              <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-bold text-lg">
                 📧 admin@got-stock.com
               </a>
             </div>

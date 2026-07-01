@@ -79,7 +79,7 @@ const Login = () => {
 
               {/* Seller Login */}
               <Card 
-                className="border-purple-200 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all cursor-pointer group"
+                className="border-brand-200 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all cursor-pointer group"
                 onClick={() => navigate('/seller-login')}
               >
                 <CardHeader className="text-center">
@@ -113,7 +113,7 @@ const Login = () => {
                   Create Customer Account
                 </Link>
                 <span className="text-gray-400">•</span>
-                <Link to="/become-seller" className="text-purple-600 hover:underline font-medium">
+                <Link to="/become-seller" className="text-brand-600 hover:underline font-medium">
                   Become a Seller
                 </Link>
               </div>

@@ -46,7 +46,7 @@ const SubmissionSuccess = () => {
 
           <CardContent className="space-y-8">
             {/* Product Details */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-100">
+            <div className="bg-gradient-to-r from-blue-50 to-brand-50 rounded-lg p-6 border border-blue-100">
               <div className="flex items-start gap-4">
                 <div className="bg-white rounded-lg p-3 shadow-sm">
                   <Package className="w-8 h-8 text-blue-600" />

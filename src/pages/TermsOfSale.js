@@ -14,8 +14,8 @@ export default function TermsOfSale() {
               <img src="/GSwhiteonblack.png" alt="GOT-STOCK" className="h-10" />
             </Link>
             <nav className="hidden md:flex items-center space-x-4 ml-8">
-              <Link to="/" className="text-gray-600 hover:text-purple-600 transition text-sm">Home</Link>
-              <Link to="/shop" className="text-gray-600 hover:text-purple-600 transition text-sm">Shop</Link>
+              <Link to="/" className="text-gray-600 hover:text-brand-600 transition text-sm">Home</Link>
+              <Link to="/shop" className="text-gray-600 hover:text-brand-600 transition text-sm">Shop</Link>
               <CartBadge />
             </nav>
           </div>
@@ -24,7 +24,7 @@ export default function TermsOfSale() {
 
       <CategoryNav />
 
-      <section className="bg-gradient-to-r from-purple-900 to-pink-900 text-white py-16">
+      <section className="bg-gradient-to-r from-brand-900 to-brand-900 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <FileText className="h-20 w-20 mx-auto mb-6" />
           <h1 className="text-5xl font-bold mb-4">Terms of Sale</h1>
@@ -41,8 +41,8 @@ export default function TermsOfSale() {
           <div className="space-y-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-purple-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">1. Role of Got-Stock</h2>
               </div>
@@ -59,8 +59,8 @@ export default function TermsOfSale() {
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-pink-100 rounded-lg flex items-center justify-center">
-                  <ShoppingCart className="h-5 w-5 text-pink-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <ShoppingCart className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">2. Orders</h2>
               </div>
@@ -116,22 +116,22 @@ export default function TermsOfSale() {
                 <li>You must contact the seller directly for return or refund enquiries.</li>
                 <li>Got-Stock may step in to mediate disputes if necessary.</li>
               </ul>
-              <Link to="/returns-refunds" className="inline-block mt-3 text-purple-600 hover:text-purple-700 font-medium">
+              <Link to="/returns-refunds" className="inline-block mt-3 text-brand-600 hover:text-brand-700 font-medium">
                 View our full Returns & Refunds Policy →
               </Link>
             </div>
 
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-purple-600" />
+                <div className="h-10 w-10 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-brand-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">6. Product Authenticity</h2>
               </div>
               <p className="text-gray-700 mb-3">All sellers must provide authentic, brand-name goods.</p>
               <p className="text-gray-700">
                 If you suspect counterfeit items, contact us immediately at{' '}
-                <a href="mailto:admin@got-stock.com" className="text-purple-600 hover:text-purple-700 font-medium">
+                <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-medium">
                   admin@got-stock.com
                 </a>
               </p>
@@ -148,12 +148,12 @@ export default function TermsOfSale() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+            <div className="bg-gradient-to-r from-brand-50 to-brand-50 rounded-xl p-6 border-2 border-brand-200">
               <div className="flex items-center gap-3 mb-3">
-                <Mail className="h-6 w-6 text-purple-600" />
+                <Mail className="h-6 w-6 text-brand-600" />
                 <h2 className="text-2xl font-bold text-gray-900">8. Contact</h2>
               </div>
-              <a href="mailto:admin@got-stock.com" className="text-purple-600 hover:text-purple-700 font-bold text-lg">
+              <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700 font-bold text-lg">
                 📧 admin@got-stock.com
               </a>
             </div>

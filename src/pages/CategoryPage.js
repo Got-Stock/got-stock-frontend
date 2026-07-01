@@ -21,21 +21,21 @@ const CATEGORY_DATA = {
     title: "Fashion",
     subtitle: "Curated Style Collections",
     description: "Discover premium fashion brands at unbeatable prices. From casual wear to elegant evening pieces.",
-    color: "from-purple-900/90 to-pink-900/80"
+    color: "from-brand-900/90 to-brand-900/80"
   },
   "Health & Beauty": {
     image: "/grids/beauty-grid.png",
     title: "Health & Beauty",
     subtitle: "Premium Beauty Products",
     description: "Quality skincare, cosmetics, and wellness products from trusted brands.",
-    color: "from-pink-900/90 to-purple-900/80"
+    color: "from-brand-900/90 to-brand-900/80"
   },
   "Home & Living": {
     image: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
     title: "Home & Living",
     subtitle: "Elevate Your Space",
     description: "Transform your home with premium decor, furniture, and living essentials.",
-    color: "from-blue-900/90 to-purple-900/80"
+    color: "from-blue-900/90 to-brand-900/80"
   },
   "Electronics & Tech": {
     image: "/grids/electronics-grid.png",
@@ -166,7 +166,7 @@ export default function CategoryPage() {
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto"></div>
               <p className="text-gray-600 mt-4">Loading products...</p>
             </div>
           ) : products.length === 0 ? (
@@ -184,7 +184,7 @@ export default function CategoryPage() {
                 <div key={product.id} className="relative">
                   <Link
                     to={`/product/${product.id}`}
-                    className="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden group border-2 border-transparent hover:border-purple-200 block"
+                    className="bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden group border-2 border-transparent hover:border-brand-200 block"
                   >
                     <div className="aspect-square bg-gray-100 overflow-hidden relative">
                       <img
@@ -213,10 +213,10 @@ export default function CategoryPage() {
                         {product.name}
                       </h3>
                       <div className="flex items-center justify-between">
-                        <p className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        <p className="text-xl font-bold bg-gradient-to-r from-brand-600 to-brand-600 bg-clip-text text-transparent">
                           {getProductPrice(product)}
                         </p>
-                        <Badge variant="outline" className="text-xs border-purple-600 text-purple-600">
+                        <Badge variant="outline" className="text-xs border-brand-600 text-brand-600">
                           View Details
                         </Badge>
                       </div>
@@ -231,7 +231,7 @@ export default function CategoryPage() {
             <Button
               onClick={() => navigate('/shop?category=' + encodeURIComponent(category))}
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-10 py-6"
+              className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white px-10 py-6"
             >
               View All {categoryData.title}
               <ArrowRight className="ml-2 h-5 w-5" />

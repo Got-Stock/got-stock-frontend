@@ -17,10 +17,10 @@ export default function AboutUs() {
             </Link>
             
             <nav className="hidden md:flex items-center space-x-4 ml-8">
-              <Link to="/" className="text-gray-600 hover:text-purple-600 transition text-sm">Home</Link>
-              <Link to="/shop" className="text-gray-600 hover:text-purple-600 transition text-sm">Shop</Link>
+              <Link to="/" className="text-gray-600 hover:text-brand-600 transition text-sm">Home</Link>
+              <Link to="/shop" className="text-gray-600 hover:text-brand-600 transition text-sm">Shop</Link>
               <CartBadge />
-              <Link to="/customer-login" className="text-gray-600 hover:text-purple-600 transition text-sm">Sign In</Link>
+              <Link to="/customer-login" className="text-gray-600 hover:text-brand-600 transition text-sm">Sign In</Link>
             </nav>
           </div>
         </div>
@@ -30,7 +30,7 @@ export default function AboutUs() {
       <CategoryNav />
 
       {/* Hero Section */}
-      <section className="relative py-16 bg-gradient-to-r from-purple-900 to-pink-900 text-white overflow-hidden">
+      <section className="relative py-16 bg-gradient-to-r from-brand-900 to-brand-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Your Marketplace for Quality, Trusted Brands</h1>
@@ -55,8 +55,8 @@ export default function AboutUs() {
         {/* Dual Purpose */}
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-200">
-              <div className="h-16 w-16 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gradient-to-br from-brand-50 to-brand-50 rounded-2xl p-8 border-2 border-brand-200">
+              <div className="h-16 w-16 bg-brand-600 rounded-full flex items-center justify-center mb-4">
                 <Target className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">For Sellers</h3>
@@ -65,8 +65,8 @@ export default function AboutUs() {
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border-2 border-blue-200">
-              <div className="h-16 w-16 bg-pink-600 rounded-full flex items-center justify-center mb-4">
+            <div className="bg-gradient-to-br from-blue-50 to-brand-50 rounded-2xl p-8 border-2 border-blue-200">
+              <div className="h-16 w-16 bg-brand-600 rounded-full flex items-center justify-center mb-4">
                 <Heart className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">For Consumers</h3>
@@ -79,7 +79,7 @@ export default function AboutUs() {
 
         {/* Mission Statement */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-12 text-white text-center shadow-2xl">
+          <div className="bg-gradient-to-r from-brand-600 to-brand-600 rounded-2xl p-12 text-white text-center shadow-2xl">
             <Sparkles className="h-16 w-16 mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
             <p className="text-xl leading-relaxed max-w-4xl mx-auto">
@@ -93,19 +93,19 @@ export default function AboutUs() {
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">What We Stand For</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
-              <Globe className="h-12 w-12 text-purple-600 mb-4" />
+              <Globe className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Circular Economy Thinking</h3>
               <p className="text-gray-600">Reducing waste by preventing the disposal of dead stock.</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
-              <Shield className="h-12 w-12 text-pink-600 mb-4" />
+              <Shield className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Quality-First Retail</h3>
               <p className="text-gray-600">Guiding consumers toward well-made, trusted products instead of low-quality fast fashion.</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
-              <Heart className="h-12 w-12 text-purple-600 mb-4" />
+              <Heart className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Affordability Without Compromise</h3>
               <p className="text-gray-600">Ensuring luxury and quality are accessible to those living within a budget.</p>
             </div>
@@ -124,14 +124,14 @@ export default function AboutUs() {
 
         {/* CTA Section */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-slate-100 to-purple-100 rounded-2xl p-12">
+          <div className="bg-gradient-to-r from-slate-100 to-brand-100 rounded-2xl p-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Discover Quality Brands?</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Join thousands of smart shoppers finding premium products at unbeatable prices.
             </p>
             <Link
               to="/shop"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition shadow-lg"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-brand-700 hover:to-brand-700 transition shadow-lg"
             >
               Start Shopping
               <ArrowRight className="h-5 w-5" />

@@ -55,7 +55,7 @@ export default function AdminAnalytics() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600"></div>
       </div>
     );
   }
@@ -101,7 +101,7 @@ export default function AdminAnalytics() {
 
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <ShoppingCart className="h-8 w-8 text-purple-600" />
+              <ShoppingCart className="h-8 w-8 text-brand-600" />
               <span className="text-2xl font-bold text-gray-900">{analytics.conversionRate?.toFixed(2) || 0}%</span>
             </div>
             <p className="text-sm text-gray-600">Conversion Rate</p>
@@ -122,7 +122,7 @@ export default function AdminAnalytics() {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                <Search className="h-5 w-5 text-purple-600" />
+                <Search className="h-5 w-5 text-brand-600" />
                 Top Searches
               </h3>
             </div>
@@ -139,7 +139,7 @@ export default function AdminAnalytics() {
                     </div>
                     <div className="w-32 bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-gradient-to-r from-purple-600 to-pink-600 h-2 rounded-full"
+                        className="bg-gradient-to-r from-brand-600 to-brand-600 h-2 rounded-full"
                         style={{ width: `${(search.count / analytics.topSearches[0].count) * 100}%` }}
                       ></div>
                     </div>
@@ -213,7 +213,7 @@ export default function AdminAnalytics() {
         <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <MousePointer className="h-5 w-5 text-purple-600" />
+              <MousePointer className="h-5 w-5 text-brand-600" />
               Recent Product Clicks
             </h3>
           </div>

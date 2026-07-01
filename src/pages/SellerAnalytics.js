@@ -192,7 +192,7 @@ const SellerAnalytics = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#FF3CFE] mx-auto mb-4"></div>
           <p className="text-white">Loading analytics...</p>
@@ -210,7 +210,7 @@ const SellerAnalytics = () => {
   ] : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black">
       {/* Header */}
       <header className="bg-black/90 backdrop-blur-sm border-b border-[#FF3CFE]/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -514,12 +514,12 @@ const SellerAnalytics = () => {
                     </span>
                   </div>
                   
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-brand-50 rounded-lg">
                     <div className="flex items-center">
-                      <Users className="w-5 h-5 text-purple-600 mr-2" />
+                      <Users className="w-5 h-5 text-brand-600 mr-2" />
                       <span className="text-sm font-medium">Returning Customers</span>
                     </div>
-                    <span className="text-2xl font-bold text-purple-600">
+                    <span className="text-2xl font-bold text-brand-600">
                       {customerInsights.returning_customers}
                     </span>
                   </div>
@@ -654,7 +654,7 @@ const SellerAnalytics = () => {
                       </div>
                       <div className="text-center">
                         <p className="text-gray-500">Views</p>
-                        <p className="font-bold text-purple-600">{product.views}</p>
+                        <p className="font-bold text-brand-600">{product.views}</p>
                       </div>
                       <div className="text-center">
                         <p className="text-gray-500">Conv. Rate</p>

@@ -69,7 +69,7 @@ export default function OrderSuccess() {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-16 w-16 text-purple-600 animate-spin mx-auto mb-4" />
+          <Loader2 className="h-16 w-16 text-brand-600 animate-spin mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Verifying Payment...</h2>
           <p className="text-gray-600">Please wait while we confirm your order</p>
           {pollAttempts > 0 && (
@@ -92,7 +92,7 @@ export default function OrderSuccess() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Verification Error</h2>
           <p className="text-gray-600 mb-6">{error}</p>
           <div className="space-y-2">
-            <Button onClick={() => navigate("/shop")} className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button onClick={() => navigate("/shop")} className="w-full bg-brand-600 hover:bg-brand-700">
               Continue Shopping
             </Button>
             <Button variant="outline" onClick={() => navigate("/cart")} className="w-full">
@@ -126,7 +126,7 @@ export default function OrderSuccess() {
 
           <div className="space-y-4 mb-8">
             <div className="flex items-start gap-3 text-left">
-              <Package className="h-5 w-5 text-purple-600 mt-0.5" />
+              <Package className="h-5 w-5 text-brand-600 mt-0.5" />
               <div>
                 <p className="font-medium text-gray-900">Order Confirmation</p>
                 <p className="text-sm text-gray-600">
@@ -135,7 +135,7 @@ export default function OrderSuccess() {
               </div>
             </div>
             <div className="flex items-start gap-3 text-left">
-              <Package className="h-5 w-5 text-purple-600 mt-0.5" />
+              <Package className="h-5 w-5 text-brand-600 mt-0.5" />
               <div>
                 <p className="font-medium text-gray-900">Next Steps</p>
                 <p className="text-sm text-gray-600">
@@ -146,7 +146,7 @@ export default function OrderSuccess() {
           </div>
 
           <div className="space-y-2">
-            <Button onClick={() => navigate("/shop")} className="w-full bg-purple-600 hover:bg-purple-700">
+            <Button onClick={() => navigate("/shop")} className="w-full bg-brand-600 hover:bg-brand-700">
               Continue Shopping
             </Button>
             <Button variant="outline" onClick={() => navigate("/")} className="w-full">

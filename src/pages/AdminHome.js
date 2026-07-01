@@ -105,7 +105,7 @@ export default function AdminHome() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-[#00ffef]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600"></div>
       </div>
     );
   }
@@ -143,7 +143,7 @@ export default function AdminHome() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <Package className="h-8 w-8 text-purple-600" />
+              <Package className="h-8 w-8 text-brand-600" />
               <span className="text-2xl font-bold text-gray-900">{stats.totalProducts}</span>
             </div>
             <p className="text-sm text-gray-600">Total Products</p>
@@ -181,11 +181,11 @@ export default function AdminHome() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <button
             onClick={() => navigate("/admin/products")}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg p-6 text-left transition-all shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white rounded-lg p-6 text-left transition-all shadow-lg hover:shadow-xl"
           >
             <Edit className="h-8 w-8 mb-3" />
             <h3 className="text-xl font-bold mb-2">Manage Products</h3>
-            <p className="text-sm text-purple-100">Edit products, add sale pricing, manage inventory</p>
+            <p className="text-sm text-brand-100">Edit products, add sale pricing, manage inventory</p>
           </button>
 
           <button
@@ -219,7 +219,7 @@ export default function AdminHome() {
 
           <button
             onClick={() => navigate("/admin/sellers")}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-lg p-6 text-left transition-all shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-indigo-600 to-brand-600 hover:from-indigo-700 hover:to-brand-700 text-white rounded-lg p-6 text-left transition-all shadow-lg hover:shadow-xl"
           >
             <Users className="h-8 w-8 mb-3" />
             <h3 className="text-xl font-bold mb-2">Seller Approvals</h3>

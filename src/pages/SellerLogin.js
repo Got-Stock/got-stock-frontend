@@ -116,7 +116,7 @@ const SellerLogin = () => {
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-purple-900/60 to-[#FF3CFE]/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-brand-900/60 to-[#FF3CFE]/40" />
       
       {/* Content */}
       <div className="relative z-10">

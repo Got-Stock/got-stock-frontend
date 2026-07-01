@@ -185,7 +185,7 @@ const Wishlist = () => {
                       <Button
                         onClick={() => navigate(`/product/${item.id}`)}
                         variant="outline"
-                        className="flex-1 border-[#FF3CFE] text-[#FF3CFE] hover:bg-pink-50"
+                        className="flex-1 border-[#FF3CFE] text-[#FF3CFE] hover:bg-brand-50"
                         size="sm"
                       >
                         View

@@ -186,7 +186,7 @@ export default function CustomerLogin() {
               <label className="flex items-center">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  className="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500"
                 />
                 <span className="ml-2 text-sm text-gray-600">Remember me</span>
               </label>

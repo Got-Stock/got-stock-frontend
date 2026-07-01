@@ -111,7 +111,7 @@ const WishlistButton = ({ product, className = '' }) => {
   return (
     <button
       onClick={toggleWishlist}
-      className={`p-2 rounded-full hover:bg-pink-50 transition group ${className}`}
+      className={`p-2 rounded-full hover:bg-brand-50 transition group ${className}`}
       title={isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
     >
       <Heart

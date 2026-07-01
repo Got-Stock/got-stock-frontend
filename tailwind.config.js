@@ -13,6 +13,20 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+  			// Brand accent ramp — neon magenta anchored on #FF3CFE (brand-500).
+  			// Replaces the old purple/pink utilities for a single consistent accent.
+  			brand: {
+  				50: '#FEF1FF',
+  				100: '#FCDCFF',
+  				200: '#FAB3FF',
+  				300: '#F77DFF',
+  				400: '#FB50FE',
+  				500: '#FF3CFE',
+  				600: '#C118C4',
+  				700: '#9A139C',
+  				800: '#730E75',
+  				900: '#4E0A50'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

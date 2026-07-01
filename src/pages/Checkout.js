@@ -318,7 +318,7 @@ export default function Checkout() {
                     <div className="flex items-center gap-2">
                       <span>Shipping</span>
                       {calculatingShipping && (
-                        <Loader2 className="h-3 w-3 animate-spin text-purple-600" />
+                        <Loader2 className="h-3 w-3 animate-spin text-brand-600" />
                       )}
                     </div>
                     <span>{getShipping() === 0 ? "FREE" : `$${getShipping().toFixed(2)}`}</span>
@@ -331,7 +331,7 @@ export default function Checkout() {
                         <p className="text-green-600 font-medium">✓ Free shipping applied!</p>
                       )}
                       {shippingDetails.free_shipping_remaining > 0 && (
-                        <p className="text-purple-600">
+                        <p className="text-brand-600">
                           Add ${shippingDetails.free_shipping_remaining.toFixed(2)} more for free shipping
                         </p>
                       )}
@@ -354,7 +354,7 @@ export default function Checkout() {
               <Button
                 onClick={handleCheckout}
                 disabled={loading}
-                className="w-full bg-purple-600 hover:bg-purple-700"
+                className="w-full bg-brand-600 hover:bg-brand-700"
               >
                 {loading ? (
                   <>

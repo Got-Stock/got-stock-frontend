@@ -61,7 +61,7 @@ const TrackOrder = () => {
             <Button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white py-6"
+              className="w-full bg-brand-600 hover:bg-brand-700 text-white py-6"
             >
               {loading ? 'Tracking...' : 'Track Order'}
               {!loading && <Search className="ml-2 h-4 w-4" />}

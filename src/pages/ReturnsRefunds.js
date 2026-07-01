@@ -55,7 +55,7 @@ export default function ReturnsRefunds() {
             </ul>
           </div>
 
-          <div className="bg-pink-50 rounded-lg p-4 border-2 border-[#FF3CFE]">
+          <div className="bg-brand-50 rounded-lg p-4 border-2 border-[#FF3CFE]">
             <h3 className="text-lg font-bold text-gray-900 mb-2">Change-of-Mind Returns</h3>
             <p className="text-gray-700">
               May be offered at the discretion of the Seller. Must be clearly stated on the product listing.
@@ -73,25 +73,25 @@ export default function ReturnsRefunds() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-pink-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
               <h3 className="font-bold text-gray-900 mb-2">Acknowledgement</h3>
               <p className="text-2xl font-bold text-[#FF3CFE]">2 business days</p>
               <p className="text-sm text-gray-600 mt-1">Sellers must acknowledge return requests</p>
             </div>
             
-            <div className="bg-pink-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
               <h3 className="font-bold text-gray-900 mb-2">Return Label</h3>
               <p className="text-2xl font-bold text-[#FF3CFE]">1 business day</p>
               <p className="text-sm text-gray-600 mt-1">Prepaid return labels provided</p>
             </div>
             
-            <div className="bg-pink-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
               <h3 className="font-bold text-gray-900 mb-2">Inspection</h3>
               <p className="text-2xl font-bold text-[#FF3CFE]">3 business days</p>
               <p className="text-sm text-gray-600 mt-1">After return is received</p>
             </div>
             
-            <div className="bg-pink-50 rounded-lg p-4 border border-[#FF3CFE]">
+            <div className="bg-brand-50 rounded-lg p-4 border border-[#FF3CFE]">
               <h3 className="font-bold text-gray-900 mb-2">Refund Approval</h3>
               <p className="text-2xl font-bold text-[#FF3CFE]">1 business day</p>
               <p className="text-sm text-gray-600 mt-1">After inspection complete</p>
@@ -151,7 +151,7 @@ export default function ReturnsRefunds() {
         </div>
 
         {/* Customer Tips */}
-        <div className="bg-gradient-to-b from-pink-50 to-white rounded-2xl p-8 border-2 border-[#FF3CFE]">
+        <div className="bg-gradient-to-b from-brand-50 to-white rounded-2xl p-8 border-2 border-[#FF3CFE]">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center">
               <AlertCircle className="h-6 w-6 text-white" />

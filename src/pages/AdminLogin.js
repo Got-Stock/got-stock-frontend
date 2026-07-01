@@ -82,7 +82,7 @@ const AdminLogin = () => {
         </Button>
 
         <div className="flex items-center justify-center min-h-[80vh]">
-          <Card className="w-full max-w-md border-purple-200 bg-white/80 backdrop-blur-sm shadow-xl">
+          <Card className="w-full max-w-md border-brand-200 bg-white/80 backdrop-blur-sm shadow-xl">
             <CardHeader>
               <div className="flex items-center justify-center mb-4">
                 <div className="bg-gradient-to-br from-black to-[#00ffef] p-4 rounded-full">
@@ -150,7 +150,7 @@ const AdminLogin = () => {
                 </Link>
               </div>
 
-              <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg text-xs text-purple-900 text-center">
+              <div className="mt-4 p-3 bg-brand-50 border border-brand-200 rounded-lg text-xs text-brand-900 text-center">
                 <Shield className="w-4 h-4 inline mr-1" />
                 Authorized personnel only
               </div>

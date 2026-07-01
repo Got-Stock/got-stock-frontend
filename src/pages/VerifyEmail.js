@@ -47,9 +47,9 @@ export default function VerifyEmail() {
 
   if (verifying) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-brand-50 via-brand-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-brand-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Verifying your email...</p>
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function VerifyEmail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-brand-50 to-blue-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
@@ -92,13 +92,13 @@ export default function VerifyEmail() {
               <p className="text-gray-600 mb-6">{error}</p>
               <div className="space-y-3">
                 <Link to="/customer-login">
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                  <Button className="w-full bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700">
                     Go to Login
                   </Button>
                 </Link>
                 <p className="text-sm text-gray-500">
                   Need a new link? Contact us at{" "}
-                  <a href="mailto:admin@got-stock.com" className="text-purple-600 hover:text-purple-700">
+                  <a href="mailto:admin@got-stock.com" className="text-brand-600 hover:text-brand-700">
                     admin@got-stock.com
                   </a>
                 </p>

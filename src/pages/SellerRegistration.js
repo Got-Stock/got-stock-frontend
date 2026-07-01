@@ -75,7 +75,7 @@ const SellerRegistration = () => {
   // Show loading while checking authentication
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE] mx-auto mb-4"></div>
           <p className="text-white">Loading...</p>
@@ -85,7 +85,7 @@ const SellerRegistration = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black py-12 px-4">
       <div className="container mx-auto max-w-3xl">
         <Button
           variant="ghost"

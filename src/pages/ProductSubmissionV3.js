@@ -1214,7 +1214,7 @@ const ProductSubmissionV3 = () => {
   // ==================== RENDER ====================
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-6xl bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black min-h-screen">
+    <div className="container mx-auto py-8 px-4 max-w-6xl bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black min-h-screen">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 text-white">Product Submission</h1>
         <p className="text-white/80">GTIN-First · Schema-Driven · Step-by-Step</p>

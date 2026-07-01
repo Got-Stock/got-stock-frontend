@@ -280,9 +280,9 @@ const ProductList = () => {
                 <p className="text-sm text-gray-600 mb-1">Pending</p>
                 <p className="text-2xl font-bold text-orange-600">{products.filter(p => p.approval_status === 'NOT APPROVED').length}</p>
               </div>
-              <div className="bg-purple-50 rounded-lg p-4">
+              <div className="bg-brand-50 rounded-lg p-4">
                 <p className="text-sm text-gray-600 mb-1">Total Stock</p>
-                <p className="text-2xl font-bold text-purple-600">{products.reduce((sum, p) => sum + getTotalStock(p), 0)}</p>
+                <p className="text-2xl font-bold text-brand-600">{products.reduce((sum, p) => sum + getTotalStock(p), 0)}</p>
               </div>
             </div>
           </CardContent>
@@ -348,7 +348,7 @@ const ProductList = () => {
                         variant="outline"
                         size="sm"
                         onClick={() => handleEditProduct(product)}
-                        className="border-purple-200 hover:bg-purple-50 text-purple-600"
+                        className="border-brand-200 hover:bg-brand-50 text-brand-600"
                         data-testid={`edit-product-${product.product_id}`}
                       >
                         <Edit className="w-4 h-4 mr-2" />
@@ -478,7 +478,7 @@ const ProductList = () => {
         <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl flex items-center gap-2">
-              <Edit className="w-6 h-6 text-purple-600" />
+              <Edit className="w-6 h-6 text-brand-600" />
               Edit Product Information
             </DialogTitle>
             <DialogDescription>
@@ -569,7 +569,7 @@ const ProductList = () => {
                 <Button
                   onClick={saveProductChanges}
                   disabled={savingProduct}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white"
+                  className="flex-1 bg-gradient-to-r from-brand-600 to-indigo-600 hover:opacity-90 text-white"
                   data-testid="save-product-btn"
                 >
                   <Save className="w-4 h-4 mr-2" />

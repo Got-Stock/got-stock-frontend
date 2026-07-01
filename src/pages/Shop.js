@@ -202,7 +202,7 @@ export default function Shop() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading products...</p>
         </div>
       </div>
@@ -278,11 +278,11 @@ export default function Shop() {
               <SelectTrigger className="w-full md:w-48 bg-gradient-to-b from-[#FF3CFE] to-black text-white border-none">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent className="bg-gradient-to-b from-[#FF3CFE] to-black text-white border-pink-300">
-                <SelectItem value="newest" className="text-white hover:bg-pink-700 focus:bg-pink-700 focus:text-white">Newest First</SelectItem>
-                <SelectItem value="price-low" className="text-white hover:bg-pink-700 focus:bg-pink-700 focus:text-white">Price: Low to High</SelectItem>
-                <SelectItem value="price-high" className="text-white hover:bg-pink-700 focus:bg-pink-700 focus:text-white">Price: High to Low</SelectItem>
-                <SelectItem value="name" className="text-white hover:bg-pink-700 focus:bg-pink-700 focus:text-white">Name A-Z</SelectItem>
+              <SelectContent className="bg-gradient-to-b from-[#FF3CFE] to-black text-white border-brand-300">
+                <SelectItem value="newest" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Newest First</SelectItem>
+                <SelectItem value="price-low" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Price: Low to High</SelectItem>
+                <SelectItem value="price-high" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Price: High to Low</SelectItem>
+                <SelectItem value="name" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Name A-Z</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -425,7 +425,7 @@ export default function Shop() {
                   const linkPath = `/product/variant/${defaultVariant.variant_id}`;
                   
                   return (
-                    <div key={product.id} className="relative bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-purple-200">
+                    <div key={product.id} className="relative bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-brand-200">
                       <Link to={linkPath}>
                         <div className="aspect-square bg-gray-100 overflow-hidden relative">
                           <img

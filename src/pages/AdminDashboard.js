@@ -574,7 +574,7 @@ const AdminDashboard = () => {
                 <h3 className="font-bold text-lg border-b pb-2 text-gray-900">Product Variants ({selectedProduct.variants?.length || 0})</h3>
                 <div className="space-y-3 max-h-64 overflow-y-auto">
                   {selectedProduct.variants?.map((variant, index) => (
-                    <div key={variant.variant_id || index} className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                    <div key={variant.variant_id || index} className="bg-brand-50 p-4 rounded-lg border border-brand-100">
                       <p className="font-semibold text-sm text-gray-900 mb-2">Variant {index + 1}</p>
                       <div className="grid grid-cols-3 gap-3 text-sm">
                         <div>

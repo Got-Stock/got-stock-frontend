@@ -20,23 +20,23 @@ const Partnerships = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white border border-gray-200 p-8 rounded-xl hover:shadow-lg transition cursor-pointer">
-            <Store className="h-10 w-10 text-purple-600 mb-4" />
+            <Store className="h-10 w-10 text-brand-600 mb-4" />
             <h3 className="text-xl font-bold mb-2">Retail Partners</h3>
             <p className="text-gray-600 mb-4">
               For established brands looking for a dedicated brand store experience.
             </p>
-            <Link to="/contact-us" className="text-purple-600 font-medium hover:underline">
+            <Link to="/contact-us" className="text-brand-600 font-medium hover:underline">
               Contact Retail Team →
             </Link>
           </div>
 
           <div className="bg-white border border-gray-200 p-8 rounded-xl hover:shadow-lg transition cursor-pointer">
-            <Users className="h-10 w-10 text-pink-600 mb-4" />
+            <Users className="h-10 w-10 text-brand-600 mb-4" />
             <h3 className="text-xl font-bold mb-2">Influencers</h3>
             <p className="text-gray-600 mb-4">
               Join our affiliate program and earn commission by promoting products you love.
             </p>
-            <Link to="/contact-us" className="text-pink-600 font-medium hover:underline">
+            <Link to="/contact-us" className="text-brand-600 font-medium hover:underline">
               Join Affiliate Program →
             </Link>
           </div>

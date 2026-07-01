@@ -184,7 +184,7 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading product...</p>
         </div>
       </div>
@@ -284,7 +284,7 @@ export default function ProductDetail() {
                     aria-label={`View image ${idx + 1} of ${images.length}`}
                     aria-pressed={mainImage === idx}
                     className={`aspect-square rounded-lg overflow-hidden border-2 ${
-                      mainImage === idx ? 'border-purple-600' : 'border-transparent'
+                      mainImage === idx ? 'border-brand-600' : 'border-transparent'
                     }`}
                   >
                     <img
@@ -308,7 +308,7 @@ export default function ProductDetail() {
               <p className="text-sm text-gray-500 mb-2">{product.brand}</p>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
               <div className="flex items-center gap-3">
-                <p className="text-3xl font-bold text-purple-600">
+                <p className="text-3xl font-bold text-brand-600">
                   ${currentVariant?.offers?.[0]?.price?.toFixed(2) || '0.00'}
                 </p>
                 {currentVariant?.offers?.[0]?.stock_qty > 0 ? (
@@ -337,7 +337,7 @@ export default function ProductDetail() {
                         onClick={() => selectVariant('colour', colour)}
                         className={`px-4 py-2 rounded-lg border-2 transition ${
                           currentVariant?.colour === colour
-                            ? 'border-purple-600 bg-purple-50'
+                            ? 'border-brand-600 bg-brand-50'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
@@ -360,7 +360,7 @@ export default function ProductDetail() {
                         onClick={() => selectVariant('size', size)}
                         className={`px-4 py-2 rounded-lg border-2 transition ${
                           currentVariant?.size === size
-                            ? 'border-purple-600 bg-purple-50'
+                            ? 'border-brand-600 bg-brand-50'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
@@ -399,7 +399,7 @@ export default function ProductDetail() {
               <Button
                 onClick={addToCart}
                 disabled={!currentVariant || !currentVariant.offers?.[0] || currentVariant.offers[0].stock_qty === 0}
-                className="flex-1 bg-purple-600 hover:bg-purple-700"
+                className="flex-1 bg-brand-600 hover:bg-brand-700"
               >
                 <ShoppingCart className="h-5 w-5 mr-2" />
                 Add to Cart
@@ -412,21 +412,21 @@ export default function ProductDetail() {
             {/* Product Features */}
             <div className="border-t pt-6 space-y-4">
               <div className="flex items-start gap-3">
-                <Package className="h-5 w-5 text-purple-600 mt-0.5" />
+                <Package className="h-5 w-5 text-brand-600 mt-0.5" />
                 <div>
                   <p className="font-medium text-sm">Free Shipping</p>
                   <p className="text-xs text-gray-500">On orders over $50</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Truck className="h-5 w-5 text-purple-600 mt-0.5" />
+                <Truck className="h-5 w-5 text-brand-600 mt-0.5" />
                 <div>
                   <p className="font-medium text-sm">Fast Delivery</p>
                   <p className="text-xs text-gray-500">2-5 business days</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Shield className="h-5 w-5 text-purple-600 mt-0.5" />
+                <Shield className="h-5 w-5 text-brand-600 mt-0.5" />
                 <div>
                   <p className="font-medium text-sm">Secure Payment</p>
                   <p className="text-xs text-gray-500">100% secure transactions</p>

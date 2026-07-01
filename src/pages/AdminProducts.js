@@ -153,7 +153,7 @@ export default function AdminProducts() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600"></div>
       </div>
     );
   }
@@ -318,7 +318,7 @@ export default function AdminProducts() {
                   <Button variant="outline" onClick={() => setShowEditDialog(false)}>
                     Cancel
                   </Button>
-                  <Button onClick={handleSave} className="bg-purple-600 hover:bg-purple-700">
+                  <Button onClick={handleSave} className="bg-brand-600 hover:bg-brand-700">
                     <Save className="h-4 w-4 mr-2" />
                     Save Changes
                   </Button>

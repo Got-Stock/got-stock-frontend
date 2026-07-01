@@ -367,7 +367,7 @@ export default function CategoryNav() {
                         handleSubcategoryClick(categoryName, link);
                         setHoveredCategory(null);
                       }}
-                      className="text-base text-white hover:text-pink-200 transition block text-left w-full hover:underline"
+                      className="text-base text-white hover:text-brand-200 transition block text-left w-full hover:underline"
                     >
                       {link}
                     </button>

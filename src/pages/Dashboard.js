@@ -72,7 +72,7 @@ const Dashboard = () => {
   // Show loading state while checking auth
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE] mx-auto mb-4"></div>
           <p className="text-white">Loading dashboard...</p>
@@ -87,7 +87,7 @@ const Dashboard = () => {
   const isAdmin = user.role === 'admin';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-purple-900 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black">
       {/* Header */}
       <header className="bg-black/90 backdrop-blur-sm border-b border-[#FF3CFE]/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -644,7 +644,7 @@ const Dashboard = () => {
             <Button
               onClick={() => navigate('/seller/orders')}
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-brand-600 to-brand-600 hover:opacity-90 text-white px-8 py-6 text-lg"
             >
               <Package className="w-6 h-6 mr-3" />
               View Orders
@@ -778,7 +778,7 @@ const Dashboard = () => {
                   data-testid="review-sellers-btn"
                   variant="outline"
                   size="lg"
-                  className="border-2 border-purple-500 hover:bg-purple-50 h-auto py-8 rounded-lg shadow-md hover:shadow-lg transition-all"
+                  className="border-2 border-brand-500 hover:bg-brand-50 h-auto py-8 rounded-lg shadow-md hover:shadow-lg transition-all"
                 >
                   <div className="text-left w-full">
                     <div className="flex items-center gap-2 mb-2">
@@ -787,7 +787,7 @@ const Dashboard = () => {
                     </div>
                     <div className="text-sm text-white/70">Approve pending seller applications</div>
                     {stats?.pending_sellers > 0 && (
-                      <div className="mt-2 inline-block bg-purple-100 px-3 py-1 rounded-full text-xs font-semibold text-purple-700">
+                      <div className="mt-2 inline-block bg-brand-100 px-3 py-1 rounded-full text-xs font-semibold text-brand-700">
                         {stats.pending_sellers} pending review
                       </div>
                     )}

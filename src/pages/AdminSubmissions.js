@@ -1659,7 +1659,7 @@ const AdminSubmissions = () => {
                                   {variant.submission.status === 'APPROVED' && variant.submission.approved_global_product_id && (
                                     <Button
                                       size="sm"
-                                      className="bg-purple-600 hover:bg-purple-700"
+                                      className="bg-brand-600 hover:bg-brand-700"
                                       onClick={(e) => {
                                         e.stopPropagation();
                                         handlePublishProduct(variant.submission.approved_global_product_id);

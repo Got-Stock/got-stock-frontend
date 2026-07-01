@@ -14,7 +14,7 @@ const Breadcrumbs = ({ items }) => {
         <li>
           <Link 
             to="/" 
-            className="flex items-center text-gray-700 hover:text-purple-600 transition-colors p-1 hover:bg-purple-50 rounded"
+            className="flex items-center text-gray-700 hover:text-brand-600 transition-colors p-1 hover:bg-brand-50 rounded"
             aria-label="Home"
           >
             <Home className="w-5 h-5" />
@@ -28,13 +28,13 @@ const Breadcrumbs = ({ items }) => {
             <li key={index} className="flex items-center">
               <ChevronRight className="w-4 h-4 text-gray-400 mx-2" />
               {isLast ? (
-                <span className="text-gray-900 font-semibold px-2 py-1 bg-purple-50 rounded" aria-current="page">
+                <span className="text-gray-900 font-semibold px-2 py-1 bg-brand-50 rounded" aria-current="page">
                   {item.label}
                 </span>
               ) : (
                 <Link
                   to={item.href}
-                  className="text-gray-700 hover:text-purple-600 transition-colors px-2 py-1 hover:bg-purple-50 rounded"
+                  className="text-gray-700 hover:text-brand-600 transition-colors px-2 py-1 hover:bg-brand-50 rounded"
                 >
                   {item.label}
                 </Link>

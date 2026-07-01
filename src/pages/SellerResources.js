@@ -12,7 +12,7 @@ const SellerResources = () => {
     >
       <div className="space-y-8">
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-purple-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
+          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-brand-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
             <div className="w-12 h-12 bg-gradient-to-r from-[#FF3CFE] to-black rounded-lg flex items-center justify-center mb-4">
               <Book className="h-6 w-6 text-white" />
             </div>
@@ -25,7 +25,7 @@ const SellerResources = () => {
             </Button>
           </div>
 
-          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-purple-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
+          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-brand-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
             <div className="w-12 h-12 bg-gradient-to-r from-[#FF3CFE] to-black rounded-lg flex items-center justify-center mb-4">
               <TrendingUp className="h-6 w-6 text-white" />
             </div>
@@ -38,7 +38,7 @@ const SellerResources = () => {
             </Button>
           </div>
 
-          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-purple-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
+          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-brand-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
             <div className="w-12 h-12 bg-gradient-to-r from-[#FF3CFE] to-black rounded-lg flex items-center justify-center mb-4">
               <Package className="h-6 w-6 text-white" />
             </div>
@@ -51,7 +51,7 @@ const SellerResources = () => {
             </Button>
           </div>
 
-          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-purple-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
+          <div className="bg-gradient-to-br from-[#FF3CFE]/20 via-brand-900/30 to-black/80 p-6 rounded-xl border border-[#FF3CFE]/30">
             <div className="w-12 h-12 bg-gradient-to-r from-[#FF3CFE] to-black rounded-lg flex items-center justify-center mb-4">
               <HelpCircle className="h-6 w-6 text-white" />
             </div>

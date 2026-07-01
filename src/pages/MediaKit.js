@@ -23,7 +23,7 @@ const MediaKit = () => {
             </p>
             <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
               <h3 className="font-bold mb-2">Press Contact</h3>
-              <p className="text-purple-600">press@got-stock.com</p>
+              <p className="text-brand-600">press@got-stock.com</p>
             </div>
           </div>
 
@@ -46,8 +46,8 @@ const MediaKit = () => {
 
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <FileText className="h-6 w-6 text-purple-600" />
+                <div className="h-12 w-12 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <FileText className="h-6 w-6 text-brand-600" />
                 </div>
                 <div>
                   <h3 className="font-bold">Brand Guidelines</h3>
@@ -62,8 +62,8 @@ const MediaKit = () => {
 
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="h-12 w-12 bg-pink-100 rounded-lg flex items-center justify-center">
-                  <Image className="h-6 w-6 text-pink-600" />
+                <div className="h-12 w-12 bg-brand-100 rounded-lg flex items-center justify-center">
+                  <Image className="h-6 w-6 text-brand-600" />
                 </div>
                 <div>
                   <h3 className="font-bold">High-Res Imagery</h3>

@@ -35,7 +35,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-brand-50 via-brand-50 to-blue-50 flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -63,7 +63,7 @@ export default function ForgotPassword() {
                 Didn't receive the email? Check your spam folder or try again.
               </p>
               <Link to="/customer-login">
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                <Button className="w-full bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Login
                 </Button>
@@ -98,7 +98,7 @@ export default function ForgotPassword() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-6 text-base font-semibold"
+                  className="w-full bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white py-6 text-base font-semibold"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center">
@@ -114,7 +114,7 @@ export default function ForgotPassword() {
               <div className="mt-6 text-center">
                 <Link
                   to="/customer-login"
-                  className="text-purple-600 hover:text-purple-700 font-semibold text-sm flex items-center justify-center"
+                  className="text-brand-600 hover:text-brand-700 font-semibold text-sm flex items-center justify-center"
                 >
                   <ArrowLeft className="h-4 w-4 mr-1" />
                   Back to Login

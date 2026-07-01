@@ -172,7 +172,7 @@ const ChatBot = () => {
               </div>
               <div>
                 <h3 className="font-bold text-sm">Got-Stock Assistant</h3>
-                <p className="text-xs text-purple-100 flex items-center gap-1">
+                <p className="text-xs text-brand-100 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-400 rounded-full block"></span>
                   Online
                 </p>
@@ -198,7 +198,7 @@ const ChatBot = () => {
                 <div key={idx} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] rounded-2xl p-3 ${
                     msg.type === 'user' 
-                      ? 'bg-purple-600 text-white rounded-tr-none' 
+                      ? 'bg-brand-600 text-white rounded-tr-none' 
                       : 'bg-white text-gray-800 border border-gray-200 rounded-tl-none shadow-sm'
                   }`}>
                     <p className="text-sm leading-relaxed">{msg.text}</p>
@@ -210,7 +210,7 @@ const ChatBot = () => {
                           <button
                             key={actionIdx}
                             onClick={() => handleActionClick(action.link)}
-                            className="flex items-center justify-between w-full text-xs bg-gray-50 hover:bg-purple-50 text-gray-700 hover:text-purple-700 px-3 py-2 rounded-lg border border-gray-200 transition-colors group"
+                            className="flex items-center justify-between w-full text-xs bg-gray-50 hover:bg-brand-50 text-gray-700 hover:text-brand-700 px-3 py-2 rounded-lg border border-gray-200 transition-colors group"
                           >
                             {action.label}
                             <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -242,12 +242,12 @@ const ChatBot = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Type a message..."
-                className="flex-1 focus-visible:ring-purple-500"
+                className="flex-1 focus-visible:ring-brand-500"
               />
               <Button 
                 onClick={handleSend}
                 size="icon"
-                className="bg-purple-600 hover:bg-purple-700 text-white"
+                className="bg-brand-600 hover:bg-brand-700 text-white"
                 disabled={!inputValue.trim()}
               >
                 <Send className="w-4 h-4" />

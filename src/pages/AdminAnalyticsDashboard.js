@@ -196,10 +196,10 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-purple-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-brand-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription className="text-gray-600">Average Order Value</CardDescription>
-                <CardTitle className="text-3xl font-bold text-purple-600">
+                <CardTitle className="text-3xl font-bold text-brand-600">
                   ${revenue.average_order_value?.toFixed(2) || 0}
                 </CardTitle>
               </CardHeader>
@@ -421,7 +421,7 @@ const AdminAnalyticsDashboard = () => {
               <Card className="bg-white/80 backdrop-blur-sm">
                 <CardHeader className="pb-2">
                   <CardDescription>Avg Customer LTV</CardDescription>
-                  <CardTitle className="text-2xl font-bold text-purple-600">
+                  <CardTitle className="text-2xl font-bold text-brand-600">
                     ${customers.average_customer_lifetime_value?.toFixed(2) || 0}
                   </CardTitle>
                 </CardHeader>
@@ -483,7 +483,7 @@ const AdminAnalyticsDashboard = () => {
             <Card className="bg-white/80 backdrop-blur-sm">
               <CardHeader className="pb-2">
                 <CardDescription>Engagement Rate</CardDescription>
-                <CardTitle className="text-3xl font-bold text-purple-600">
+                <CardTitle className="text-3xl font-bold text-brand-600">
                   {((traffic.unique_products_viewed / products.total_products) * 100).toFixed(1) || 0}%
                 </CardTitle>
               </CardHeader>
