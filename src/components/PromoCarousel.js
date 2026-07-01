@@ -14,7 +14,6 @@ const PromoCarousel = () => {
       subtitle: "ALL YOUR FAVES ON REPEAT",
       description: "This months top-performing products from the brands shoppers trust most.",
       bgImage: "https://customer-assets.emergentagent.com/job_ecom-dashboard-58/artifacts/1y12eu3v_ChatGPT%20Image%20Dec%2024%2C%202025%2C%2006_36_45%20AM.png",
-      overlayColor: "from-purple-900/80 to-pink-900/80",
       buttonText: "Shop Best Sellers",
       link: "/shop?category=best-sellers"
     },
@@ -24,7 +23,6 @@ const PromoCarousel = () => {
       subtitle: "FRESH IN. GOING FAST.",
       description: "Freshly released styles and products from the brands everyone's watching.",
       bgImage: "https://customer-assets.emergentagent.com/job_ecom-dashboard-58/artifacts/phc6vj1j_jgenerated-image%20%284%29.png",
-      overlayColor: "from-purple-900/80 to-pink-900/80",
       buttonText: "Shop New Arrivals",
       link: "/shop?sort=newest"
     },
@@ -34,7 +32,6 @@ const PromoCarousel = () => {
       subtitle: "BRANDS WORTH FOLLOWING.",
       description: "A curated selection of trusted brands, chosen for quality, value and demand",
       bgImage: "https://customer-assets.emergentagent.com/job_ecom-dashboard-58/artifacts/z84dwllj_generated-image%20%2884%29.png",
-      overlayColor: "from-purple-900/80 to-pink-900/80",
       buttonText: "Shop Featured Brands",
       link: "/shop?featured=true"
     }
@@ -80,23 +77,25 @@ const PromoCarousel = () => {
             }`}
           >
             {/* Background Image - fill the block */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.bgImage})` }}
             />
-            
+            {/* Dark scrim for text legibility over busy photos */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/40" />
+
             {/* Content */}
             <div className="relative h-full flex items-center justify-center">
               <div className="container mx-auto px-4">
                 <div className="max-w-3xl mx-auto text-center text-white">
                   {/* Content */}
-                  <p className="text-sm font-semibold uppercase tracking-wider mb-3 text-purple-100">
+                  <p className="text-sm font-semibold uppercase tracking-wider mb-3 text-[#FF3CFE]">
                     {slide.subtitle}
                   </p>
                   <h2 className="text-4xl md:text-5xl font-black mb-4 drop-shadow-lg">
                     {slide.title}
                   </h2>
-                  <p className="text-lg md:text-xl mb-8 text-purple-50 drop-shadow">
+                  <p className="text-lg md:text-xl mb-8 text-gray-100 drop-shadow">
                     {slide.description}
                   </p>
 

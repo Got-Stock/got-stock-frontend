@@ -113,7 +113,7 @@ const Landing = () => {
             <div className="md:col-span-3">
               <button
                 onClick={() => navigate('/shop?category=Fashion&subcategory=Womens')}
-                className="relative w-full h-80 overflow-hidden group hover:shadow-2xl transition-all"
+                className="relative w-full h-56 md:h-80 overflow-hidden group hover:shadow-2xl transition-all"
               >
                 <img
                   src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/yazg1rhe_women.png"
@@ -137,7 +137,7 @@ const Landing = () => {
             {/* Mens - Left Block */}
             <button
               onClick={() => navigate('/shop?category=Fashion&subcategory=Mens')}
-              className="relative h-96 overflow-hidden group hover:shadow-2xl transition-all"
+              className="relative h-60 md:h-96 overflow-hidden group hover:shadow-2xl transition-all"
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/c4zbyrl4_generated-imamge%20%284%29.png"
@@ -161,7 +161,7 @@ const Landing = () => {
             {/* Kids - Right Block */}
             <button
               onClick={() => navigate('/shop?category=Fashion&subcategory=Kids')}
-              className="relative h-96 overflow-hidden group hover:shadow-2xl transition-all"
+              className="relative h-60 md:h-96 overflow-hidden group hover:shadow-2xl transition-all"
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/bokpyolv_kids%20carosel.PNG"
@@ -171,7 +171,7 @@ const Landing = () => {
                 height="600"
                 className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-pink-900/50 to-transparent flex items-end p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end p-8">
                 <div className="text-left">
                   <h3 className="text-3xl font-black text-white mb-4">Kids</h3>
                   <div className="inline-flex items-center text-white font-semibold text-sm">
@@ -214,7 +214,7 @@ const Landing = () => {
             {/* Health & Beauty */}
             <button
               onClick={() => navigate('/shop?category=Beauty')}
-              className="relative h-96 overflow-hidden group hover:shadow-2xl transition-all"
+              className="relative h-60 md:h-96 overflow-hidden group hover:shadow-2xl transition-all"
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/ww2amx9u_ChatGPT%20Image%20Dec%2024%2C%202025%2C%2008_38_29%20AM.png"
@@ -238,7 +238,7 @@ const Landing = () => {
             {/* Tech */}
             <button
               onClick={() => navigate('/shop?category=Electronics')}
-              className="relative h-96 overflow-hidden group hover:shadow-2xl transition-all"
+              className="relative h-60 md:h-96 overflow-hidden group hover:shadow-2xl transition-all"
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/tz9df488_tech%20tile.png"
@@ -262,7 +262,7 @@ const Landing = () => {
             {/* Home & Living */}
             <button
               onClick={() => navigate('/shop?category=Home')}
-              className="relative h-96 overflow-hidden group hover:shadow-2xl transition-all"
+              className="relative h-60 md:h-96 overflow-hidden group hover:shadow-2xl transition-all"
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_shop-ui-redesign/artifacts/24h4wq0e_ChatGPT%20Image%20Dec%2024%2C%202025%2C%2008_02_33%20AM.png"
@@ -287,47 +287,47 @@ const Landing = () => {
       </section>
 
       {/* Become a Seller CTA Section */}
-      <section className="bg-gradient-to-b from-[#FF3CFE] to-black py-16">
+      <section className="bg-gradient-to-b from-[#FF3CFE]/15 to-black py-10 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6">
-              <Package className="h-16 w-16 text-white mx-auto mb-4" />
+              <Package className="h-16 w-16 text-[#FF3CFE] mx-auto mb-4" />
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 Ready to Grow Your Business?
               </h2>
-              <p className="text-xl text-purple-100 mb-8">
+              <p className="text-xl text-gray-300 mb-8">
                 Join Got-Stock marketplace and reach thousands of customers across Australia
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-              <div className="bg-white/10 backdrop-blur-sm p-6">
-                <TrendingUp className="h-10 w-10 text-white mx-auto mb-3" />
+              <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-6">
+                <TrendingUp className="h-10 w-10 text-[#FF3CFE] mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Increase Sales</h3>
-                <p className="text-purple-100 text-sm">Access a growing customer base</p>
+                <p className="text-gray-300 text-sm">Access a growing customer base</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6">
-                <Shield className="h-10 w-10 text-white mx-auto mb-3" />
+              <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-6">
+                <Shield className="h-10 w-10 text-[#FF3CFE] mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Secure Platform</h3>
-                <p className="text-purple-100 text-sm">Protected transactions & payments</p>
+                <p className="text-gray-300 text-sm">Protected transactions & payments</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6">
-                <Zap className="h-10 w-10 text-white mx-auto mb-3" />
+              <div className="bg-white/5 border border-white/10 backdrop-blur-sm p-6">
+                <Zap className="h-10 w-10 text-[#FF3CFE] mx-auto mb-3" />
                 <h3 className="text-lg font-semibold text-white mb-2">Easy Setup</h3>
-                <p className="text-purple-100 text-sm">Start selling in minutes</p>
+                <p className="text-gray-300 text-sm">Start selling in minutes</p>
               </div>
             </div>
-            
+
             <Button
               onClick={() => navigate('/become-a-seller')}
               size="lg"
-              className="bg-white text-purple-900 hover:bg-gray-100 font-bold text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-3xl transition-all"
+              className="bg-[#FF3CFE] text-white hover:bg-[#FF3CFE]/90 font-bold text-lg px-8 py-6 rounded-full shadow-2xl transition-all"
             >
               Become a Seller
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            
-            <p className="text-purple-200 text-sm mt-6">
+
+            <p className="text-gray-400 text-sm mt-6">
               No setup fees • Competitive commission rates • Dedicated support
             </p>
           </div>
@@ -337,10 +337,10 @@ const Landing = () => {
 
       {/* Featured Products - Just Below the Fold */}
       {featuredProducts.length > 0 && (
-        <section className="bg-gradient-to-br from-purple-50 via-pink-50 to-purple-50 py-16">
+        <section className="bg-gray-50 py-10 md:py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="inline-block bg-gradient-to-b from-[#FF3CFE] to-black text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <span className="inline-block bg-[#FF3CFE] text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
                 TRENDING NOW
               </span>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
@@ -359,7 +359,7 @@ const Landing = () => {
                 const linkPath = `/product/variant/${defaultVariant.variant_id}`;
                 
                 return (
-                  <div key={product.id} className="relative bg-white shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-purple-200">
+                  <div key={product.id} className="relative bg-white shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-[#FF3CFE]/40">
                     <Link to={linkPath}>
                       <div className="aspect-square bg-gray-100 overflow-hidden relative">
                         <img
@@ -376,7 +376,7 @@ const Landing = () => {
                             }
                           }}
                         />
-                        <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 bg-gradient-to-b from-[#FF3CFE] to-black text-white text-[9px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg">
+                        <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 bg-[#FF3CFE] text-white text-[9px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-lg">
                           Featured
                         </div>
                         <div className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2">
@@ -411,7 +411,7 @@ const Landing = () => {
                       </div>
                       
                       {product.total_variants > 1 && (
-                        <p className="text-[9px] sm:text-xs text-purple-600 mt-1">
+                        <p className="text-[9px] sm:text-xs text-[#FF3CFE] mt-1">
                           Available in {product.total_variants} options
                         </p>
                       )}
@@ -422,10 +422,10 @@ const Landing = () => {
             </div>
 
             <div className="text-center">
-              <Button 
+              <Button
                 onClick={() => navigate('/shop')}
                 size="lg"
-                className="bg-gradient-to-b from-[#FF3CFE] to-black hover:opacity-90 text-white px-8 py-6 text-lg"
+                className="bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white px-8 py-6 text-lg"
               >
                 Shop All Products
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -436,7 +436,7 @@ const Landing = () => {
       )}
 
       {/* About, Mission & Why Got-Stock - Combined Single Section */}
-      <section className="bg-gradient-to-b from-[#FF3CFE] to-black py-12">
+      <section className="bg-gradient-to-b from-[#FF3CFE]/15 to-black py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             {/* Top Row - About & Mission */}
@@ -444,7 +444,7 @@ const Landing = () => {
               {/* About */}
               <div className="text-center md:text-left">
                 <h3 className="text-2xl font-bold text-white mb-3">About Got-Stock</h3>
-                <p className="text-base text-purple-50 leading-relaxed">
+                <p className="text-base text-gray-300 leading-relaxed">
                   Melbourne's trusted clearance marketplace connecting big-brand sellers with smart shoppers. 
                   Quality shouldn't be a luxury — we make it accessible.
                 </p>
@@ -453,7 +453,7 @@ const Landing = () => {
               {/* Mission Statement */}
               <div className="text-center md:text-left">
                 <h3 className="text-2xl font-bold text-white mb-3">Our Mission</h3>
-                <p className="text-base text-purple-50 leading-relaxed">
+                <p className="text-base text-gray-300 leading-relaxed">
                   To optimise stock flow for sellers while providing consumers with quality big-brand goods at affordable prices. 
                   A frictionless marketplace that feels simple, modern and efficient.
                 </p>
@@ -464,40 +464,40 @@ const Landing = () => {
             <div>
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-white mb-2">Why Got-Stock Matters</h2>
-                <p className="text-lg text-purple-100">Reshaping clearance retail for a sustainable future</p>
+                <p className="text-lg text-gray-300">Reshaping clearance retail for a sustainable future</p>
               </div>
               
               <div className="grid md:grid-cols-4 gap-6">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white flex items-center justify-center mb-3 mx-auto shadow-xl">
-                    <Package className="w-8 h-8 text-purple-600" />
+                    <Package className="w-8 h-8 text-[#FF3CFE]" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">Trusted Brands Only</h3>
-                  <p className="text-sm text-purple-100">Genuine big-brand products from reputable sellers</p>
+                  <p className="text-sm text-gray-300">Genuine big-brand products from reputable sellers</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white flex items-center justify-center mb-3 mx-auto shadow-xl">
-                    <CheckCircle className="w-8 h-8 text-pink-600" />
+                    <CheckCircle className="w-8 h-8 text-[#FF3CFE]" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">Circular Economy</h3>
-                  <p className="text-sm text-purple-100">Reducing waste by preventing dead stock disposal</p>
+                  <p className="text-sm text-gray-300">Reducing waste by preventing dead stock disposal</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white flex items-center justify-center mb-3 mx-auto shadow-xl">
-                    <Shield className="w-8 h-8 text-purple-600" />
+                    <Shield className="w-8 h-8 text-[#FF3CFE]" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">Quality First</h3>
-                  <p className="text-sm text-purple-100">Well-made products over disposable fast fashion</p>
+                  <p className="text-sm text-gray-300">Well-made products over disposable fast fashion</p>
                 </div>
 
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white flex items-center justify-center mb-3 mx-auto shadow-xl">
-                    <TrendingUp className="w-8 h-8 text-pink-600" />
+                    <TrendingUp className="w-8 h-8 text-[#FF3CFE]" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">Real Value</h3>
-                  <p className="text-sm text-purple-100">Luxury and quality accessible within your budget</p>
+                  <p className="text-sm text-gray-300">Luxury and quality accessible within your budget</p>
                 </div>
               </div>
             </div>
