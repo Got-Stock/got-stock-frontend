@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
 import CartBadge from '../components/CartBadge';
 import CategoryNav from '../components/CategoryNav';
-import Footer from '../components/Footer';
 
 export default function PrivacyPolicy() {
   return (
@@ -182,8 +181,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

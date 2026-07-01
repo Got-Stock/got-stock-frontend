@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FileText, ShoppingCart, CreditCard, Truck, RefreshCw, Shield, Mail } from 'lucide-react';
 import CartBadge from '../components/CartBadge';
 import CategoryNav from '../components/CategoryNav';
-import Footer from '../components/Footer';
 
 export default function TermsOfSale() {
   return (
@@ -161,8 +160,6 @@ export default function TermsOfSale() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

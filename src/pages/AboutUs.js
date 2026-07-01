@@ -4,7 +4,6 @@ import { ArrowRight, Target, Heart, Globe, Shield, Sparkles } from 'lucide-react
 import Banner from '../components/Banner';
 import CartBadge from '../components/CartBadge';
 import CategoryNav from '../components/CategoryNav';
-import Footer from '../components/Footer';
 
 export default function AboutUs() {
   return (
@@ -140,8 +139,6 @@ export default function AboutUs() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }

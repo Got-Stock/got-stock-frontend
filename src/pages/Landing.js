@@ -8,7 +8,6 @@ import Banner from '../components/Banner';
 import CartBadge from '../components/CartBadge';
 import CategoryNav from '../components/CategoryNav';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import WishlistButton from '../components/WishlistButton';
 import PromoCarousel from '../components/PromoCarousel';
 import ChatBot from '../components/ChatBot';
@@ -506,8 +505,6 @@ const Landing = () => {
         </div>
       </section>
 
-      <Footer />
-      
       {/* ChatBot */}
       <ChatBot />
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ChatBot from '../components/ChatBot';
 
@@ -38,8 +37,6 @@ const GenericFooterPage = ({ title, subtitle, children }) => {
         {children}
       </div>
 
-      <Footer />
-      
       {/* ChatBot */}
       <ChatBot />
     </div>

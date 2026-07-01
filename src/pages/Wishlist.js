@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
-import Footer from '../components/Footer';
 import CategoryNav from '../components/CategoryNav';
 import Header from '../components/Header';
 import axios from 'axios';
@@ -207,8 +206,6 @@ const Wishlist = () => {
           )}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
