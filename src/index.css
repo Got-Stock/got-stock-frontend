@@ -173,6 +173,34 @@ code {
     animation: fade-out 0.3s ease-out forwards;
 }
 
+/* ===== Homepage flourishes (brand magenta = #FF3CFE) ===== */
+@keyframes gs-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes gs-reveal { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes gs-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes gs-shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+@keyframes gs-glow { 0%, 100% { opacity: .5; transform: translate(-50%, 0) scale(1); } 50% { opacity: .85; transform: translate(-50%, 0) scale(1.12); } }
+@keyframes gs-aurora { 0% { transform: translate3d(-8%, 0, 0) rotate(0deg); } 50% { transform: translate3d(8%, 5%, 0) rotate(10deg); } 100% { transform: translate3d(-8%, 0, 0) rotate(0deg); } }
+
+.gs-marquee-track { display: flex; width: max-content; animation: gs-marquee 34s linear infinite; }
+.gs-marquee:hover .gs-marquee-track { animation-play-state: paused; }
+
+.gs-reveal { opacity: 0; }
+.gs-reveal.is-visible { animation: gs-reveal .7s cubic-bezier(.22,.61,.36,1) forwards; }
+
+.gs-float { animation: gs-float 6s ease-in-out infinite; }
+.gs-glow { animation: gs-glow 7s ease-in-out infinite; }
+.gs-aurora { animation: gs-aurora 20s ease-in-out infinite; }
+
+.gs-gradient-text {
+    background: linear-gradient(90deg, #FF3CFE, #FF9CFB, #FF3CFE);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: gs-shimmer 6s linear infinite;
+}
+.gs-glow-btn { transition: box-shadow .3s ease, transform .3s ease; }
+.gs-glow-btn:hover { box-shadow: 0 0 30px rgba(255, 60, 254, .55); transform: translateY(-2px); }
+
 /* WCAG 2.3.3 — respect user motion preferences.
    Cancel decorative/looping animations and transitions when reduce is requested. */
 @media (prefers-reduced-motion: reduce) {
@@ -184,4 +212,6 @@ code {
         transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
     }
+    /* Ensure reveal content is never left invisible when animation is cancelled */
+    .gs-reveal { opacity: 1 !important; animation: none !important; }
 }
