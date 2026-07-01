@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
  * Shared brand mark. Single source of truth for the Got-Stock logo
  * across header, auth pages, and any future branding surfaces.
  *
- * To swap the drawn-up logo: replace /public/got-stock-logo.jpg
- * (and /public/favicon.ico for the browser tab icon). No code changes required.
+ * To swap the logo: replace /public/got-stock-mark.png (a square, transparent
+ * circular mark) and /public/favicon.ico for the browser tab icon. No code changes required.
  */
-const LOGO_SRC = "/got-stock-logo.jpg";
+const LOGO_SRC = "/got-stock-mark.png";
 
 const SIZE_CLASSES = {
   sm: "h-8 md:h-10",

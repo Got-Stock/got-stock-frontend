@@ -78,18 +78,18 @@ const Landing = () => {
         {/* Sticky Category Navigation with Search */}
         <CategoryNav />
 
-        {/* Big brand logo (desktop): fills the full height of the black header
-            block on the left, scaled as large as possible via object-contain so
-            it never spills onto the pink banner below. */}
+        {/* Big circular brand mark (desktop): anchored top-left of the black header
+            block. Sized larger than the block so it overlaps onto the pink banner
+            below for presence. */}
         <Link
           to="/"
           aria-label="Got-Stock home"
-          className="hidden md:flex absolute left-4 lg:left-6 top-0 bottom-0 z-[60] items-center hover:opacity-90 transition"
+          className="hidden md:flex absolute left-4 lg:left-6 top-1 z-[60] items-start hover:opacity-90 transition"
         >
           <img
-            src="/got-stock-logo.jpg"
+            src="/got-stock-mark.png"
             alt="Got-Stock"
-            className="h-full w-auto object-contain py-1.5"
+            className="h-20 lg:h-24 w-auto"
           />
         </Link>
       </div>
