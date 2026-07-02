@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
-import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Switch } from '../components/ui/switch';
 import { Label } from '../components/ui/label';
-import { ArrowLeft, Settings, Save } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -67,60 +67,28 @@ const AdminSettings = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading settings...</p>
+      <AdminLayout title="Settings">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#FF3CFE]"></div>
         </div>
-      </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <Link to="/">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_product-gateway/artifacts/tabee7q7_GSwhiteonblack.png" 
-                  alt="GOT-STOCK"
-                  className="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
-              <div className="border-l border-gray-300 pl-3">
-                <p className="text-sm font-medium text-gray-700">Admin Settings</p>
-              </div>
-            </div>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate('/admin')}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Admin
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto">
+    <AdminLayout title="Settings">
+      <div className="max-w-3xl mx-auto">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-2">
-              <Settings className="w-8 h-8" />
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <Settings className="w-7 h-7 text-[#FF3CFE]" />
               Admin Settings
-            </h1>
-            <p className="text-gray-200 mt-2">
+            </h2>
+            <p className="text-gray-500 mt-1">
               Manage system-wide feature toggles and configurations
             </p>
           </div>
 
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white border-gray-200">
             <CardHeader>
               <CardTitle>Analytics Feature Toggles</CardTitle>
               <CardDescription>
@@ -158,7 +126,7 @@ const AdminSettings = () => {
             </CardContent>
           </Card>
 
-          <Card className="mt-6 bg-white/80 backdrop-blur-sm">
+          <Card className="mt-6 bg-white border-gray-200">
             <CardHeader>
               <CardTitle>System Information</CardTitle>
               <CardDescription>
@@ -192,9 +160,8 @@ const AdminSettings = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </main>
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 

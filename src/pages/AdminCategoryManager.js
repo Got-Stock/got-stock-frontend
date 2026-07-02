@@ -5,8 +5,9 @@ import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
-import { ArrowLeft, Search, CheckCircle, XCircle, Settings } from 'lucide-react';
+import { Search, CheckCircle, Settings } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -61,56 +62,24 @@ const AdminCategoryManager = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading category manager...</p>
+      <AdminLayout title="Categories">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#FF3CFE]"></div>
         </div>
-      </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <Link to="/">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_product-gateway/artifacts/tabee7q7_GSwhiteonblack.png" 
-                  alt="GOT-STOCK"
-                  className="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
-              <div className="border-l border-gray-300 pl-3">
-                <p className="text-sm font-medium text-gray-700">Category Attribute Manager</p>
-              </div>
-            </div>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate('/admin')}
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Admin
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+    <AdminLayout title="Categories">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-white mb-2">Category Attribute System</h1>
-          <p className="text-gray-200">Manage category-specific product attributes and validations</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-1">Category Attribute System</h2>
+          <p className="text-gray-500">Manage category-specific product attributes and validations</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <CardDescription>Total Categories</CardDescription>
               <CardTitle className="text-3xl">{categories.length}</CardTitle>
@@ -120,7 +89,7 @@ const AdminCategoryManager = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <CardDescription>Dropdown Options</CardDescription>
               <CardTitle className="text-3xl">{Object.keys(dropdownOptions).length}</CardTitle>
@@ -130,7 +99,7 @@ const AdminCategoryManager = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white border-gray-200">
             <CardHeader className="pb-3">
               <CardDescription>Total Options</CardDescription>
               <CardTitle className="text-3xl">
@@ -144,7 +113,7 @@ const AdminCategoryManager = () => {
         </div>
 
         {/* Search */}
-        <Card className="mb-6 bg-white/80 backdrop-blur-sm">
+        <Card className="mb-6 bg-white border-gray-200">
           <CardContent className="pt-6">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -160,7 +129,7 @@ const AdminCategoryManager = () => {
         </Card>
 
         {/* Categories List */}
-        <Card className="bg-white/80 backdrop-blur-sm">
+        <Card className="bg-white border-gray-200">
           <CardHeader>
             <CardTitle>Category Attributes</CardTitle>
             <CardDescription>
@@ -211,7 +180,7 @@ const AdminCategoryManager = () => {
         </Card>
 
         {/* Dropdown Options Summary */}
-        <Card className="mt-8 bg-white/80 backdrop-blur-sm">
+        <Card className="mt-8 bg-white border-gray-200">
           <CardHeader>
             <CardTitle>Dropdown Options Summary</CardTitle>
             <CardDescription>
@@ -235,8 +204,7 @@ const AdminCategoryManager = () => {
             </div>
           </CardContent>
         </Card>
-      </main>
-    </div>
+    </AdminLayout>
   );
 };
 

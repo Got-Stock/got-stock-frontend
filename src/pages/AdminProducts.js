@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { 
-  Edit, 
-  Tag, 
-  Trash2, 
+import {
+  Edit,
+  Tag,
+  Trash2,
   Search,
-  ArrowLeft,
   Save,
   X,
   DollarSign
 } from "lucide-react";
+import AdminLayout from "../components/AdminLayout";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -152,33 +152,21 @@ export default function AdminProducts() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600"></div>
-      </div>
+      <AdminLayout title="Products">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button variant="outline" onClick={() => navigate("/admin/home")}>
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back
-              </Button>
-              <div>
-                <h1 className="text-2xl font-bold text-white">Product Management</h1>
-                <p className="text-sm text-gray-200">{filteredProducts.length} products</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-8">
+    <AdminLayout title="Products">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">Product Management</h2>
+        <p className="text-gray-500">{filteredProducts.length} products</p>
+      </div>
+      <div>
         {/* Search */}
         <div className="mb-6">
           <div className="relative max-w-md">
@@ -371,6 +359,6 @@ export default function AdminProducts() {
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </AdminLayout>
   );
 }

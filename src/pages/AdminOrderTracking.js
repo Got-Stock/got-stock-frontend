@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, Package, Search, Filter } from 'lucide-react';
-import { Button } from '../components/ui/button';
+import { Package, Search, Filter } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import DeliveryTracker from '../components/DeliveryTracker';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -65,37 +65,21 @@ const AdminOrderTracking = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-[#00ffef]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400"></div>
-      </div>
+      <AdminLayout title="Orders">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-black shadow-sm border-b border-cyan-600">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button 
-                onClick={() => navigate('/admin-home')} 
-                variant="ghost"
-                className="text-white hover:text-cyan-300"
-              >
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Back
-              </Button>
-              <div>
-                <h1 className="text-2xl font-bold text-white">Order Tracking</h1>
-                <p className="text-sm text-cyan-400">Monitor all orders and deliveries</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-8">
+    <AdminLayout title="Orders">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">Order Tracking</h2>
+        <p className="text-gray-500">Monitor all orders and deliveries across the marketplace.</p>
+      </div>
+      <div>
         {/* Search and Filter */}
         <div className="flex gap-4 mb-6">
           <div className="flex-1">
@@ -168,7 +152,7 @@ const AdminOrderTracking = () => {
           </div>
         )}
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 
