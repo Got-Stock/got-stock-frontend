@@ -182,43 +182,43 @@ const Header = ({ simple = false, logoVisibility = 'all' }) => {
             >
               Shop All
             </Link>
-            <Link 
-              to="/fashion" 
+            <Link
+              to="/category/Fashion"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Fashion
             </Link>
-            <Link 
-              to="/beauty" 
+            <Link
+              to="/category/Health & Beauty"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Beauty
             </Link>
-            <Link 
-              to="/home" 
+            <Link
+              to="/category/Home & Living"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              to="/electronics" 
+            <Link
+              to="/category/Electronics & Tech"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Electronics
             </Link>
-            <Link 
-              to="/watches" 
+            <Link
+              to="/category/Watches"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Watches
             </Link>
-            <Link 
-              to="/sports" 
+            <Link
+              to="/category/Sports & Outdoors"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >

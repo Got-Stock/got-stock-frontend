@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -9,8 +8,9 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '../components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { ArrowLeft, CheckCircle, XCircle, Clock, Eye, Package, Search, Filter, ChevronDown, ChevronRight, Send, Star, ImageIcon, Edit, X, Upload, Trash2, ChevronUp, Save } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Eye, Package, Search, Filter, ChevronDown, ChevronRight, Send, Star, ImageIcon, Edit, X, Upload, Trash2, ChevronUp, Save } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -31,7 +31,6 @@ const getImageUrl = (imagePath) => {
 };
 
 const AdminSubmissions = () => {
-  const navigate = useNavigate();
   const [submissions, setSubmissions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState('pending');
@@ -207,6 +206,8 @@ const AdminSubmissions = () => {
           
           const variantsWithSub = variants.map(v => ({
             ...v,
+            // Live rows key on *_submission_id, not `id` — normalize so selection/approve work
+            id: v.variant_submission_id || v.id,
             submission: {
               ...sub,
               category_path: sub.category || sub.category_path || '',
@@ -214,7 +215,7 @@ const AdminSubmissions = () => {
               product_type_id: sub.product_type_id || '',
               product_type_name: sub.product_type_name || ''
             },
-            submissionId: sub.id
+            submissionId: sub.submission_id || sub.id
           }));
           
           allVariants.push(...variantsWithSub);
@@ -626,21 +627,28 @@ const AdminSubmissions = () => {
         { withCredentials: true }
       );
       
-      // Find the specific submission
-      const foundSubmission = submissionResponse.data.find(s => s.id === variant.submission?.id);
+      // Find the specific submission (live rows key on submission_id, not id)
+      const targetSubId = variant.submission?.submission_id || variant.submission?.id;
+      const foundSubmission = submissionResponse.data.find(
+        s => (s.submission_id || s.id) === targetSubId
+      );
       if (foundSubmission) {
         freshSubmission = foundSubmission;
+        const foundSubId = foundSubmission.submission_id || foundSubmission.id;
         console.log('✅ Found fresh submission data');
-        
+
         // Find the specific variant within the submission
-        const freshVariant = foundSubmission.variants?.find(v => v.id === variant.id);
+        const freshVariant = foundSubmission.variants?.find(
+          v => (v.variant_submission_id || v.id) === variant.id
+        );
         if (freshVariant) {
-          variant = { 
-            ...freshVariant, 
+          variant = {
+            ...freshVariant,
+            id: freshVariant.variant_submission_id || freshVariant.id,
             submission: foundSubmission,
-            submissionId: foundSubmission.id  // ✅ FIX: Ensure submissionId is preserved
+            submissionId: foundSubId  // ✅ FIX: Ensure submissionId is preserved
           };
-          console.log('✅ Using fresh variant data with submissionId:', foundSubmission.id);
+          console.log('✅ Using fresh variant data with submissionId:', foundSubId);
         }
       } else {
         console.log('⚠️ Could not find fresh submission, using cached data');
@@ -749,8 +757,8 @@ const AdminSubmissions = () => {
     
     const modalData = {
       ...variant,
-      id: variant.id,  // ✅ Explicitly ensure variant ID is set
-      submissionId: variant.submissionId || variant.submission?.id,  // ✅ Ensure submissionId is set
+      id: variant.id || variant.variant_submission_id,  // ✅ Explicitly ensure variant ID is set
+      submissionId: variant.submissionId || variant.submission?.submission_id || variant.submission?.id,  // ✅ Ensure submissionId is set
       seller: sellerInfo,
       size: size,
       color: color,
@@ -1213,37 +1221,18 @@ const AdminSubmissions = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black to-[#00ffef]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400"></div>
-      </div>
+      <AdminLayout title="Product Submissions">
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-[#FF3CFE]"></div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-black shadow-sm border-b border-cyan-600">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button 
-                onClick={() => navigate("/admin")} 
-                variant="ghost" 
-                className="text-white hover:text-cyan-300"
-              >
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Back
-              </Button>
-              <div>
-                <h1 className="text-2xl font-bold text-white">Product Submissions</h1>
-                <p className="text-sm text-gray-300">Review and approve seller submissions</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-8">
+    <AdminLayout title="Product Submissions">
+      <div>
+        <p className="mb-6 text-sm text-gray-500">Review and approve seller submissions</p>
         {/* Search and Filter Bar */}
         <Card className="mb-6 bg-white">
           <CardContent className="p-4">
@@ -1266,7 +1255,7 @@ const AdminSubmissions = () => {
                   <Filter className="h-4 w-4 text-black" />
                   <span className="text-black">Filters</span>
                   {(filterSeller || filterBrand || filterCategory || filterProductType || filterColor || filterSize || filterSKU || filterGTIN || filterPriceMin || filterPriceMax) && (
-                    <Badge variant="secondary" className="ml-1 bg-cyan-600 text-white">Active</Badge>
+                    <Badge variant="secondary" className="ml-1 bg-brand-500 text-white">Active</Badge>
                   )}
                 </Button>
               </div>
@@ -1394,7 +1383,7 @@ const AdminSubmissions = () => {
 
         {/* Bulk Actions Bar */}
         {selectedItems.size > 0 && (
-          <Card className="mb-6 bg-cyan-50 border-2 border-cyan-500">
+          <Card className="mb-6 bg-brand-50 border border-brand-200">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -2405,7 +2394,7 @@ const AdminSubmissions = () => {
                     </div>
                     
                     {/* Add Image Button Below Existing Images */}
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-cyan-400 transition-colors bg-gray-50">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-brand-400 transition-colors bg-gray-50">
                       <input
                         type="file"
                         id="image-upload-input"
@@ -2416,7 +2405,7 @@ const AdminSubmissions = () => {
                       />
                       <Button 
                         variant="default"
-                        className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
+                        className="w-full bg-brand-500 hover:bg-brand-600 text-white"
                         onClick={() => document.getElementById('image-upload-input').click()}
                         disabled={actionLoading}
                       >
@@ -2440,7 +2429,7 @@ const AdminSubmissions = () => {
                     />
                     <Button 
                       variant="default"
-                      className="bg-cyan-600 hover:bg-cyan-700 text-white px-6"
+                      className="bg-brand-500 hover:bg-brand-600 text-white px-6"
                       onClick={() => document.getElementById('image-upload-input').click()}
                       disabled={actionLoading}
                     >
@@ -2527,7 +2516,7 @@ const AdminSubmissions = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
+    </AdminLayout>
   );
 };
 

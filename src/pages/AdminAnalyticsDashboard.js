@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import {
-  DollarSign, ShoppingCart, Package, Users, TrendingUp, TrendingDown,
-  Eye, AlertTriangle, CheckCircle, Clock, RefreshCw, Calendar, ArrowLeft
+  TrendingUp, TrendingDown, RefreshCw, Calendar
 } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
@@ -61,20 +61,22 @@ const AdminAnalyticsDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading comprehensive analytics...</p>
+      <AdminLayout title="Analytics">
+        <div className="flex min-h-[60vh] flex-col items-center justify-center">
+          <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-b-2 border-[#FF3CFE]"></div>
+          <p className="text-gray-500">Loading comprehensive analytics...</p>
         </div>
-      </div>
+      </AdminLayout>
     );
   }
 
   if (!analytics) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef] flex items-center justify-center">
-        <p className="text-gray-600">No analytics data available</p>
-      </div>
+      <AdminLayout title="Analytics">
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <p className="text-gray-500">No analytics data available</p>
+        </div>
+      </AdminLayout>
     );
   }
 
@@ -92,68 +94,38 @@ const AdminAnalyticsDashboard = () => {
   }));
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <Link to="/">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_product-gateway/artifacts/tabee7q7_GSwhiteonblack.png" 
-                  alt="GOT-STOCK"
-                  className="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
-              <div className="border-l border-gray-300 pl-3">
-                <p className="text-sm font-medium text-gray-700">Comprehensive Analytics</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => fetchAnalytics(true)}
-                disabled={refreshing}
-              >
-                <RefreshCw className={`w-4 h-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
-                Refresh
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate('/admin')}
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+    <AdminLayout title="Analytics">
+      <div>
         {/* Title and Date Range Selector */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Platform Analytics</h1>
-            <p className="text-gray-600 mt-1">Complete performance metrics and insights</p>
+            <h1 className="text-2xl font-bold text-gray-900">Platform Analytics</h1>
+            <p className="mt-1 text-sm text-gray-500">Complete performance metrics and insights</p>
           </div>
-          <div className="flex items-center space-x-2">
-            <Calendar className="w-5 h-5 text-gray-500" />
-            <Select value={dateRange} onValueChange={setDateRange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select range" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="7">Last 7 days</SelectItem>
-                <SelectItem value="30">Last 30 days</SelectItem>
-                <SelectItem value="90">Last 90 days</SelectItem>
-                <SelectItem value="365">Last year</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => fetchAnalytics(true)}
+              disabled={refreshing}
+            >
+              <RefreshCw className={`mr-2 h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-5 w-5 text-gray-400" />
+              <Select value={dateRange} onValueChange={setDateRange}>
+                <SelectTrigger className="w-[160px]">
+                  <SelectValue placeholder="Select range" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="7">Last 7 days</SelectItem>
+                  <SelectItem value="30">Last 30 days</SelectItem>
+                  <SelectItem value="90">Last 90 days</SelectItem>
+                  <SelectItem value="365">Last year</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
 
@@ -161,7 +133,7 @@ const AdminAnalyticsDashboard = () => {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Revenue & Financial Metrics</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="border-green-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-green-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription className="text-gray-600">Total Revenue</CardDescription>
                 <CardTitle className="text-3xl font-bold text-green-600">
@@ -182,7 +154,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-blue-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-blue-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription className="text-gray-600">Commission Earned</CardDescription>
                 <CardTitle className="text-3xl font-bold text-blue-600">
@@ -196,7 +168,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-brand-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-brand-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription className="text-gray-600">Average Order Value</CardDescription>
                 <CardTitle className="text-3xl font-bold text-brand-600">
@@ -210,7 +182,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-orange-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-orange-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription className="text-gray-600">GST Collected</CardDescription>
                 <CardTitle className="text-3xl font-bold text-orange-600">
@@ -230,7 +202,7 @@ const AdminAnalyticsDashboard = () => {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Order Metrics</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="border-blue-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-blue-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Total Orders</CardDescription>
                 <CardTitle className="text-3xl font-bold text-blue-600">
@@ -244,7 +216,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-green-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-green-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Successful Orders</CardDescription>
                 <CardTitle className="text-3xl font-bold text-green-600">
@@ -258,7 +230,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-yellow-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-yellow-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Avg Fulfillment Time</CardDescription>
                 <CardTitle className="text-3xl font-bold text-yellow-600">
@@ -272,7 +244,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-red-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="border-red-100 bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Refunds & Cancellations</CardDescription>
                 <CardTitle className="text-3xl font-bold text-red-600">
@@ -292,7 +264,7 @@ const AdminAnalyticsDashboard = () => {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Product Metrics</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <Card className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Total Products</CardDescription>
                 <CardTitle className="text-3xl font-bold text-gray-900">
@@ -304,7 +276,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Approved</CardDescription>
                 <CardTitle className="text-3xl font-bold text-green-600">
@@ -316,7 +288,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Pending Approval</CardDescription>
                 <CardTitle className="text-3xl font-bold text-yellow-600">
@@ -328,7 +300,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Low Stock</CardDescription>
                 <CardTitle className="text-3xl font-bold text-orange-600">
@@ -340,7 +312,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-shadow">
+            <Card className="bg-white hover:shadow-lg transition-shadow">
               <CardHeader className="pb-2">
                 <CardDescription>Stock Value</CardDescription>
                 <CardTitle className="text-2xl font-bold text-blue-600">
@@ -359,7 +331,7 @@ const AdminAnalyticsDashboard = () => {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Seller Metrics</h2>
             <div className="grid grid-cols-2 gap-6 mb-6">
-              <Card className="bg-white/80 backdrop-blur-sm">
+              <Card className="bg-white">
                 <CardHeader className="pb-2">
                   <CardDescription>Total Sellers</CardDescription>
                   <CardTitle className="text-3xl font-bold">{sellers.total_sellers || 0}</CardTitle>
@@ -369,7 +341,7 @@ const AdminAnalyticsDashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/80 backdrop-blur-sm">
+              <Card className="bg-white">
                 <CardHeader className="pb-2">
                   <CardDescription>Pending Payouts</CardDescription>
                   <CardTitle className="text-2xl font-bold text-yellow-600">
@@ -382,7 +354,7 @@ const AdminAnalyticsDashboard = () => {
               </Card>
             </div>
 
-            <Card className="bg-white/80 backdrop-blur-sm">
+            <Card className="bg-white">
               <CardHeader>
                 <CardTitle>Top Performing Sellers</CardTitle>
               </CardHeader>
@@ -408,7 +380,7 @@ const AdminAnalyticsDashboard = () => {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Customer Metrics</h2>
             <div className="grid grid-cols-2 gap-6 mb-6">
-              <Card className="bg-white/80 backdrop-blur-sm">
+              <Card className="bg-white">
                 <CardHeader className="pb-2">
                   <CardDescription>Total Customers</CardDescription>
                   <CardTitle className="text-3xl font-bold">{customers.total_customers || 0}</CardTitle>
@@ -418,7 +390,7 @@ const AdminAnalyticsDashboard = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/80 backdrop-blur-sm">
+              <Card className="bg-white">
                 <CardHeader className="pb-2">
                   <CardDescription>Avg Customer LTV</CardDescription>
                   <CardTitle className="text-2xl font-bold text-brand-600">
@@ -431,7 +403,7 @@ const AdminAnalyticsDashboard = () => {
               </Card>
             </div>
 
-            <Card className="bg-white/80 backdrop-blur-sm">
+            <Card className="bg-white">
               <CardHeader>
                 <CardTitle>Top States by Orders</CardTitle>
               </CardHeader>
@@ -456,7 +428,7 @@ const AdminAnalyticsDashboard = () => {
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Traffic & Engagement</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <Card className="bg-white/80 backdrop-blur-sm">
+            <Card className="bg-white">
               <CardHeader className="pb-2">
                 <CardDescription>Total Product Views</CardDescription>
                 <CardTitle className="text-3xl font-bold text-blue-600">
@@ -468,7 +440,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm">
+            <Card className="bg-white">
               <CardHeader className="pb-2">
                 <CardDescription>Conversion Rate</CardDescription>
                 <CardTitle className="text-3xl font-bold text-green-600">
@@ -480,7 +452,7 @@ const AdminAnalyticsDashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/80 backdrop-blur-sm">
+            <Card className="bg-white">
               <CardHeader className="pb-2">
                 <CardDescription>Engagement Rate</CardDescription>
                 <CardTitle className="text-3xl font-bold text-brand-600">
@@ -493,7 +465,7 @@ const AdminAnalyticsDashboard = () => {
             </Card>
           </div>
 
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white">
             <CardHeader>
               <CardTitle>Most Viewed Products</CardTitle>
             </CardHeader>
@@ -514,7 +486,7 @@ const AdminAnalyticsDashboard = () => {
         </div>
 
         {/* ============ DAILY TRENDS CHART ============ */}
-        <Card className="mb-8 bg-white/80 backdrop-blur-sm">
+        <Card className="mb-8 bg-white">
           <CardHeader>
             <CardTitle>Daily Revenue & Order Trends</CardTitle>
             <CardDescription>Performance over the selected time period</CardDescription>
@@ -571,7 +543,7 @@ const AdminAnalyticsDashboard = () => {
 
         {/* ============ STATUS DISTRIBUTION CHARTS ============ */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white">
             <CardHeader>
               <CardTitle>Order Payment Status</CardTitle>
             </CardHeader>
@@ -598,7 +570,7 @@ const AdminAnalyticsDashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 backdrop-blur-sm">
+          <Card className="bg-white">
             <CardHeader>
               <CardTitle>Order Fulfillment Status</CardTitle>
             </CardHeader>
@@ -617,7 +589,7 @@ const AdminAnalyticsDashboard = () => {
         </div>
 
         {/* Top Categories */}
-        <Card className="bg-white/80 backdrop-blur-sm">
+        <Card className="bg-white">
           <CardHeader>
             <CardTitle>Top Product Categories</CardTitle>
           </CardHeader>
@@ -633,8 +605,8 @@ const AdminAnalyticsDashboard = () => {
             </ResponsiveContainer>
           </CardContent>
         </Card>
-      </main>
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 
