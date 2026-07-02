@@ -94,7 +94,7 @@ export default function CustomerAccount() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <CategoryNav />
 
@@ -175,7 +175,7 @@ export default function CustomerAccount() {
                     <h2 className="text-xl font-bold text-gray-900">Order History</h2>
                     <p className="text-gray-600 text-sm mt-1">View and track your orders</p>
                   </div>
-                  <div className="bg-gradient-to-br from-brand-600 to-brand-600 rounded-lg px-6 py-3 text-white">
+                  <div className="bg-brand-600 rounded-lg px-6 py-3 text-white">
                     <div className="flex items-center gap-2">
                       <ShoppingBag size={20} />
                       <span className="text-2xl font-bold">{orders.length}</span>
@@ -196,7 +196,7 @@ export default function CustomerAccount() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">No orders yet</h3>
                   <p className="text-gray-600 mb-6">Start shopping to see your orders here</p>
                   <Link to="/shop">
-                    <Button className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700">
+                    <Button className="bg-brand-600 hover:bg-brand-700">
                       Start Shopping
                     </Button>
                   </Link>

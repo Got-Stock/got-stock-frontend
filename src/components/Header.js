@@ -1,22 +1,45 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, User, Menu, X, ShoppingCart, Search } from 'lucide-react';
+import { Heart, User, Menu, X, Search, Package, LogOut, ChevronDown } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import CartBadge from './CartBadge';
 import Logo from './Logo';
 
 const Header = ({ simple = false, logoVisibility = 'all' }) => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleLogin = () => {
-    if (user) {
-      navigate('/account');
+  // Dual auth: cookie session (AuthContext) OR localStorage user (CustomerAccount flow).
+  let storedUser = null;
+  try {
+    storedUser = user || JSON.parse(localStorage.getItem('user') || 'null');
+  } catch (e) {
+    storedUser = user;
+  }
+  const isLoggedIn = Boolean(storedUser);
+  const displayName = storedUser?.name || storedUser?.email || 'My Account';
+
+  const handleAccountClick = () => {
+    if (isLoggedIn) {
+      setAccountMenuOpen((o) => !o);
     } else {
       navigate('/customer-login');
     }
+  };
+
+  const handleLogout = async () => {
+    setAccountMenuOpen(false);
+    try {
+      await logout();
+    } catch (e) {
+      // ignore — clear client state regardless
+    }
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    navigate('/');
   };
 
   const handleSearch = (e) => {
@@ -60,14 +83,78 @@ const Header = ({ simple = false, logoVisibility = 'all' }) => {
                   {/* Cart Icon with Badge */}
                   <CartBadge />
 
-                  {/* User Icon */}
-                  <button 
-                    onClick={handleLogin}
-                    className="p-1 hover:opacity-80 transition"
-                    title={user ? "My Account" : "Sign In"}
-                  >
-                    <User className="h-5 w-5 md:h-6 md:w-6" stroke="#FF3CFE" strokeWidth={1.5} />
-                  </button>
+                  {/* Account: dropdown when logged in, else go to sign-in */}
+                  <div className="relative">
+                    <button
+                      onClick={handleAccountClick}
+                      className="p-1 hover:opacity-80 transition flex items-center gap-1"
+                      title={isLoggedIn ? "My Account" : "Sign In"}
+                      aria-haspopup="true"
+                      aria-expanded={accountMenuOpen}
+                    >
+                      <User className="h-5 w-5 md:h-6 md:w-6" stroke="#FF3CFE" strokeWidth={1.5} />
+                      {isLoggedIn && (
+                        <ChevronDown
+                          className={`h-3 w-3 hidden md:block transition-transform ${accountMenuOpen ? 'rotate-180' : ''}`}
+                          stroke="#FF3CFE"
+                          strokeWidth={2}
+                        />
+                      )}
+                    </button>
+
+                    {isLoggedIn && accountMenuOpen && (
+                      <>
+                        {/* click-outside backdrop */}
+                        <button
+                          type="button"
+                          aria-label="Close menu"
+                          className="fixed inset-0 z-40 cursor-default"
+                          onClick={() => setAccountMenuOpen(false)}
+                        />
+                        <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-50">
+                          <div className="px-4 py-2 border-b border-gray-100">
+                            <p className="text-sm font-semibold text-gray-900 truncate">{displayName}</p>
+                            {storedUser?.email && storedUser?.name && (
+                              <p className="text-xs text-gray-500 truncate">{storedUser.email}</p>
+                            )}
+                          </div>
+                          <Link
+                            to="/account"
+                            onClick={() => setAccountMenuOpen(false)}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition"
+                          >
+                            <User className="h-4 w-4" />
+                            My Account
+                          </Link>
+                          <Link
+                            to="/my-orders"
+                            onClick={() => setAccountMenuOpen(false)}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition"
+                          >
+                            <Package className="h-4 w-4" />
+                            My Orders
+                          </Link>
+                          <Link
+                            to="/wishlist"
+                            onClick={() => setAccountMenuOpen(false)}
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition"
+                          >
+                            <Heart className="h-4 w-4" />
+                            Wishlist
+                          </Link>
+                          <div className="border-t border-gray-100 mt-1 pt-1">
+                            <button
+                              onClick={handleLogout}
+                              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"
+                            >
+                              <LogOut className="h-4 w-4" />
+                              Logout
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
 
                   {/* Mobile Menu Button */}
                   <button

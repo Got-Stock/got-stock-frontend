@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, Package } from 'lucide-react';
+import { ArrowLeft, Package, LogOut } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import DeliveryTracker from '../components/DeliveryTracker';
@@ -18,6 +18,17 @@ const BuyerOrderTracking = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${API}/auth/logout`, {}, { withCredentials: true });
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    navigate('/');
+  };
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -47,18 +58,28 @@ const BuyerOrderTracking = () => {
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center gap-4">
-            <Button 
-              onClick={() => navigate(-1)} 
-              variant="ghost"
-            >
-              <ArrowLeft className="h-5 w-5 mr-2" />
-              Back
-            </Button>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Track My Orders</h1>
-              <p className="text-sm text-gray-600">View delivery status and tracking information</p>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <Button
+                onClick={() => navigate(-1)}
+                variant="ghost"
+              >
+                <ArrowLeft className="h-5 w-5 mr-2" />
+                Back
+              </Button>
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Track My Orders</h1>
+                <p className="text-sm text-gray-600">View delivery status and tracking information</p>
+              </div>
             </div>
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              className="flex items-center gap-2 flex-shrink-0"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Logout</span>
+            </Button>
           </div>
         </div>
       </header>
