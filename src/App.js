@@ -9,6 +9,7 @@ import SellerRegistration from "./pages/SellerRegistration";
 import ProductSubmissionV2 from "./pages/ProductSubmissionV2";
 import ProductSubmissionV3 from "./pages/ProductSubmissionV3";
 import ProductList from "./pages/ProductList";
+import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminHome from "./pages/AdminHome";
 import AdminProducts from "./pages/AdminProducts";
@@ -330,6 +331,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
