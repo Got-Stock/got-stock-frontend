@@ -201,6 +201,12 @@ code {
 .gs-glow-btn { transition: box-shadow .3s ease, transform .3s ease; }
 .gs-glow-btn:hover { box-shadow: 0 0 30px rgba(255, 60, 254, .55); transform: translateY(-2px); }
 
+/* Seller-portal polish: gentle content entrance + a reusable card hover-lift. */
+@keyframes gs-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.gs-fade-up { animation: gs-fade-up .4s cubic-bezier(.22,.61,.36,1) both; }
+.gs-lift { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.gs-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -12px rgba(17, 24, 39, .18); }
+
 /* WCAG 2.3.3 — respect user motion preferences.
    Cancel decorative/looping animations and transitions when reduce is requested. */
 @media (prefers-reduced-motion: reduce) {

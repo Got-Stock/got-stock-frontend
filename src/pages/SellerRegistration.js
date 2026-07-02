@@ -7,8 +7,8 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
-import { ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
+import SellerLayout from '../components/SellerLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -75,109 +75,98 @@ const SellerRegistration = () => {
   // Show loading while checking authentication
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE] mx-auto mb-4"></div>
-          <p className="text-white">Loading...</p>
+      <SellerLayout title="Seller Registration">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
         </div>
-      </div>
+      </SellerLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black py-12 px-4">
-      <div className="container mx-auto max-w-3xl">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/dashboard')}
-          className="mb-6 text-white hover:text-[#FF3CFE]"
-          data-testid="back-btn"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Dashboard
-        </Button>
-
-        <Card className="border-[#FF3CFE]/30 bg-black/80 backdrop-blur-sm shadow-xl">
+    <SellerLayout title="Seller Registration">
+      <div className="mx-auto max-w-3xl">
+        <Card className="border-gray-200 bg-white shadow-sm">
           <CardHeader>
-            <CardTitle className="text-3xl font-bold text-white">Seller Registration</CardTitle>
-            <CardDescription className="text-base text-white/70">Complete your seller profile to start submitting products</CardDescription>
+            <CardTitle className="text-2xl font-bold text-gray-900">Seller Registration</CardTitle>
+            <CardDescription className="text-base text-gray-500">Complete your seller profile to start submitting products</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Business Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white border-b border-[#FF3CFE]/30 pb-2">Business Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Business Information</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="business_name" className="text-white">Business Name *</Label>
+                    <Label htmlFor="business_name" className="text-gray-700">Business Name *</Label>
                     <Input
                       id="business_name"
                       data-testid="business-name-input"
                       value={formData.business_name}
                       onChange={(e) => handleChange('business_name', e.target.value)}
                       required
-                      className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      className=""
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="trading_name" className="text-white">Trading Name *</Label>
+                    <Label htmlFor="trading_name" className="text-gray-700">Trading Name *</Label>
                     <Input
                       id="trading_name"
                       data-testid="trading-name-input"
                       value={formData.trading_name}
                       onChange={(e) => handleChange('trading_name', e.target.value)}
                       required
-                      className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      className=""
                     />
                   </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="legal_entity_name" className="text-white">Legal Entity Name</Label>
+                  <Label htmlFor="legal_entity_name" className="text-gray-700">Legal Entity Name</Label>
                   <Input
                     id="legal_entity_name"
                     value={formData.legal_entity_name}
                     onChange={(e) => handleChange('legal_entity_name', e.target.value)}
                     placeholder="Registered legal entity name"
-                    className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    className=""
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="business_address" className="text-white">Business Address</Label>
+                  <Label htmlFor="business_address" className="text-gray-700">Business Address</Label>
                   <Input
                     id="business_address"
                     value={formData.business_address}
                     onChange={(e) => handleChange('business_address', e.target.value)}
                     placeholder="Street, City, State, Postcode"
-                    className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    className=""
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                  <Label htmlFor="abn_or_tax_id" className="text-white">ABN / Tax ID *</Label>
+                  <Label htmlFor="abn_or_tax_id" className="text-gray-700">ABN / Tax ID *</Label>
                   <Input
                     id="abn_or_tax_id"
                     data-testid="abn-input"
                     value={formData.abn_or_tax_id}
                     onChange={(e) => handleChange('abn_or_tax_id', e.target.value)}
                     required
-                    className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    className=""
                   />
                 </div>
               </div>
 
               {/* Contact Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white border-b border-[#FF3CFE]/30 pb-2">Contact Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Contact Information</h3>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="contact_name" className="text-white">Contact Name *</Label>
+                  <Label htmlFor="contact_name" className="text-gray-700">Contact Name *</Label>
                   <Input
                     id="contact_name"
-                    data-testid="contact-name-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    data-testid="contact-name-input" className=""
                     value={formData.contact_name}
                     onChange={(e) => handleChange('contact_name', e.target.value)}
                     required
@@ -186,11 +175,11 @@ const SellerRegistration = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="contact_email" className="text-white">Contact Email *</Label>
+                    <Label htmlFor="contact_email" className="text-gray-700">Contact Email *</Label>
                     <Input
                       id="contact_email"
                       type="email"
-                      data-testid="contact-email-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      data-testid="contact-email-input" className=""
                       value={formData.contact_email}
                       onChange={(e) => handleChange('contact_email', e.target.value)}
                       required
@@ -198,10 +187,10 @@ const SellerRegistration = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="contact_phone" className="text-white">Contact Phone *</Label>
+                    <Label htmlFor="contact_phone" className="text-gray-700">Contact Phone *</Label>
                     <Input
                       id="contact_phone"
-                      data-testid="contact-phone-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      data-testid="contact-phone-input" className=""
                       value={formData.contact_phone}
                       onChange={(e) => handleChange('contact_phone', e.target.value)}
                       required
@@ -212,13 +201,13 @@ const SellerRegistration = () => {
 
               {/* Payout Information */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white border-b border-[#FF3CFE]/30 pb-2">Payout Information</h3>
+                <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Payout Information</h3>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="payout_banking_inst" className="text-white">Banking Institution *</Label>
+                  <Label htmlFor="payout_banking_inst" className="text-gray-700">Banking Institution *</Label>
                   <Input
                     id="payout_banking_inst"
-                    data-testid="banking-inst-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    data-testid="banking-inst-input" className=""
                     value={formData.payout_banking_inst}
                     onChange={(e) => handleChange('payout_banking_inst', e.target.value)}
                     required
@@ -226,10 +215,10 @@ const SellerRegistration = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="payout_account_name" className="text-white">Account Name *</Label>
+                  <Label htmlFor="payout_account_name" className="text-gray-700">Account Name *</Label>
                   <Input
                     id="payout_account_name"
-                    data-testid="account-name-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                    data-testid="account-name-input" className=""
                     value={formData.payout_account_name}
                     onChange={(e) => handleChange('payout_account_name', e.target.value)}
                     required
@@ -238,10 +227,10 @@ const SellerRegistration = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="payout_account_number" className="text-white">Account Number *</Label>
+                    <Label htmlFor="payout_account_number" className="text-gray-700">Account Number *</Label>
                     <Input
                       id="payout_account_number"
-                      data-testid="account-number-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      data-testid="account-number-input" className=""
                       value={formData.payout_account_number}
                       onChange={(e) => handleChange('payout_account_number', e.target.value)}
                       required
@@ -249,10 +238,10 @@ const SellerRegistration = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="payout_account_BSB" className="text-white">BSB *</Label>
+                    <Label htmlFor="payout_account_BSB" className="text-gray-700">BSB *</Label>
                     <Input
                       id="payout_account_BSB"
-                      data-testid="bsb-input" className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
+                      data-testid="bsb-input" className=""
                       value={formData.payout_account_BSB}
                       onChange={(e) => handleChange('payout_account_BSB', e.target.value)}
                       required
@@ -263,10 +252,10 @@ const SellerRegistration = () => {
 
               {/* Submission Method */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-white border-b border-[#FF3CFE]/30 pb-2">Preferences</h3>
+                <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">Preferences</h3>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="data_submission_method" className="text-white">Data Submission Method</Label>
+                  <Label htmlFor="data_submission_method" className="text-gray-700">Data Submission Method</Label>
                   <Select
                     value={formData.data_submission_method}
                     onValueChange={(value) => handleChange('data_submission_method', value)}
@@ -287,7 +276,7 @@ const SellerRegistration = () => {
                 type="submit"
                 data-testid="submit-registration-btn"
                 disabled={formLoading || loading}
-                className="w-full bg-gradient-to-r from-[#FF3CFE] to-black hover:opacity-90 text-white py-6 text-lg rounded-lg transition-opacity disabled:opacity-40"
+                className="w-full bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white py-6 text-lg rounded-lg transition-colors disabled:opacity-40"
               >
                 {formLoading ? 'Creating Profile...' : 'Complete Registration'}
               </Button>
@@ -295,7 +284,7 @@ const SellerRegistration = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </SellerLayout>
   );
 };
 

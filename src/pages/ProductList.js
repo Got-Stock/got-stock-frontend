@@ -307,7 +307,7 @@ const ProductList = () => {
             {filteredProducts.map((product) => (
               <Card
                 key={product.product_id}
-                className="border-gray-200 bg-white hover:shadow-md transition-all"
+                className="border-gray-200 bg-white gs-lift"
                 data-testid={`product-card-${product.product_id}`}
               >
                 <CardHeader>

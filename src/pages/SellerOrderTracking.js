@@ -117,7 +117,7 @@ const SellerOrderTracking = () => {
       ) : (
         <div className="space-y-4">
           {orders.map((order) => (
-            <Card key={order.id} className="border-gray-200 bg-white">
+            <Card key={order.id} className="border-gray-200 bg-white gs-lift">
               <CardContent className="p-6">
                 <div className="mb-4 flex items-start justify-between">
                   <div>

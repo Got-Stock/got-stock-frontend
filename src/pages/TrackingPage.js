@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, Search, Package, MapPin, Calendar, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import SellerLayout from '../components/SellerLayout';
 
 const API = process.env.REACT_APP_BACKEND_URL;
 
 const TrackingPage = () => {
+  const location = useLocation();
+  // Same component serves /admin/tracking, /customer-account/tracking and the
+  // seller portal at /dashboard/tracking — only the seller route gets the shell.
+  const inSellerPortal = location.pathname.startsWith('/dashboard');
   const [trackingNumber, setTrackingNumber] = useState('');
   const [carrierCode, setCarrierCode] = useState('');
   const [trackingData, setTrackingData] = useState(null);
@@ -82,12 +88,11 @@ const TrackingPage = () => {
     });
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
-      <div className="container mx-auto px-4 max-w-4xl">
+  const inner = (
+    <>
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Track Your Shipment</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Track Your Shipment</h1>
           <p className="text-gray-600">
             Enter your tracking number to view real-time updates from any carrier worldwide
           </p>
@@ -279,7 +284,16 @@ const TrackingPage = () => {
             </p>
           </Card>
         )}
-      </div>
+    </>
+  );
+
+  if (inSellerPortal) {
+    return <SellerLayout title="Track Shipment">{inner}</SellerLayout>;
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8">
+      <div className="container mx-auto px-4 max-w-4xl">{inner}</div>
     </div>
   );
 };

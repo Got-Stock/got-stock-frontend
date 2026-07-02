@@ -58,7 +58,7 @@ const EmptyMini = ({ icon: Icon, text }) => (
 );
 
 const KpiCard = ({ loading, label, value, icon: Icon, growth, sub }) => (
-  <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+  <div className="gs-lift rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
     <div className="flex items-center justify-between">
       <p className="text-sm font-medium text-gray-500">{label}</p>
       <Icon className="h-4 w-4 text-[#FF3CFE]" />
@@ -620,7 +620,7 @@ const Dashboard = () => {
                     {productStatCards.map((s) => {
                       const Icon = s.icon;
                       return (
-                        <div key={s.label} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+                        <div key={s.label} className="gs-lift rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
                           <div className="flex items-center justify-between">
                             <p className="text-sm font-medium text-gray-500">{s.label}</p>
                             <Icon className="h-4 w-4 text-[#FF3CFE]" />
@@ -724,7 +724,7 @@ const Dashboard = () => {
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
-                    <div key={s.label} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                    <div key={s.label} className="gs-lift rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
                       <div className="flex items-center justify-between">
                         <p className="text-sm font-medium text-gray-500">{s.label}</p>
                         <Icon className="h-4 w-4 text-[#FF3CFE]" />
@@ -806,7 +806,7 @@ const Dashboard = () => {
                     <button
                       key={q.label}
                       onClick={() => navigate(q.to)}
-                      className="group flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-sm transition-all hover:border-[#FF3CFE]/40 hover:shadow-md"
+                      className="group gs-lift flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-5 text-left shadow-sm hover:border-[#FF3CFE]/40"
                     >
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FF3CFE]/10 text-[#FF3CFE]">
                         <Icon className="h-5 w-5" />

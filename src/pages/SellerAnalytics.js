@@ -265,7 +265,7 @@ const SellerAnalytics = () => {
       {/* Revenue Overview Cards */}
       {isWidgetVisible('revenue_overview') && overview && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
+          <Card className="border-gray-200 bg-white gs-lift">
             <CardHeader className="pb-2">
               <CardDescription className="text-gray-500">Total Revenue</CardDescription>
               <CardTitle className="text-3xl font-bold text-gray-900">
@@ -286,7 +286,7 @@ const SellerAnalytics = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
+          <Card className="border-gray-200 bg-white gs-lift">
             <CardHeader className="pb-2">
               <CardDescription className="text-gray-500">Orders</CardDescription>
               <CardTitle className="text-3xl font-bold text-gray-900">
@@ -301,7 +301,7 @@ const SellerAnalytics = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
+          <Card className="border-gray-200 bg-white gs-lift">
             <CardHeader className="pb-2">
               <CardDescription className="text-gray-500">Average Order Value</CardDescription>
               <CardTitle className="text-3xl font-bold text-gray-900">
@@ -316,7 +316,7 @@ const SellerAnalytics = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
+          <Card className="border-gray-200 bg-white gs-lift">
             <CardHeader className="pb-2">
               <CardDescription className="text-gray-500">Conversion Rate</CardDescription>
               <CardTitle className="text-3xl font-bold text-gray-900">
