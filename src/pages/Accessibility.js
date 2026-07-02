@@ -19,7 +19,7 @@ const Accessibility = () => {
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Accessibility Features</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Eye className="h-6 w-6 text-white" />
               </div>
@@ -32,7 +32,7 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Keyboard className="h-6 w-6 text-white" />
               </div>
@@ -45,7 +45,7 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Smartphone className="h-6 w-6 text-white" />
               </div>
@@ -58,7 +58,7 @@ const Accessibility = () => {
               </ul>
             </div>
 
-            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl">
+            <div className="bg-white border border-gray-200 shadow-sm p-6 rounded-xl hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
                 <Volume2 className="h-6 w-6 text-white" />
               </div>

@@ -200,7 +200,7 @@ export default function Shop() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading products...</p>
@@ -210,7 +210,7 @@ export default function Shop() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
 
@@ -227,7 +227,7 @@ export default function Shop() {
         
         {/* Top Bar */}
         <div className="flex flex-col md:flex-row gap-4 mb-6 items-center justify-between">
-          <h1 className="text-2xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-gray-900">
             {selectedCategories.length > 0 ? `${selectedCategories[0]}` : searchQuery ? `Search: "${searchQuery}"` : "All Products"}
           </h1>
 
@@ -275,14 +275,14 @@ export default function Shop() {
 
             {/* Sort */}
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full md:w-48 bg-gradient-to-b from-[#FF3CFE] to-black text-white border-none">
+              <SelectTrigger className="w-full md:w-48 bg-white text-gray-900 border-gray-300">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent className="bg-gradient-to-b from-[#FF3CFE] to-black text-white border-brand-300">
-                <SelectItem value="newest" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Newest First</SelectItem>
-                <SelectItem value="price-low" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Price: Low to High</SelectItem>
-                <SelectItem value="price-high" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Price: High to Low</SelectItem>
-                <SelectItem value="name" className="text-white hover:bg-brand-700 focus:bg-brand-700 focus:text-white">Name A-Z</SelectItem>
+              <SelectContent className="bg-white text-gray-900">
+                <SelectItem value="newest">Newest First</SelectItem>
+                <SelectItem value="price-low">Price: Low to High</SelectItem>
+                <SelectItem value="price-high">Price: High to Low</SelectItem>
+                <SelectItem value="name">Name A-Z</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -327,21 +327,21 @@ export default function Shop() {
         {/* Main Content */}
         <div className="flex gap-6">
           {/* Sidebar Filters */}
-          <aside className={`${showFilters ? 'block' : 'hidden'} md:block w-full md:w-64 bg-gradient-to-b from-[#FF3CFE] to-black rounded-lg shadow-sm p-6 h-[calc(100vh-8rem)] overflow-y-auto sticky top-24`}>
-            <h3 className="font-semibold text-lg mb-4 text-white">Filters</h3>
+          <aside className={`${showFilters ? 'block' : 'hidden'} md:block w-full md:w-64 bg-white border border-gray-200 rounded-xl shadow-sm p-6 h-[calc(100vh-8rem)] overflow-y-auto sticky top-24`}>
+            <h3 className="font-semibold text-lg mb-4 text-gray-900">Filters</h3>
 
             {/* Categories */}
             <div className="mb-6">
-              <h4 className="font-medium text-sm mb-3 text-white">Categories</h4>
+              <h4 className="font-medium text-sm mb-3 text-gray-900">Categories</h4>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {categories.map(cat => (
                   <label key={cat} className="flex items-center space-x-2 cursor-pointer">
                     <Checkbox
                       checked={selectedCategories.includes(cat)}
                       onCheckedChange={() => toggleCategory(cat)}
-                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#FF3CFE]"
+                      className="border-gray-300 data-[state=checked]:bg-brand-600 data-[state=checked]:text-white"
                     />
-                    <span className="text-sm text-white">{cat}</span>
+                    <span className="text-sm text-gray-700">{cat}</span>
                   </label>
                 ))}
               </div>
@@ -349,16 +349,16 @@ export default function Shop() {
 
             {/* Brands */}
             <div className="mb-6">
-              <h4 className="font-medium text-sm mb-3 text-white">Brands</h4>
+              <h4 className="font-medium text-sm mb-3 text-gray-900">Brands</h4>
               <div className="space-y-2 max-h-60 overflow-y-auto pr-2">
                 {brands.map(brand => (
                   <label key={brand} className="flex items-center space-x-2 cursor-pointer">
                     <Checkbox
                       checked={selectedBrands.includes(brand)}
                       onCheckedChange={() => toggleBrand(brand)}
-                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#FF3CFE]"
+                      className="border-gray-300 data-[state=checked]:bg-brand-600 data-[state=checked]:text-white"
                     />
-                    <span className="text-sm text-white">{brand}</span>
+                    <span className="text-sm text-gray-700">{brand}</span>
                   </label>
                 ))}
               </div>
@@ -366,7 +366,7 @@ export default function Shop() {
 
             {/* Price Range */}
             <div className="mb-6">
-              <h4 className="font-medium text-sm mb-3 text-white">Price Range</h4>
+              <h4 className="font-medium text-sm mb-3 text-gray-900">Price Range</h4>
               <div className="px-2">
                 <Slider
                   value={priceRange}
@@ -375,7 +375,7 @@ export default function Shop() {
                   step={10}
                   className="mb-2"
                 />
-                <div className="flex justify-between text-sm text-white">
+                <div className="flex justify-between text-sm text-gray-600">
                   <span>${priceRange[0]}</span>
                   <span>${priceRange[1]}</span>
                 </div>
@@ -388,16 +388,16 @@ export default function Shop() {
                 <Checkbox
                   checked={inStockOnly}
                   onCheckedChange={setInStockOnly}
-                  className="border-white data-[state=checked]:bg-white data-[state=checked]:text-[#FF3CFE]"
+                  className="border-gray-300 data-[state=checked]:bg-brand-600 data-[state=checked]:text-white"
                 />
-                <span className="text-sm text-white">In Stock Only</span>
+                <span className="text-sm text-gray-700">In Stock Only</span>
               </label>
             </div>
           </aside>
 
           {/* Products Grid */}
           <main className="flex-1">
-            <div className="mb-4 text-gray-300" aria-live="polite">
+            <div className="mb-4 text-gray-600" aria-live="polite">
               Showing {filteredProducts.length} of {products.length} products
             </div>
 
@@ -479,11 +479,11 @@ export default function Shop() {
                             viewMode === "1-col" ? "text-lg" :
                             viewMode === "2-col" ? "text-sm" :
                             "text-xs"
-                          } sm:text-lg font-bold text-[#FF3CFE]`}>
+                          } sm:text-lg font-bold text-brand-600`}>
                             ${price.toFixed(2)}
                           </p>
                           {stock > 0 ? (
-                            <Badge variant="outline" className={`${viewMode === "3-col" ? "text-[8px] px-1 py-0" : "text-xs"} sm:text-xs border-[#FF3CFE] text-[#FF3CFE]`}>
+                            <Badge variant="outline" className={`${viewMode === "3-col" ? "text-[8px] px-1 py-0" : "text-xs"} sm:text-xs border-brand-600 text-brand-600`}>
                               In Stock
                             </Badge>
                           ) : (

@@ -13,14 +13,20 @@ export default function PrivacyPolicy() {
       <CategoryNav />
 
       {/* Hero */}
-      <section className="relative bg-gray-950 text-white py-20 overflow-hidden">
-        <div className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-64 w-[40rem] rounded-full bg-brand-500/20 blur-3xl" />
+      <section className="relative bg-gray-950 text-white py-24 overflow-hidden">
+        <div className="pointer-events-none absolute -top-32 left-1/3 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-brand-500/25 blur-3xl gs-aurora" />
+        <div className="pointer-events-none absolute -bottom-40 right-0 h-72 w-[30rem] rounded-full bg-brand-700/20 blur-3xl gs-glow" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)', backgroundSize: '22px 22px' }}
+        />
         <div className="relative container mx-auto px-4 text-center">
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 mb-6">
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 mb-6 gs-float">
             <Shield className="h-8 w-8 text-brand-400" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Privacy Policy</h1>
           <p className="text-lg text-gray-400">Your privacy matters to us</p>
+          <div className="mt-7 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-brand-500/0 via-brand-500 to-brand-500/0" />
         </div>
       </section>
 

@@ -3,18 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
 import ChatBot from '../components/ChatBot';
+import { Reveal } from '../components/Reveal';
 
-const GenericFooterPage = ({ title, subtitle, children }) => {
+const GenericFooterPage = ({ title, subtitle, eyebrow = 'Got-Stock', children }) => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header simple={true} />
 
-      {/* Hero band — dark, editorial, with a single magenta accent */}
+      {/* Hero band — dark, editorial, with animated brand aurora + dot texture */}
       <div className="relative bg-gray-950 overflow-hidden">
-        {/* subtle brand glow */}
-        <div className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-64 w-[40rem] rounded-full bg-brand-500/20 blur-3xl" />
+        {/* drifting aurora glows */}
+        <div className="pointer-events-none absolute -top-32 left-1/3 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-brand-500/25 blur-3xl gs-aurora" />
+        <div className="pointer-events-none absolute -bottom-40 right-0 h-72 w-[30rem] rounded-full bg-brand-700/20 blur-3xl gs-glow" />
+        {/* subtle dot grid */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)',
+            backgroundSize: '22px 22px',
+          }}
+        />
+
         <div className="container mx-auto px-4 relative">
           <div className="pt-6">
             <button
@@ -25,24 +37,31 @@ const GenericFooterPage = ({ title, subtitle, children }) => {
               Back
             </button>
           </div>
-          <div className="max-w-3xl pt-8 pb-14">
-            <div className="h-1 w-12 rounded-full bg-brand-500 mb-6" />
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+
+          <Reveal className="max-w-3xl pt-10 pb-16">
+            <div className="inline-flex items-center gap-2 mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-500 gs-glow" />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
+                {eyebrow}
+              </span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
               {title}
             </h1>
             {subtitle && (
-              <p className="mt-4 text-lg leading-relaxed text-gray-400">
+              <p className="mt-4 text-lg leading-relaxed text-gray-400 max-w-2xl">
                 {subtitle}
               </p>
             )}
-          </div>
+            <div className="mt-7 h-1 w-16 rounded-full bg-gradient-to-r from-brand-500 to-brand-500/0" />
+          </Reveal>
         </div>
       </div>
 
-      {/* Content on a clean light canvas */}
-      <div className="container mx-auto px-4 py-14 max-w-4xl flex-grow">
+      {/* Content on a clean light canvas — fades up on load */}
+      <Reveal className="container mx-auto px-4 py-14 max-w-4xl flex-grow" delay={120}>
         {children}
-      </div>
+      </Reveal>
 
       <ChatBot />
     </div>

@@ -10,7 +10,7 @@ const ShippingInfo = () => {
     >
       <div className="space-y-12">
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center">
+          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
             <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <Truck className="h-6 w-6 text-white" />
             </div>
@@ -19,7 +19,7 @@ const ShippingInfo = () => {
             <p className="text-brand-600 font-bold mt-2">Free over $100</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center">
+          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
             <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <Clock className="h-6 w-6 text-white" />
             </div>
@@ -28,7 +28,7 @@ const ShippingInfo = () => {
             <p className="text-brand-600 font-bold mt-2">Flat rate $14.95</p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center">
+          <div className="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
             <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <Globe className="h-6 w-6 text-white" />
             </div>

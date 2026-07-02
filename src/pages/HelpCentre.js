@@ -51,7 +51,7 @@ const HelpCentre = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {faqs.map((section, idx) => (
-            <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <h3 className="text-lg font-bold text-gray-900 mb-4 text-brand-600">
                 {section.category}
               </h3>

@@ -15,10 +15,15 @@ export default function AboutUs() {
       <CategoryNav />
 
       {/* Hero Section */}
-      <section className="relative py-24 bg-gray-950 text-white overflow-hidden">
-        <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-[48rem] rounded-full bg-brand-500/20 blur-3xl" />
+      <section className="relative py-28 bg-gray-950 text-white overflow-hidden">
+        <div className="pointer-events-none absolute -top-32 left-1/3 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-brand-500/25 blur-3xl gs-aurora" />
+        <div className="pointer-events-none absolute -bottom-44 right-0 h-80 w-[36rem] rounded-full bg-brand-700/20 blur-3xl gs-glow" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)', backgroundSize: '22px 22px' }}
+        />
         <div className="relative container mx-auto px-4 text-center">
-          <div className="h-1 w-12 rounded-full bg-brand-500 mx-auto mb-6" />
+          <div className="h-1 w-12 rounded-full bg-brand-500 mx-auto mb-6 gs-glow" />
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Your Marketplace for Quality, Trusted Brands</h1>
           <p className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Got-Stock unites value-conscious shoppers with reputable brands, ensuring affordability never comes at the expense of quality.
@@ -41,7 +46,7 @@ export default function AboutUs() {
         {/* Dual Purpose */}
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="h-16 w-16 bg-gray-900 rounded-full flex items-center justify-center mb-4">
                 <Target className="h-8 w-8 text-white" />
               </div>
@@ -51,7 +56,7 @@ export default function AboutUs() {
               </p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
               <div className="h-16 w-16 bg-gray-900 rounded-full flex items-center justify-center mb-4">
                 <Heart className="h-8 w-8 text-white" />
               </div>
@@ -79,19 +84,19 @@ export default function AboutUs() {
         <section className="mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">What We Stand For</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition duration-300">
               <Globe className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Circular Economy Thinking</h3>
               <p className="text-gray-600">Reducing waste by preventing the disposal of dead stock.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition duration-300">
               <Shield className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Quality-First Retail</h3>
               <p className="text-gray-600">Guiding consumers toward well-made, trusted products instead of low-quality fast fashion.</p>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition duration-300">
               <Heart className="h-12 w-12 text-brand-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Affordability Without Compromise</h3>
               <p className="text-gray-600">Ensuring luxury and quality are accessible to those living within a budget.</p>

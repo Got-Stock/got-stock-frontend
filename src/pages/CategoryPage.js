@@ -95,7 +95,7 @@ export default function CategoryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
       
@@ -156,10 +156,10 @@ export default function CategoryPage() {
           />
           
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Featured {categoryData.title}
             </h2>
-            <p className="text-lg text-gray-200">
+            <p className="text-lg text-gray-600">
               {products.length} products available
             </p>
           </div>
@@ -213,7 +213,7 @@ export default function CategoryPage() {
                         {product.name}
                       </h3>
                       <div className="flex items-center justify-between">
-                        <p className="text-xl font-bold bg-gradient-to-r from-brand-600 to-brand-600 bg-clip-text text-transparent">
+                        <p className="text-xl font-bold text-brand-600">
                           {getProductPrice(product)}
                         </p>
                         <Badge variant="outline" className="text-xs border-brand-600 text-brand-600">
@@ -231,7 +231,7 @@ export default function CategoryPage() {
             <Button
               onClick={() => navigate('/shop?category=' + encodeURIComponent(category))}
               size="lg"
-              className="bg-gradient-to-r from-brand-600 to-brand-600 hover:from-brand-700 hover:to-brand-700 text-white px-10 py-6"
+              className="bg-brand-600 hover:bg-brand-700 text-white px-10 py-6"
             >
               View All {categoryData.title}
               <ArrowRight className="ml-2 h-5 w-5" />
