@@ -5,8 +5,9 @@ import { AuthContext } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { ArrowLeft, CheckCircle, XCircle, Clock, Building2, Mail, Phone } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, Building2, Mail, Phone } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminLayout from '../components/AdminLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -60,31 +61,22 @@ const AdminSellers = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
-      </div>
+      <AdminLayout title="Sellers">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]" />
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#00ffef]">
-      <header className="bg-black border-b border-cyan-600 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-white">Seller Approvals</h1>
-            <p className="text-sm text-gray-300">
-              Review and approve new seller profiles created via the seller registration form.
-            </p>
-          </div>
-          <Button variant="outline" onClick={() => navigate('/admin')} className="border-cyan-600 text-cyan-300 hover:bg-cyan-900">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Admin
-          </Button>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="flex items-center justify-between mb-6">
+    <AdminLayout title="Sellers">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">Seller Approvals</h2>
+        <p className="text-gray-500">Review and approve new seller profiles created via the seller registration form.</p>
+      </div>
+      <div>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div className="flex items-center gap-3">
             <Button
               variant={filterStatus === 'onboarding' ? 'default' : 'outline'}
@@ -129,19 +121,19 @@ const AdminSellers = () => {
               All
             </Button>
           </div>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             {filteredSellers.length} sellers shown
           </p>
         </div>
 
         {filteredSellers.length === 0 ? (
-          <div className="bg-white/80 rounded-lg shadow-sm p-6 text-center">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 text-center">
             <p className="text-gray-600">No sellers found for this filter.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredSellers.map((seller) => (
-              <Card key={seller.seller_id} className="bg-white/90 backdrop-blur-sm">
+              <Card key={seller.seller_id} className="bg-white border-gray-200 gs-lift">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2">
                     <Building2 className="w-5 h-5 text-brand-600" />
@@ -204,8 +196,8 @@ const AdminSellers = () => {
             ))}
           </div>
         )}
-      </main>
-    </div>
+      </div>
+    </AdminLayout>
   );
 };
 
