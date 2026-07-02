@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import {
-  Package, TrendingUp, CheckCircle, Clock, LogOut, Menu, X, XCircle,
-  LayoutDashboard, PlusCircle, ShoppingBag, Truck, User, ArrowRight
+  Package, TrendingUp, CheckCircle, Clock, LogOut, XCircle,
+  PlusCircle, ShoppingBag, ArrowRight
 } from 'lucide-react';
 import { toast } from 'sonner';
 import Logo from '../components/Logo';
+import SellerLayout from '../components/SellerLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -17,9 +18,9 @@ const API = `${BACKEND_URL}/api`;
 const Dashboard = () => {
   const { user, logout, loading } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [stats, setStats] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+  const activeTab = searchParams.get('tab') === 'profile' ? 'profile' : 'overview';
 
   useEffect(() => {
     // Redirect if not authenticated after loading completes
@@ -273,7 +274,7 @@ const Dashboard = () => {
   }
 
   /* =========================================================
-     SELLER PORTAL — light sidebar app-shell.
+     SELLER PORTAL — content rendered inside the shared shell.
      ========================================================= */
   const statusMeta = {
     approved:       { icon: CheckCircle, tone: 'text-emerald-600', bg: 'bg-emerald-50', ring: 'ring-emerald-200', title: 'Approved',        blurb: 'You can list products on the marketplace.' },
@@ -287,137 +288,8 @@ const Dashboard = () => {
   const StatusIcon = meta.icon;
   const isApproved = status === 'approved';
 
-  const navItems = [
-    { key: 'overview',  label: 'Overview',    icon: LayoutDashboard, type: 'tab' },
-    { key: 'products',  label: 'My Products', icon: Package,         type: 'nav', to: '/products' },
-    { key: 'add',       label: 'Add Product', icon: PlusCircle,      type: 'nav', to: '/products/new-v3', gated: true },
-    { key: 'orders',    label: 'Orders',      icon: ShoppingBag,     type: 'nav', to: '/seller/orders' },
-    { key: 'analytics', label: 'Analytics',   icon: TrendingUp,      type: 'nav', to: '/seller/analytics' },
-    { key: 'tracking',  label: 'Tracking',    icon: Truck,           type: 'nav', to: '/dashboard/tracking' },
-    { key: 'profile',   label: 'Profile',     icon: User,            type: 'tab' },
-  ];
-
-  const handleNav = (item) => {
-    setMobileMenuOpen(false);
-    if (item.type === 'tab') {
-      setActiveTab(item.key);
-      return;
-    }
-    if (item.gated && !isApproved) {
-      toast.error('Product submission unlocks once your seller account is approved.');
-      return;
-    }
-    navigate(item.to);
-  };
-
-  const SidebarContent = () => (
-    <div className="flex h-full flex-col">
-      <div className="px-6 py-6 border-b border-gray-100">
-        <Logo to="/" size="sm" />
-        <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-[#FF3CFE]">Seller Portal</p>
-      </div>
-
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const active = item.type === 'tab' && activeTab === item.key;
-          const locked = item.gated && !isApproved;
-          return (
-            <button
-              key={item.key}
-              onClick={() => handleNav(item)}
-              className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                active
-                  ? 'bg-[#FF3CFE]/10 text-[#FF3CFE]'
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-              }`}
-            >
-              <Icon className={`h-5 w-5 flex-shrink-0 ${active ? 'text-[#FF3CFE]' : 'text-gray-400 group-hover:text-gray-600'}`} />
-              <span className="flex-1 text-left">{item.label}</span>
-              {locked && <span className="text-[10px] font-semibold uppercase text-gray-400">Locked</span>}
-            </button>
-          );
-        })}
-      </nav>
-
-      <div className="border-t border-gray-100 p-3">
-        <div className="flex items-center gap-3 rounded-lg px-3 py-2.5">
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FF3CFE] to-black text-sm font-bold text-white">
-            {user.name?.charAt(0)?.toUpperCase() || 'U'}
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-gray-900">{user.name}</p>
-            <p className="truncate text-xs text-gray-500">{user.email}</p>
-          </div>
-        </div>
-        <Button
-          onClick={handleLogout}
-          data-testid="logout-btn"
-          variant="ghost"
-          className="mt-1 w-full justify-start text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-        >
-          <LogOut className="mr-2 h-4 w-4" />
-          Logout
-        </Button>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-gray-200 bg-white lg:block">
-        <SidebarContent />
-      </aside>
-
-      {/* Mobile drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <aside className="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] border-r border-gray-200 bg-white shadow-xl">
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="absolute right-3 top-4 rounded-md p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <SidebarContent />
-          </aside>
-        </div>
-      )}
-
-      {/* Content column */}
-      <div className="lg:pl-64">
-        {/* Top bar */}
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-gray-200 bg-white/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100 lg:hidden"
-              aria-label="Open menu"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-            <h1 className="text-lg font-bold text-gray-900">
-              {activeTab === 'profile' ? 'Seller Profile' : 'Overview'}
-            </h1>
-          </div>
-          <div className="hidden items-center gap-3 sm:flex">
-            <div className="text-right">
-              <p className="text-sm font-medium text-gray-900">{user.name}</p>
-              <p className="text-xs text-gray-500 capitalize">{user.role}</p>
-            </div>
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#FF3CFE] to-black text-sm font-bold text-white">
-              {user.name?.charAt(0)?.toUpperCase() || 'U'}
-            </div>
-          </div>
-        </header>
-
-        <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+    <SellerLayout title={activeTab === 'profile' ? 'Seller Profile' : 'Overview'}>
           {/* ---------------- OVERVIEW ---------------- */}
           {activeTab === 'overview' && (
             <div className="space-y-8">
@@ -661,9 +533,7 @@ const Dashboard = () => {
               </div>
             </div>
           )}
-        </main>
-      </div>
-    </div>
+    </SellerLayout>
   );
 };
 

@@ -27,6 +27,7 @@ import {
   Info
 } from 'lucide-react';
 import { MultiSelect } from 'react-multi-select-component';
+import SellerLayout from '../components/SellerLayout';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -1214,11 +1215,11 @@ const ProductSubmissionV3 = () => {
   // ==================== RENDER ====================
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-6xl bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black min-h-screen">
+    <SellerLayout title="Add Product">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2 text-white">Product Submission</h1>
-        <p className="text-white/80">GTIN-First · Schema-Driven · Step-by-Step</p>
-        <p className="text-xs text-white/60">Version: 3.2.2 - Pre-fill With useEffect</p>
+        <h2 className="text-2xl font-bold mb-1 text-gray-900">Product Submission</h2>
+        <p className="text-gray-500">GTIN-First · Schema-Driven · Step-by-Step</p>
+        <p className="text-xs text-gray-400">Version: 3.2.2 - Pre-fill With useEffect</p>
       </div>
 
       {error && (
@@ -2493,7 +2494,7 @@ const ProductSubmissionV3 = () => {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
+    </SellerLayout>
   );
 };
 

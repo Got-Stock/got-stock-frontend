@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, Package, Download, Edit } from 'lucide-react';
+import { Package, Edit } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../components/ui/dialog';
@@ -9,13 +8,13 @@ import { Label } from '../components/ui/label';
 import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import DeliveryTracker from '../components/DeliveryTracker';
+import SellerLayout from '../components/SellerLayout';
 import { toast } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const SellerOrderTracking = () => {
-  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -62,7 +61,7 @@ const SellerOrderTracking = () => {
 
   const submitUpdate = async () => {
     if (!selectedOrder) return;
-    
+
     setUpdating(true);
     try {
       await axios.put(
@@ -78,7 +77,7 @@ const SellerOrderTracking = () => {
         },
         { withCredentials: true }
       );
-      
+
       toast.success('Tracking information updated');
       setShowUpdateDialog(false);
       fetchSellerOrders();
@@ -92,42 +91,46 @@ const SellerOrderTracking = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
-      </div>
+      <SellerLayout title="Orders">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
+        </div>
+      </SellerLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FF3CFE] via-brand-900 to-black py-8">
-      <div className="container mx-auto px-4">
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/dashboard')}
-          className="mb-6 text-white hover:text-[#FF3CFE]"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Dashboard
-        </Button>
+    <SellerLayout title="Orders">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900">Order Tracking</h2>
+        <p className="text-gray-500">Manage fulfilment and keep buyers updated.</p>
+      </div>
 
-        <h1 className="text-3xl font-bold mb-6 text-white">Order Tracking</h1>
-
+      {orders.length === 0 ? (
+        <Card className="border-gray-200 bg-white">
+          <CardContent className="py-12 text-center">
+            <Package className="mx-auto mb-4 h-16 w-16 text-gray-400" />
+            <h3 className="mb-2 text-xl font-semibold text-gray-900">No orders yet</h3>
+            <p className="text-gray-500">Orders from your customers will appear here.</p>
+          </CardContent>
+        </Card>
+      ) : (
         <div className="space-y-4">
           {orders.map((order) => (
-            <Card key={order.id} className="border-[#FF3CFE]/30 bg-black/60 backdrop-blur-sm">
+            <Card key={order.id} className="border-gray-200 bg-white">
               <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-4">
+                <div className="mb-4 flex items-start justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Order #{order.id}</h3>
-                    <p className="text-sm text-white/70">Placed on {new Date(order.created_at).toLocaleDateString()}</p>
+                    <h3 className="text-lg font-semibold text-gray-900">Order #{order.id}</h3>
+                    <p className="text-sm text-gray-500">Placed on {new Date(order.created_at).toLocaleDateString()}</p>
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => handleUpdateTracking(order)}
-                    className="border-[#FF3CFE]/30 text-white hover:bg-[#FF3CFE]/20"
+                    className="border-[#FF3CFE] text-[#FF3CFE] hover:bg-[#FF3CFE]/10"
                   >
-                    <Edit className="w-4 h-4 mr-2" />
+                    <Edit className="mr-2 h-4 w-4" />
                     Update
                   </Button>
                 </div>
@@ -137,65 +140,63 @@ const SellerOrderTracking = () => {
             </Card>
           ))}
         </div>
+      )}
 
-        <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
-          <DialogContent className="bg-black/90 border-[#FF3CFE]/30">
-            <DialogHeader>
-              <DialogTitle className="text-white">Update Tracking Information</DialogTitle>
-              <DialogDescription className="text-white/70">
-                Update the order status and tracking details
-              </DialogDescription>
-            </DialogHeader>
+      <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Update Tracking Information</DialogTitle>
+            <DialogDescription>
+              Update the order status and tracking details
+            </DialogDescription>
+          </DialogHeader>
 
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="status" className="text-white">Order Status</Label>
-                <Select value={updateData.status} onValueChange={(val) => setUpdateData({...updateData, status: val})}>
-                  <SelectTrigger className="bg-black/40 border-[#FF3CFE]/30 text-white">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="processing">Processing</SelectItem>
-                    <SelectItem value="shipped">Shipped</SelectItem>
-                    <SelectItem value="delivered">Delivered</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label htmlFor="tracking_number" className="text-white">Tracking Number</Label>
-                <Input
-                  id="tracking_number"
-                  value={updateData.tracking_number}
-                  onChange={(e) => setUpdateData({...updateData, tracking_number: e.target.value})}
-                  className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="carrier" className="text-white">Carrier</Label>
-                <Input
-                  id="carrier"
-                  value={updateData.carrier}
-                  onChange={(e) => setUpdateData({...updateData, carrier: e.target.value})}
-                  className="bg-black/40 border-[#FF3CFE]/30 text-white placeholder:text-white/50"
-                />
-              </div>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="status">Order Status</Label>
+              <Select value={updateData.status} onValueChange={(val) => setUpdateData({ ...updateData, status: val })}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="processing">Processing</SelectItem>
+                  <SelectItem value="shipped">Shipped</SelectItem>
+                  <SelectItem value="delivered">Delivered</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
-            <DialogFooter>
-              <Button
-                onClick={submitUpdate}
-                disabled={updating}
-                className="bg-gradient-to-r from-[#FF3CFE] to-black hover:opacity-90"
-              >
-                {updating ? 'Updating...' : 'Update Tracking'}
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </div>
-    </div>
+            <div className="space-y-2">
+              <Label htmlFor="tracking_number">Tracking Number</Label>
+              <Input
+                id="tracking_number"
+                value={updateData.tracking_number}
+                onChange={(e) => setUpdateData({ ...updateData, tracking_number: e.target.value })}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="carrier">Carrier</Label>
+              <Input
+                id="carrier"
+                value={updateData.carrier}
+                onChange={(e) => setUpdateData({ ...updateData, carrier: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button
+              onClick={submitUpdate}
+              disabled={updating}
+              className="bg-[#FF3CFE] text-white hover:bg-[#FF3CFE]/90"
+            >
+              {updating ? 'Updating...' : 'Update Tracking'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </SellerLayout>
   );
 };
 

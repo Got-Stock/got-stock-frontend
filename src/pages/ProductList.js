@@ -10,8 +10,9 @@ import { Badge } from '../components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { ArrowLeft, Package, CheckCircle, XCircle, Clock, Edit, Save, X, Search, Plus, DollarSign, PackageCheck } from 'lucide-react';
+import { Package, CheckCircle, Clock, Edit, Save, X, Search, Plus, DollarSign, PackageCheck } from 'lucide-react';
 import { toast } from 'sonner';
+import SellerLayout from '../components/SellerLayout';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -200,45 +201,34 @@ const ProductList = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
+      <SellerLayout title="My Products">
+        <div className="flex items-center justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
+        </div>
+      </SellerLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black py-8 px-4">
-      <div className="container mx-auto max-w-7xl">
+    <SellerLayout title="My Products">
         {/* Header */}
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/dashboard')}
-            className="mb-4"
-            data-testid="back-btn"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Dashboard
-          </Button>
-          
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-4xl font-bold text-white mb-2">My Products</h1>
-              <p className="text-lg text-gray-200">Manage your catalogue, inventory & pricing</p>
-            </div>
-            <Button
-              onClick={() => navigate('/products/new-v3')}
-              className="bg-gradient-to-r from-black to-[#ff3cfe] hover:opacity-90 text-white"
-              data-testid="add-product-btn"
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              Add New Product
-            </Button>
+        <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">My Products</h2>
+            <p className="text-gray-500">Manage your catalogue, inventory & pricing</p>
           </div>
+          <Button
+            onClick={() => navigate('/products/new-v3')}
+            className="bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white"
+            data-testid="add-product-btn"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add New Product
+          </Button>
         </div>
 
         {/* Filters and Search */}
-        <Card className="mb-6 border-blue-100 bg-white/80 backdrop-blur-sm">
+        <Card className="mb-6 border-gray-200 bg-white">
           <CardContent className="pt-6">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Search */}
@@ -290,22 +280,22 @@ const ProductList = () => {
 
         {/* Products List */}
         {filteredProducts.length === 0 ? (
-          <Card className="border-blue-100 bg-white/80 backdrop-blur-sm">
+          <Card className="border-gray-200 bg-white">
             <CardContent className="py-12 text-center">
               <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {searchTerm || filterStatus !== 'all' ? 'No products found' : 'No products yet'}
               </h3>
               <p className="text-gray-600 mb-6">
-                {searchTerm || filterStatus !== 'all' 
-                  ? 'Try adjusting your search or filters' 
+                {searchTerm || filterStatus !== 'all'
+                  ? 'Try adjusting your search or filters'
                   : 'Start by submitting your first product'}
               </p>
               {!searchTerm && filterStatus === 'all' && (
                 <Button
                   onClick={() => navigate('/products/new-v3')}
                   data-testid="submit-first-product-btn"
-                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
+                  className="bg-[#FF3CFE] hover:bg-[#FF3CFE]/90 text-white"
                 >
                   Submit Product
                 </Button>
@@ -315,9 +305,9 @@ const ProductList = () => {
         ) : (
           <div className="space-y-4">
             {filteredProducts.map((product) => (
-              <Card 
-                key={product.product_id} 
-                className="border-blue-100 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all"
+              <Card
+                key={product.product_id}
+                className="border-gray-200 bg-white hover:shadow-md transition-all"
                 data-testid={`product-card-${product.product_id}`}
               >
                 <CardHeader>
@@ -419,7 +409,6 @@ const ProductList = () => {
             ))}
           </div>
         )}
-      </div>
 
       {/* Product Details Modal */}
       <Dialog open={selectedProduct !== null} onOpenChange={() => setSelectedProduct(null)}>
@@ -688,7 +677,7 @@ const ProductList = () => {
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </SellerLayout>
   );
 };
 
