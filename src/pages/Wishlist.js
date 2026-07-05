@@ -89,23 +89,33 @@ const Wishlist = () => {
   };
 
   const addToCart = (product) => {
-    // Add to cart logic
+    // Use the canonical cart shape (variant_id/product_name/product_image) so
+    // items render in the cart drawer and /cart page.
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItem = cart.find(item => item.productId === product.id);
-    
-    if (existingItem) {
-      toast.info('Item already in cart');
+    const key = product.id;
+    const existing = cart.find(
+      (item) => (item.variant_id ?? item.product_id ?? item.productId) === key
+    );
+
+    if (existing) {
+      existing.quantity = (existing.quantity || 1) + 1;
     } else {
       cart.push({
-        productId: product.id,
-        name: product.name,
+        product_id: product.id,
+        variant_id: product.id, // wishlist items have no variant; key on product id
+        product_name: product.name,
+        product_image: product.image,
+        brand: product.brand,
         price: product.price,
         quantity: 1,
-        image: product.image
+        stock_qty: 999,
       });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      toast.success('Added to cart');
     }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event('cartUpdated'));
+    window.dispatchEvent(new Event('openCart'));
+    toast.success('Added to cart');
   };
 
   if (loading) {

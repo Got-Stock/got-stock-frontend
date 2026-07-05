@@ -62,6 +62,7 @@ import BecomeASeller from "./pages/BecomeASeller";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/sonner";
 import Footer from "./components/Footer";
+import CartDrawer from "./components/CartDrawer";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -335,6 +336,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <CartDrawer />
           <Toaster position="top-right" />
         </AuthProvider>
       </BrowserRouter>
