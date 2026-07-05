@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 
 export default function CartBadge() {
@@ -27,13 +26,19 @@ export default function CartBadge() {
   };
 
   return (
-    <Link to="/cart" className="relative p-1 hover:opacity-80 transition" title="Shopping Cart">
+    <button
+      type="button"
+      onClick={() => window.dispatchEvent(new Event('openCart'))}
+      className="relative p-1 hover:opacity-80 transition"
+      title="Shopping Cart"
+      aria-label="Open cart"
+    >
       <ShoppingCart className="h-5 w-5 md:h-6 md:w-6" stroke="#FF3CFE" strokeWidth={1.5} />
       {itemCount > 0 && (
         <span className="absolute -top-1 -right-1 bg-[#FF3CFE] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
           {itemCount > 99 ? '99+' : itemCount}
         </span>
       )}
-    </Link>
+    </button>
   );
 }

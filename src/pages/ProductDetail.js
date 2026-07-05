@@ -146,10 +146,11 @@ export default function ProductDetail() {
     }
     
     localStorage.setItem("cart", JSON.stringify(cart));
-    
-    // Trigger cart update event
+
+    // Trigger cart update event + slide the cart drawer open
     window.dispatchEvent(new Event('cartUpdated'));
-    
+    window.dispatchEvent(new Event('openCart'));
+
     toast.success("Added to cart!");
   };
 
