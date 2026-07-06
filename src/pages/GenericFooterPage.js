@@ -4,13 +4,15 @@ import { ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
 import ChatBot from '../components/ChatBot';
 import { Reveal } from '../components/Reveal';
+import { usePanel } from '../context/PanelContext';
 
 const GenericFooterPage = ({ title, subtitle, eyebrow = 'Got-Stock', children }) => {
   const navigate = useNavigate();
+  const { inPanel } = usePanel();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header simple={true} />
+    <div className={`${inPanel ? '' : 'min-h-screen'} bg-gray-50 flex flex-col`}>
+      {!inPanel && <Header simple={true} />}
 
       {/* Hero band — dark, editorial, with animated brand aurora + dot texture */}
       <div className="relative bg-gray-950 overflow-hidden">
@@ -28,15 +30,17 @@ const GenericFooterPage = ({ title, subtitle, eyebrow = 'Got-Stock', children })
         />
 
         <div className="container mx-auto px-4 relative">
-          <div className="pt-6">
-            <button
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back
-            </button>
-          </div>
+          {!inPanel && (
+            <div className="pt-6">
+              <button
+                onClick={() => navigate(-1)}
+                className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back
+              </button>
+            </div>
+          )}
 
           <Reveal className="max-w-3xl pt-10 pb-16">
             <div className="inline-flex items-center gap-2 mb-5">
@@ -63,7 +67,7 @@ const GenericFooterPage = ({ title, subtitle, eyebrow = 'Got-Stock', children })
         {children}
       </Reveal>
 
-      <ChatBot />
+      {!inPanel && <ChatBot />}
     </div>
   );
 };

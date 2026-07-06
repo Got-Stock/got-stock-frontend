@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import { FileText, ShoppingCart, CreditCard, Truck, RefreshCw, Shield, Mail } from 'lucide-react';
 import Header from '../components/Header';
 import CategoryNav from '../components/CategoryNav';
+import { usePanel } from '../context/PanelContext';
 
 export default function TermsOfSale() {
+  const { inPanel } = usePanel();
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-
-      <CategoryNav />
+    <div className={inPanel ? 'bg-gray-50' : 'min-h-screen bg-gray-50'}>
+      {!inPanel && (
+        <>
+          <Header />
+          <CategoryNav />
+        </>
+      )}
 
       <section className="relative bg-gray-950 text-white py-24 overflow-hidden">
         <div className="pointer-events-none absolute -top-32 left-1/3 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-brand-500/25 blur-3xl gs-aurora" />

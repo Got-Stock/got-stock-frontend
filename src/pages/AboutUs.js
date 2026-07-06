@@ -4,15 +4,20 @@ import { ArrowRight, Target, Heart, Globe, Shield, Sparkles } from 'lucide-react
 import Banner from '../components/Banner';
 import Header from '../components/Header';
 import CategoryNav from '../components/CategoryNav';
+import { usePanel } from '../context/PanelContext';
 
 export default function AboutUs() {
+  const { inPanel } = usePanel();
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <Header />
-
-      {/* Sticky Category Navigation with Search */}
-      <CategoryNav />
+    <div className={inPanel ? 'bg-gray-50' : 'min-h-screen bg-gray-50'}>
+      {!inPanel && (
+        <>
+          {/* Header */}
+          <Header />
+          {/* Sticky Category Navigation with Search */}
+          <CategoryNav />
+        </>
+      )}
 
       {/* Hero Section */}
       <section className="relative py-28 bg-gray-950 text-white overflow-hidden">

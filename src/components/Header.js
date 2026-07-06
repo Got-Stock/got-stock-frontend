@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Heart, User, Menu, X, Search, Package, LogOut, ChevronDown } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import CartBadge from './CartBadge';
+import WishlistBadge from './WishlistBadge';
 import Logo from './Logo';
 import { getAllProducts } from '../lib/productCache';
 import { getAvailableCategories, NAV_CATEGORIES } from '../lib/categories';
@@ -92,14 +93,8 @@ const Header = ({ simple = false, logoVisibility = 'all' }) => {
                 <div className="flex items-center ml-auto">
                 {/* Right Side - Icons - Pink color */}
                 <div className="flex items-center space-x-3 md:space-x-4">
-                  {/* Wishlist Icon */}
-                  <Link 
-                    to="/wishlist" 
-                    className="p-1 hover:opacity-80 transition"
-                    title="Wishlist"
-                  >
-                    <Heart className="h-5 w-5 md:h-6 md:w-6" stroke="#FF3CFE" fill="none" strokeWidth={1.5} />
-                  </Link>
+                  {/* Wishlist Icon with Badge */}
+                  <WishlistBadge />
 
                   {/* Cart Icon with Badge */}
                   <CartBadge />

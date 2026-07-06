@@ -3,14 +3,19 @@ import { Link } from 'react-router-dom';
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
 import Header from '../components/Header';
 import CategoryNav from '../components/CategoryNav';
+import { usePanel } from '../context/PanelContext';
 
 export default function PrivacyPolicy() {
+  const { inPanel } = usePanel();
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <Header />
-
-      <CategoryNav />
+    <div className={inPanel ? 'bg-gray-50' : 'min-h-screen bg-gray-50'}>
+      {!inPanel && (
+        <>
+          {/* Header */}
+          <Header />
+          <CategoryNav />
+        </>
+      )}
 
       {/* Hero */}
       <section className="relative bg-gray-950 text-white py-24 overflow-hidden">

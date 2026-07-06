@@ -63,7 +63,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/sonner";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
+import WishlistDrawer from "./components/WishlistDrawer";
+import InfoPanel from "./components/InfoPanel";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
+import { PanelProvider } from "./context/PanelContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -124,6 +127,7 @@ function App() {
         </a>
         <ScrollToTop />
         <AuthProvider>
+          <PanelProvider>
           <main id="main" className="flex-1 flex flex-col">
             <Routes>
               <Route path="/" element={<Landing />} />
@@ -337,7 +341,10 @@ function App() {
           </main>
           <Footer />
           <CartDrawer />
+          <WishlistDrawer />
+          <InfoPanel />
           <Toaster position="top-right" />
+          </PanelProvider>
         </AuthProvider>
       </BrowserRouter>
     </div>
