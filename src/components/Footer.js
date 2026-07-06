@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { getAllProducts } from '../lib/productCache';
 import { getAvailableCategories } from '../lib/categories';
+import PanelLink from './PanelLink';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -88,11 +89,11 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Customer Care</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/help-centre" className="text-gray-300 hover:text-brand-400 transition">Help Centre</Link></li>
-              <li><Link to="/shipping-info" className="text-gray-300 hover:text-brand-400 transition">Shipping Info</Link></li>
-              <li><Link to="/returns-refunds" className="text-gray-300 hover:text-brand-400 transition">Returns & Refunds</Link></li>
-              <li><Link to="/size-guide" className="text-gray-300 hover:text-brand-400 transition">Size Guide</Link></li>
-              <li><Link to="/contact-us" className="text-gray-300 hover:text-brand-400 transition">Contact Us</Link></li>
+              <li><PanelLink to="/help-centre" className="text-gray-300 hover:text-brand-400 transition">Help Centre</PanelLink></li>
+              <li><PanelLink to="/shipping-info" className="text-gray-300 hover:text-brand-400 transition">Shipping Info</PanelLink></li>
+              <li><PanelLink to="/returns-refunds" className="text-gray-300 hover:text-brand-400 transition">Returns & Refunds</PanelLink></li>
+              <li><PanelLink to="/size-guide" className="text-gray-300 hover:text-brand-400 transition">Size Guide</PanelLink></li>
+              <li><PanelLink to="/contact-us" className="text-gray-300 hover:text-brand-400 transition">Contact Us</PanelLink></li>
               <li><Link to="/track-order" className="text-gray-300 hover:text-brand-400 transition">Track My Order</Link></li>
             </ul>
           </div>
@@ -101,10 +102,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">About</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about-us" className="text-gray-300 hover:text-brand-400 transition">About Us</Link></li>
-              <li><Link to="/mission" className="text-gray-300 hover:text-brand-400 transition">Mission</Link></li>
-              <li><Link to="/sustainability" className="text-gray-300 hover:text-brand-400 transition">Sustainability</Link></li>
-              <li><Link to="/media-kit" className="text-gray-300 hover:text-brand-400 transition">Media Kit</Link></li>
+              <li><PanelLink to="/about-us" className="text-gray-300 hover:text-brand-400 transition">About Us</PanelLink></li>
+              <li><PanelLink to="/mission" className="text-gray-300 hover:text-brand-400 transition">Mission</PanelLink></li>
+              <li><PanelLink to="/sustainability" className="text-gray-300 hover:text-brand-400 transition">Sustainability</PanelLink></li>
+              <li><PanelLink to="/media-kit" className="text-gray-300 hover:text-brand-400 transition">Media Kit</PanelLink></li>
             </ul>
           </div>
 
@@ -112,10 +113,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Sell With Us</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/become-seller" className="text-gray-300 hover:text-brand-400 transition">Become a Seller</Link></li>
-              <li><Link to="/seller-terms" className="text-gray-300 hover:text-brand-400 transition">Seller T&Cs</Link></li>
-              <li><Link to="/seller-resources" className="text-gray-300 hover:text-brand-400 transition">Seller Resources</Link></li>
-              <li><Link to="/partnerships" className="text-gray-300 hover:text-brand-400 transition">Partnerships</Link></li>
+              <li><PanelLink to="/become-seller" className="text-gray-300 hover:text-brand-400 transition">Become a Seller</PanelLink></li>
+              <li><PanelLink to="/seller-terms" className="text-gray-300 hover:text-brand-400 transition">Seller T&Cs</PanelLink></li>
+              <li><PanelLink to="/seller-resources" className="text-gray-300 hover:text-brand-400 transition">Seller Resources</PanelLink></li>
+              <li><PanelLink to="/partnerships" className="text-gray-300 hover:text-brand-400 transition">Partnerships</PanelLink></li>
             </ul>
           </div>
 
@@ -123,10 +124,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-brand-400 transition">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-gray-300 hover:text-brand-400 transition">Terms & Conditions</Link></li>
-              <li><Link to="/terms-of-sale" className="text-gray-300 hover:text-brand-400 transition">Terms of Sale</Link></li>
-              <li><Link to="/accessibility" className="text-gray-300 hover:text-brand-400 transition">Accessibility</Link></li>
+              <li><PanelLink to="/privacy-policy" className="text-gray-300 hover:text-brand-400 transition">Privacy Policy</PanelLink></li>
+              <li><PanelLink to="/terms" className="text-gray-300 hover:text-brand-400 transition">Terms & Conditions</PanelLink></li>
+              <li><PanelLink to="/terms-of-sale" className="text-gray-300 hover:text-brand-400 transition">Terms of Sale</PanelLink></li>
+              <li><PanelLink to="/accessibility" className="text-gray-300 hover:text-brand-400 transition">Accessibility</PanelLink></li>
               <li className="pt-2 border-t border-gray-700">
                 <Link to="/admin-login" className="text-brand-300 hover:text-brand-100 font-semibold transition">
                   🔐 Admin Login
