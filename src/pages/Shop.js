@@ -26,6 +26,45 @@ import QuickViewModal from "../components/QuickViewModal";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// Nav/footer/landing links use category labels that don't always equal the
+// product's stored category name (e.g. "Beauty" vs "Health & Beauty"). Map the
+// known aliases onto real category values so those links land on real results.
+const CATEGORY_ALIASES = {
+  beauty: "health & beauty",
+  health: "health & beauty",
+  "health and beauty": "health & beauty",
+  home: "home & living",
+  homeware: "home & living",
+  "home and living": "home & living",
+  electronics: "electronics & tech",
+  tech: "electronics & tech",
+  "electronics and tech": "electronics & tech",
+  watches: "watches & jewellery",
+  jewellery: "watches & jewellery",
+  jewelry: "watches & jewellery",
+  sports: "sports & outdoors",
+  outdoors: "sports & outdoors",
+  womens: "women",
+  mens: "men",
+};
+
+const normCat = (s) => (s || "").toLowerCase().trim();
+
+// A product matches a selected category if the (aliased) label equals any of
+// its level_1 / level_2 / level_3 category values — so "Women" matches the
+// level_2 "Women", "Beauty" matches level_1 "Health & Beauty", etc.
+const productMatchesCategories = (product, selected) => {
+  const cats = product.categories || {};
+  const levels = [cats.level_1, cats.level_2, cats.level_3]
+    .map(normCat)
+    .filter(Boolean);
+  return selected.some((raw) => {
+    const sel = normCat(raw);
+    const alias = CATEGORY_ALIASES[sel] || sel;
+    return levels.includes(sel) || levels.includes(alias);
+  });
+};
+
 export default function Shop() {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
@@ -73,7 +112,15 @@ export default function Shop() {
     if (sortParam === 'newest') {
       setSortBy('newest');
     }
-  }, [searchParams]);
+
+    // "Shop All" / a bare /shop should show everything — clear any lingering
+    // brand, price and in-stock narrowing (category & search handled above).
+    if (!searchParam && !categoryParam) {
+      setSelectedBrands([]);
+      setInStockOnly(false);
+      setPriceRange([0, maxPriceLimit]);
+    }
+  }, [searchParams, maxPriceLimit]);
 
   useEffect(() => {
     applyFilters();
@@ -121,10 +168,10 @@ export default function Shop() {
       );
     }
 
-    // Category filter
+    // Category filter (matches level_1/2/3 with alias support)
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(p =>
-        selectedCategories.includes(p.categories?.level_1)
+        productMatchesCategories(p, selectedCategories)
       );
     }
 
