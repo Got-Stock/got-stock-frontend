@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import SearchAutocomplete from "./SearchAutocomplete";
+import { getAllProducts } from "../lib/productCache";
+import { getAvailableCategories, NAV_CATEGORIES } from "../lib/categories";
 
 // Mega Menu structure with multiple columns
 const MEGA_MENU = {
@@ -299,7 +301,27 @@ const MEGA_MENU = {
 export default function CategoryNav() {
   const navigate = useNavigate();
   const [hoveredCategory, setHoveredCategory] = useState(null);
+  const [availableCategories, setAvailableCategories] = useState(null); // null until loaded
   const hideTimeout = useRef(null);
+
+  // Hide top-level categories that currently have no products in stock.
+  useEffect(() => {
+    let cancelled = false;
+    getAllProducts().then((products) => {
+      if (cancelled) return;
+      setAvailableCategories(
+        getAvailableCategories(products, NAV_CATEGORIES.map((c) => c.category))
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Until the catalogue loads, show all so the nav isn't empty on first paint.
+  const visibleCategories = availableCategories
+    ? NAV_CATEGORIES.filter((c) => availableCategories.has(c.category))
+    : NAV_CATEGORIES;
 
   const handleMouseEnter = (category) => {
     // Clear any pending hide timeout
@@ -389,131 +411,28 @@ export default function CategoryNav() {
                 Shop All
               </button>
 
-            {/* Fashion */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Fashion")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Fashion")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Fashion" ? "0 0 8px #FF3CFE" : "none" }}
+            {visibleCategories.map(({ label, category }) => (
+              <div
+                key={category}
+                className="relative group"
+                onMouseEnter={() => handleMouseEnter(category)}
+                onMouseLeave={handleMouseLeave}
               >
-                Fashion
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Fashion" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Fashion")}
-                </div>
-              )}
-            </div>
-
-            {/* Beauty */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Health & Beauty")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Health & Beauty")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Health & Beauty" ? "0 0 8px #FF3CFE" : "none" }}
-              >
-                Beauty
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Health & Beauty" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Health & Beauty")}
-                </div>
-              )}
-            </div>
-
-            {/* Home */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Home & Living")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Home & Living")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Home & Living" ? "0 0 8px #FF3CFE" : "none" }}
-              >
-                Home
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Home & Living" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Home & Living")}
-                </div>
-              )}
-            </div>
-
-            {/* Electronics */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Electronics & Tech")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Electronics & Tech")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Electronics & Tech" ? "0 0 8px #FF3CFE" : "none" }}
-              >
-                Electronics
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Electronics & Tech" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Electronics & Tech")}
-                </div>
-              )}
-            </div>
-
-            {/* Watches */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Watches")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Watches")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Watches" ? "0 0 8px #FF3CFE" : "none" }}
-              >
-                Watches
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Watches" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Watches")}
-                </div>
-              )}
-            </div>
-
-            {/* Sports */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => handleMouseEnter("Sports & Outdoors")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                onClick={() => handleCategoryClick("Sports & Outdoors")}
-                className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
-                style={{ textShadow: hoveredCategory === "Sports & Outdoors" ? "0 0 8px #FF3CFE" : "none" }}
-              >
-                Sports
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {hoveredCategory === "Sports & Outdoors" && (
-                <div className="hidden md:block absolute left-0 top-full w-screen" style={{height: '20px'}}>
-                  {renderMegaMenu("Sports & Outdoors")}
-                </div>
-              )}
-            </div>
+                <button
+                  onClick={() => handleCategoryClick(category)}
+                  className="text-sm font-medium text-white hover:text-[#FF3CFE] transition whitespace-nowrap px-3 py-2 rounded-lg hover:bg-gray-800 flex items-center gap-1"
+                  style={{ textShadow: hoveredCategory === category ? "0 0 8px #FF3CFE" : "none" }}
+                >
+                  {label}
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+                {hoveredCategory === category && (
+                  <div className="hidden md:block absolute left-0 top-full w-screen" style={{ height: '20px' }}>
+                    {renderMegaMenu(category)}
+                  </div>
+                )}
+              </div>
+            ))}
           </nav>
           
           {/* Search Bar with live autocomplete - Aligned at far right edge under icons */}
