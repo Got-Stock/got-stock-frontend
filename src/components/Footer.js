@@ -1,16 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { getAllProducts } from '../lib/productCache';
+import { getAvailableCategories } from '../lib/categories';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
+// "Shop" column links (label === /shop?category= value). Only those with stock
+// are shown.
+const FOOTER_SHOP_LINKS = [
+  'Women',
+  'Men',
+  'Kids & Baby',
+  'Home & Living',
+  'Health & Beauty',
+  'Electronics & Tech',
+  'Sports & Outdoors',
+  'Watches & Jewellery',
+];
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [availableCategories, setAvailableCategories] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    getAllProducts().then((products) => {
+      if (cancelled) return;
+      setAvailableCategories(getAvailableCategories(products, FOOTER_SHOP_LINKS));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const visibleShopLinks = availableCategories
+    ? FOOTER_SHOP_LINKS.filter((c) => availableCategories.has(c))
+    : FOOTER_SHOP_LINKS;
 
   const handleNewsletterSignup = async (e) => {
     e.preventDefault();
@@ -40,14 +71,16 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-lg">Shop</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/shop?category=Women" className="text-gray-300 hover:text-brand-400 transition">Women</Link></li>
-              <li><Link to="/shop?category=Men" className="text-gray-300 hover:text-brand-400 transition">Men</Link></li>
-              <li><Link to="/shop?category=Kids & Baby" className="text-gray-300 hover:text-brand-400 transition">Kids & Baby</Link></li>
-              <li><Link to="/shop?category=Home & Living" className="text-gray-300 hover:text-brand-400 transition">Home & Living</Link></li>
-              <li><Link to="/shop?category=Health & Beauty" className="text-gray-300 hover:text-brand-400 transition">Health & Beauty</Link></li>
-              <li><Link to="/shop?category=Electronics & Tech" className="text-gray-300 hover:text-brand-400 transition">Electronics & Tech</Link></li>
-              <li><Link to="/shop?category=Sports & Outdoors" className="text-gray-300 hover:text-brand-400 transition">Sports & Outdoors</Link></li>
-              <li><Link to="/shop?category=Watches & Jewellery" className="text-gray-300 hover:text-brand-400 transition">Watches & Jewellery</Link></li>
+              {visibleShopLinks.map((cat) => (
+                <li key={cat}>
+                  <Link
+                    to={`/shop?category=${encodeURIComponent(cat)}`}
+                    className="text-gray-300 hover:text-brand-400 transition"
+                  >
+                    {cat}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

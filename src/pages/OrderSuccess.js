@@ -3,6 +3,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CheckCircle, Loader2, Package } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { fireConfetti } from "../lib/confetti";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -43,11 +44,14 @@ export default function OrderSuccess() {
       if (data.payment_status === "paid") {
         // Clear cart
         localStorage.setItem("cart", JSON.stringify([]));
-        
+        window.dispatchEvent(new Event("cartUpdated"));
+
         // Fetch order details
         const orderResponse = await axios.get(`${API}/orders`);
         setOrder(data);
         setLoading(false);
+        // Celebrate the completed purchase
+        setTimeout(() => fireConfetti(), 250);
         return;
       } else if (data.status === "expired") {
         setError("Payment session expired. Please try again.");
@@ -67,7 +71,7 @@ export default function OrderSuccess() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-16 w-16 text-brand-600 animate-spin mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Verifying Payment...</h2>
@@ -82,7 +86,7 @@ export default function OrderSuccess() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="max-w-md mx-auto text-center bg-white p-8 rounded-lg shadow-sm">
           <div className="text-red-500 mb-4">
             <svg className="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,7 +109,7 @@ export default function OrderSuccess() {
   }
 
   return (
-    <div className="min-h-screen bg-black py-16">
+    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-gray-50 py-16">
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="bg-white rounded-lg shadow-sm p-8 text-center">
           <div className="mb-6">

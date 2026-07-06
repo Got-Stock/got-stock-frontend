@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, User, Menu, X, Search, Package, LogOut, ChevronDown } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import CartBadge from './CartBadge';
 import Logo from './Logo';
+import { getAllProducts } from '../lib/productCache';
+import { getAvailableCategories, NAV_CATEGORIES } from '../lib/categories';
 
 const Header = ({ simple = false, logoVisibility = 'all' }) => {
   const navigate = useNavigate();
@@ -11,6 +13,25 @@ const Header = ({ simple = false, logoVisibility = 'all' }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [availableCategories, setAvailableCategories] = useState(null);
+
+  // Hide mobile-menu categories that currently have no products.
+  useEffect(() => {
+    let cancelled = false;
+    getAllProducts().then((products) => {
+      if (cancelled) return;
+      setAvailableCategories(
+        getAvailableCategories(products, NAV_CATEGORIES.map((c) => c.category))
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const visibleCategories = availableCategories
+    ? NAV_CATEGORIES.filter((c) => availableCategories.has(c.category))
+    : NAV_CATEGORIES;
 
   // Dual auth: cookie session (AuthContext) OR localStorage user (CustomerAccount flow).
   let storedUser = null;
@@ -175,55 +196,23 @@ const Header = ({ simple = false, logoVisibility = 'all' }) => {
       {!simple && mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-black border-t border-[#FF3CFE] shadow-lg z-40">
           <nav className="px-4 py-4 space-y-3">
-            <Link 
-              to="/shop" 
+            <Link
+              to="/shop"
               className="block text-white hover:text-[#FF3CFE] transition text-base font-semibold uppercase py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Shop All
             </Link>
-            <Link
-              to="/category/Fashion"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Fashion
-            </Link>
-            <Link
-              to="/category/Health & Beauty"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Beauty
-            </Link>
-            <Link
-              to="/category/Home & Living"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/category/Electronics & Tech"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Electronics
-            </Link>
-            <Link
-              to="/category/Watches"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Watches
-            </Link>
-            <Link
-              to="/category/Sports & Outdoors"
-              className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sports
-            </Link>
+            {visibleCategories.map(({ label, category }) => (
+              <Link
+                key={category}
+                to={`/category/${category}`}
+                className="block text-white hover:text-[#FF3CFE] transition text-base font-medium py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
             {/* Mobile Search */}
             <form onSubmit={handleSearch} className="pt-3 border-t border-gray-700">
               <div className="flex items-center bg-white rounded-full px-4 py-2">

@@ -28,6 +28,7 @@ export default function CartBadge() {
   return (
     <button
       type="button"
+      id="cart-icon-target"
       onClick={() => window.dispatchEvent(new Event('openCart'))}
       className="relative p-1 hover:opacity-80 transition"
       title="Shopping Cart"

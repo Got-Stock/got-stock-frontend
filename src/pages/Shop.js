@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { Search, SlidersHorizontal, X, ChevronDown, Grid3x3, LayoutGrid } from "lucide-react";
+import { Search, SlidersHorizontal, X, ChevronDown, Grid3x3, LayoutGrid, Eye } from "lucide-react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { Slider } from "../components/ui/slider";
@@ -20,6 +20,9 @@ import CategoryNav from "../components/CategoryNav";
 import Breadcrumbs from "../components/Breadcrumbs";
 import WishlistButton from "../components/WishlistButton";
 import Header from "../components/Header";
+import { ProductGridSkeleton } from "../components/ProductCardSkeleton";
+import QuickViewModal from "../components/QuickViewModal";
+import { productMatchesCategories } from "../lib/categories";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -30,6 +33,7 @@ export default function Shop() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [viewMode, setViewMode] = useState("2-col"); // "1-col", "2-col", or "3-col"
   
   // Filter states
@@ -70,7 +74,15 @@ export default function Shop() {
     if (sortParam === 'newest') {
       setSortBy('newest');
     }
-  }, [searchParams]);
+
+    // "Shop All" / a bare /shop should show everything — clear any lingering
+    // brand, price and in-stock narrowing (category & search handled above).
+    if (!searchParam && !categoryParam) {
+      setSelectedBrands([]);
+      setInStockOnly(false);
+      setPriceRange([0, maxPriceLimit]);
+    }
+  }, [searchParams, maxPriceLimit]);
 
   useEffect(() => {
     applyFilters();
@@ -118,10 +130,10 @@ export default function Shop() {
       );
     }
 
-    // Category filter
+    // Category filter (matches level_1/2/3 with alias support)
     if (selectedCategories.length > 0) {
       filtered = filtered.filter(p =>
-        selectedCategories.includes(p.categories?.level_1)
+        productMatchesCategories(p, selectedCategories)
       );
     }
 
@@ -200,10 +212,24 @@ export default function Shop() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading products...</p>
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <CategoryNav />
+        <div className="container mx-auto px-4 py-8">
+          <div className="h-6 w-40 bg-gray-200 rounded animate-pulse mb-6" />
+          <div className="flex gap-6">
+            <aside className="hidden md:block w-64 flex-shrink-0">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} className="h-4 w-full bg-gray-200 rounded animate-pulse" />
+                ))}
+              </div>
+            </aside>
+            <main className="flex-1">
+              <div className="h-4 w-48 bg-gray-200 rounded animate-pulse mb-4" />
+              <ProductGridSkeleton count={9} />
+            </main>
+          </div>
         </div>
       </div>
     );
@@ -425,7 +451,16 @@ export default function Shop() {
                   const linkPath = `/product/variant/${defaultVariant.variant_id}`;
                   
                   return (
-                    <div key={product.id} className="relative bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-brand-200">
+                    <div key={product.id} className="group relative bg-white rounded-lg shadow-sm hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-brand-200">
+                      <button
+                        type="button"
+                        onClick={() => setQuickViewProduct(product)}
+                        aria-label={`Quick view ${product.name}`}
+                        className="absolute top-2 left-2 z-10 flex items-center gap-1 rounded-full bg-white/90 backdrop-blur px-2.5 py-1.5 text-[11px] font-semibold text-gray-800 shadow-md transition hover:bg-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100"
+                      >
+                        <Eye className="h-3.5 w-3.5" />
+                        <span className="hidden sm:inline">Quick view</span>
+                      </button>
                       <Link to={linkPath}>
                         <div className="aspect-square bg-gray-100 overflow-hidden relative">
                           <img
@@ -501,6 +536,12 @@ export default function Shop() {
           </main>
         </div>
       </div>
+
+      <QuickViewModal
+        product={quickViewProduct}
+        open={!!quickViewProduct}
+        onOpenChange={(o) => !o && setQuickViewProduct(null)}
+      />
     </div>
   );
 }
