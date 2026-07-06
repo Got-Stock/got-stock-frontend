@@ -16,7 +16,7 @@ const ShippingInfo = () => {
             </div>
             <h3 className="font-bold text-lg mb-2">Standard Delivery</h3>
             <p className="text-gray-600 text-sm">3-5 Business Days</p>
-            <p className="text-brand-600 font-bold mt-2">Free over $100</p>
+            <p className="text-brand-600 font-bold mt-2">Free over $50</p>
           </div>
 
           <div className="bg-white p-6 rounded-xl border border-gray-200 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300">
@@ -63,7 +63,7 @@ const ShippingInfo = () => {
                 <tr>
                   <td className="py-3 px-4 border-b">Standard Shipping</td>
                   <td className="py-3 px-4 border-b">3-5 business days</td>
-                  <td className="py-3 px-4 border-b">$9.95 (Free over $100)</td>
+                  <td className="py-3 px-4 border-b">$9.95 (Free over $50)</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-4 border-b">Express Shipping</td>

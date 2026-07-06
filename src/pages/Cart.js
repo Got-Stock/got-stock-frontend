@@ -89,7 +89,7 @@ export default function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-gray-50">
         {/* Header */}
         <Header />
 
@@ -109,8 +109,8 @@ export default function Cart() {
             <div className="w-24 h-24 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center mx-auto mb-6">
               <ShoppingBag className="h-12 w-12 text-white" />
             </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Your cart is empty</h2>
-            <p className="text-gray-300 mb-8">Add some products to get started!</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Your cart is empty</h2>
+            <p className="text-gray-600 mb-8">Add some products to get started!</p>
             <Button
               onClick={() => navigate("/shop")}
               className="bg-gradient-to-b from-[#FF3CFE] to-black hover:opacity-90 text-white"
@@ -124,7 +124,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
 
