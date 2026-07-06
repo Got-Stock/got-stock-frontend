@@ -355,15 +355,8 @@ export default function CategoryNav() {
     if (!menu) return null;
 
     return (
-      <div 
-        className="w-screen max-w-5xl bg-gradient-to-b from-[#FF3CFE] to-black border border-gray-300 rounded-lg shadow-2xl py-8 px-6"
-        style={{
-          zIndex: 9999, 
-          position: 'fixed',
-          top: '145px',
-          left: '50%',
-          transform: 'translateX(-50%)'
-        }}
+      <div
+        className="w-full max-w-5xl mx-auto bg-gradient-to-b from-[#FF3CFE] to-black border border-gray-300 rounded-lg shadow-2xl py-8 px-6"
         onMouseEnter={() => handleMouseEnter(categoryName)}
         onMouseLeave={handleMouseLeave}
       >
@@ -396,7 +389,7 @@ export default function CategoryNav() {
   };
 
   return (
-    <div className="bg-black z-30" style={{ fontFamily: 'Roboto, sans-serif' }}>
+    <div className="bg-black z-30 relative" style={{ fontFamily: 'Roboto, sans-serif' }}>
       <div className="bg-black container mx-auto px-4 pr-0">
         <div className="flex flex-col md:flex-row md:items-center gap-3 pt-2 pb-4 bg-black md:pr-4">
           {/* Left reserve so the centered nav clears the homepage brand logo (absolutely positioned) */}
@@ -426,11 +419,6 @@ export default function CategoryNav() {
                   {label}
                   <ChevronDown className="h-3 w-3" />
                 </button>
-                {hoveredCategory === category && (
-                  <div className="hidden md:block absolute left-0 top-full w-screen" style={{ height: '20px' }}>
-                    {renderMegaMenu(category)}
-                  </div>
-                )}
               </div>
             ))}
           </nav>
@@ -439,6 +427,17 @@ export default function CategoryNav() {
           <SearchAutocomplete className="w-full md:w-56 flex-shrink-0" />
         </div>
       </div>
+
+      {/* Mega menu — anchored directly below the nav bar (no magic offsets) */}
+      {hoveredCategory && MEGA_MENU[hoveredCategory] && (
+        <div
+          className="hidden md:block absolute left-0 right-0 top-full px-4 z-[9999]"
+          onMouseEnter={() => handleMouseEnter(hoveredCategory)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {renderMegaMenu(hoveredCategory)}
+        </div>
+      )}
     </div>
   );
 }
