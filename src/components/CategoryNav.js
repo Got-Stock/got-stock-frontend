@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import SearchAutocomplete from "./SearchAutocomplete";
 
 // Mega Menu structure with multiple columns
 const MEGA_MENU = {
@@ -297,7 +298,6 @@ const MEGA_MENU = {
 
 export default function CategoryNav() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const hideTimeout = useRef(null);
 
@@ -314,14 +314,6 @@ export default function CategoryNav() {
     hideTimeout.current = setTimeout(() => {
       setHoveredCategory(null);
     }, 300);
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
-    }
   };
 
   const handleCategoryClick = (category) => {
@@ -524,19 +516,8 @@ export default function CategoryNav() {
             </div>
           </nav>
           
-          {/* Search Bar - Aligned at far right edge under icons */}
-          <form onSubmit={handleSearch} className="w-full md:w-56 flex-shrink-0">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
-                className="w-full px-3 py-2 pl-9 bg-white text-gray-900 border border-gray-300 rounded-full focus:outline-none focus:border-[#FF3CFE] transition text-sm placeholder-gray-500"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-            </div>
-          </form>
+          {/* Search Bar with live autocomplete - Aligned at far right edge under icons */}
+          <SearchAutocomplete className="w-full md:w-56 flex-shrink-0" />
         </div>
       </div>
     </div>

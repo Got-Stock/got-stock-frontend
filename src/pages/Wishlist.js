@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Heart, ShoppingCart, Trash2 } from 'lucide-react';
+import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import CategoryNav from '../components/CategoryNav';
 import Header from '../components/Header';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { AuthContext } from '../context/AuthContext';
+import { flyToCart } from '../lib/flyToCart';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -88,9 +89,10 @@ const Wishlist = () => {
     }
   };
 
-  const addToCart = (product) => {
-    // Use the canonical cart shape (variant_id/product_name/product_image) so
-    // items render in the cart drawer and /cart page.
+  // Add one wishlist item to the cart in localStorage using the canonical
+  // cart shape (variant_id/product_name/product_image) so it renders in the
+  // cart drawer and /cart page. Does not dispatch events — caller does.
+  const pushToCart = (product) => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const key = product.id;
     const existing = cart.find(
@@ -111,23 +113,53 @@ const Wishlist = () => {
         stock_qty: 999,
       });
     }
-
     localStorage.setItem('cart', JSON.stringify(cart));
+  };
+
+  const addToCart = (product, e) => {
+    pushToCart(product);
     window.dispatchEvent(new Event('cartUpdated'));
-    window.dispatchEvent(new Event('openCart'));
+    flyToCart(e?.currentTarget, product.image);
     toast.success('Added to cart');
+    setTimeout(() => window.dispatchEvent(new Event('openCart')), 650);
+  };
+
+  const addAllToCart = () => {
+    if (wishlistItems.length === 0) return;
+    wishlistItems.forEach(pushToCart);
+    window.dispatchEvent(new Event('cartUpdated'));
+    toast.success(`Added ${wishlistItems.length} item${wishlistItems.length > 1 ? 's' : ''} to cart`);
+    setTimeout(() => window.dispatchEvent(new Event('openCart')), 200);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF3CFE]"></div>
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <CategoryNav />
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="h-8 w-56 bg-gray-200 rounded animate-pulse mb-8" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden">
+                  <div className="aspect-square bg-gray-200 animate-pulse" />
+                  <div className="p-4 space-y-2">
+                    <div className="h-3 w-1/3 bg-gray-200 rounded animate-pulse" />
+                    <div className="h-4 w-4/5 bg-gray-200 rounded animate-pulse" />
+                    <div className="h-5 w-16 bg-gray-200 rounded animate-pulse" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
       <Header />
 
@@ -136,26 +168,35 @@ const Wishlist = () => {
 
       <div className="container mx-auto px-4 py-12 flex-grow">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-              <Heart className="h-8 w-8 text-[#FF3CFE]" fill="#FF3CFE" />
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <div className="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center">
+              <Heart className="h-7 w-7 text-[#FF3CFE]" fill="#FF3CFE" />
             </div>
-            <h1 className="text-4xl font-bold text-white">My Wishlist</h1>
-            <span className="text-gray-300">({wishlistItems.length} items)</span>
+            <h1 className="text-4xl font-bold text-gray-900">My Wishlist</h1>
+            <span className="text-gray-500">({wishlistItems.length} items)</span>
+            {wishlistItems.length > 0 && (
+              <Button
+                onClick={addAllToCart}
+                className="ml-auto bg-brand-600 hover:bg-brand-700 text-white"
+              >
+                <ShoppingCart className="h-4 w-4 mr-2" />
+                Add all to cart
+              </Button>
+            )}
           </div>
 
           {wishlistItems.length === 0 ? (
             <div className="text-center py-16">
-              <div className="w-24 h-24 bg-gradient-to-b from-[#FF3CFE] to-black rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-24 h-24 bg-gradient-to-b from-[#FF3CFE] to-brand-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Heart className="h-12 w-12 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-white mb-2">Your Wishlist is Empty</h2>
-              <p className="text-gray-300 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Your Wishlist is Empty</h2>
+              <p className="text-gray-600 mb-8">
                 Save your favorite items for later by clicking the heart icon
               </p>
-              <Button 
+              <Button
                 onClick={() => navigate('/shop')}
-                className="bg-gradient-to-b from-[#FF3CFE] to-black hover:opacity-90 text-white px-8 py-6 text-lg"
+                className="bg-brand-600 hover:bg-brand-700 text-white px-8 py-6 text-lg"
               >
                 Start Shopping
               </Button>
@@ -195,14 +236,14 @@ const Wishlist = () => {
                       <Button
                         onClick={() => navigate(`/product/${item.id}`)}
                         variant="outline"
-                        className="flex-1 border-[#FF3CFE] text-[#FF3CFE] hover:bg-brand-50"
+                        className="flex-1 border-brand-600 text-brand-600 hover:bg-brand-50"
                         size="sm"
                       >
                         View
                       </Button>
                       <Button
-                        onClick={() => addToCart(item)}
-                        className="flex-1 bg-gradient-to-b from-[#FF3CFE] to-black hover:opacity-90 text-white"
+                        onClick={(e) => addToCart(item, e)}
+                        className="flex-1 bg-brand-600 hover:bg-brand-700 text-white"
                         size="sm"
                       >
                         <ShoppingCart className="h-4 w-4 mr-1" />

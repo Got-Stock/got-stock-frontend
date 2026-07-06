@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ShoppingCart, Heart, ArrowLeft, Package, Truck, Shield } from "lucide-react";
@@ -18,6 +18,15 @@ import CategoryNav from "../components/CategoryNav";
 import Breadcrumbs from "../components/Breadcrumbs";
 import WishlistButton from "../components/WishlistButton";
 import Header from "../components/Header";
+import ProductStrip from "../components/ProductStrip";
+import {
+  getAllProducts,
+  getProductImage,
+  getProductPrice,
+  getProductLink,
+} from "../lib/productCache";
+import { pushRecentlyViewed, getRecentlyViewed } from "../lib/recentlyViewed";
+import { flyToCart } from "../lib/flyToCart";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -25,7 +34,7 @@ const API = `${BACKEND_URL}/api`;
 export default function ProductDetail() {
   const { productId, variantId } = useParams();
   const navigate = useNavigate();
-  
+
   const [product, setProduct] = useState(null);
   const [currentVariant, setCurrentVariant] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -33,6 +42,9 @@ export default function ProductDetail() {
   const [mainImage, setMainImage] = useState(0);
   const [showZoom, setShowZoom] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const [related, setRelated] = useState([]);
+  const [recentlyViewed, setRecentlyViewed] = useState([]);
+  const addBtnRef = useRef(null);
 
   useEffect(() => {
     if (variantId) {
@@ -40,7 +52,51 @@ export default function ProductDetail() {
     } else if (productId) {
       fetchProduct();
     }
+    window.scrollTo({ top: 0 });
   }, [productId, variantId]);
+
+  // Once the product is loaded: record it as recently viewed, build the
+  // "You may also like" strip from the same category, and load the
+  // recently-viewed strip (excluding the product currently on screen).
+  useEffect(() => {
+    if (!product) return;
+
+    const link = variantId
+      ? `/product/variant/${variantId}`
+      : getProductLink(product);
+
+    pushRecentlyViewed({
+      id: product.id,
+      name: product.name,
+      brand: product.brand,
+      image: getProductImage(product),
+      price: getProductPrice(product),
+      link,
+    });
+
+    setRecentlyViewed(getRecentlyViewed().filter((p) => p.id !== product.id).slice(0, 8));
+
+    let cancelled = false;
+    getAllProducts().then((all) => {
+      if (cancelled) return;
+      const cat = product.categories?.level_1;
+      const rel = all
+        .filter((p) => p.id !== product.id && p.categories?.level_1 === cat)
+        .slice(0, 8)
+        .map((p) => ({
+          id: p.id,
+          name: p.name,
+          brand: p.brand,
+          image: getProductImage(p),
+          price: getProductPrice(p),
+          link: getProductLink(p),
+        }));
+      setRelated(rel);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [product, variantId]);
 
   const fetchProductByVariant = async () => {
     try {
@@ -147,11 +203,11 @@ export default function ProductDetail() {
     
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Trigger cart update event + slide the cart drawer open
+    // Trigger cart update, fly the image to the cart, then slide the drawer open
     window.dispatchEvent(new Event('cartUpdated'));
-    window.dispatchEvent(new Event('openCart'));
-
+    flyToCart(addBtnRef.current, productImage);
     toast.success("Added to cart!");
+    setTimeout(() => window.dispatchEvent(new Event('openCart')), 650);
   };
 
   const getUniqueVariantOptions = (field) => {
@@ -183,10 +239,27 @@ export default function ProductDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading product...</p>
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <CategoryNav />
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid md:grid-cols-2 gap-8 bg-white rounded-lg shadow-sm p-8">
+            <div>
+              <div className="aspect-square bg-gray-200 rounded-lg animate-pulse mb-4" />
+              <div className="grid grid-cols-4 gap-2">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="aspect-square bg-gray-200 rounded-lg animate-pulse" />
+                ))}
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="h-4 w-24 bg-gray-200 rounded animate-pulse" />
+              <div className="h-8 w-3/4 bg-gray-200 rounded animate-pulse" />
+              <div className="h-8 w-28 bg-gray-200 rounded animate-pulse" />
+              <div className="h-24 w-full bg-gray-200 rounded animate-pulse" />
+              <div className="h-11 w-full bg-gray-200 rounded animate-pulse" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -194,9 +267,9 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <p className="text-gray-600 mb-4">Product not found</p>
+          <p className="text-gray-700 mb-4">Product not found</p>
           <Button onClick={() => navigate("/shop")}>Back to Shop</Button>
         </div>
       </div>
@@ -212,7 +285,7 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pb-24 md:pb-0">
       {/* Header */}
       <Header />
 
@@ -398,6 +471,7 @@ export default function ProductDetail() {
             {/* Actions */}
             <div className="flex gap-3 mb-8">
               <Button
+                ref={addBtnRef}
                 onClick={addToCart}
                 disabled={!currentVariant || !currentVariant.offers?.[0] || currentVariant.offers[0].stock_qty === 0}
                 className="flex-1 bg-brand-600 hover:bg-brand-700"
@@ -450,6 +524,30 @@ export default function ProductDetail() {
             )}
           </div>
         </div>
+
+        {/* You may also like */}
+        <ProductStrip title="You may also like" items={related} />
+
+        {/* Recently viewed */}
+        <ProductStrip title="Recently viewed" items={recentlyViewed} />
+      </div>
+
+      {/* Sticky mobile add-to-cart bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 py-3 flex items-center gap-3 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+        <div className="flex-shrink-0">
+          <p className="text-[11px] text-gray-500 leading-none">Price</p>
+          <p className="text-lg font-bold text-brand-600 leading-tight">
+            ${currentVariant?.offers?.[0]?.price?.toFixed(2) || "0.00"}
+          </p>
+        </div>
+        <Button
+          onClick={addToCart}
+          disabled={!currentVariant || !currentVariant.offers?.[0] || currentVariant.offers[0].stock_qty === 0}
+          className="flex-1 bg-brand-600 hover:bg-brand-700"
+        >
+          <ShoppingCart className="h-5 w-5 mr-2" />
+          {currentVariant?.offers?.[0]?.stock_qty > 0 ? "Add to Cart" : "Out of Stock"}
+        </Button>
       </div>
     </div>
   );
