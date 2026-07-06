@@ -57,6 +57,7 @@ const WishlistButton = ({ product, className = '' }) => {
         const updatedWishlist = wishlist.filter(item => item.id !== product.id);
         localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
         setIsInWishlist(false);
+        window.dispatchEvent(new Event('wishlistUpdated'));
         toast.success('Removed from wishlist');
       } else {
         // Add to wishlist
@@ -70,6 +71,7 @@ const WishlistButton = ({ product, className = '' }) => {
         wishlist.push(wishlistItem);
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
         setIsInWishlist(true);
+        window.dispatchEvent(new Event('wishlistUpdated'));
         toast.success('Added to wishlist');
       }
       return;
@@ -84,6 +86,7 @@ const WishlistButton = ({ product, className = '' }) => {
           }
         });
         setIsInWishlist(false);
+        window.dispatchEvent(new Event('wishlistUpdated'));
         toast.success('Removed from wishlist');
       } else {
         await axios.post(
@@ -97,6 +100,7 @@ const WishlistButton = ({ product, className = '' }) => {
           }
         );
         setIsInWishlist(true);
+        window.dispatchEvent(new Event('wishlistUpdated'));
         toast.success('Added to wishlist');
       }
     } catch (error) {

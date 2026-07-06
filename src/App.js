@@ -63,6 +63,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/sonner";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
+import WishlistDrawer from "./components/WishlistDrawer";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -337,6 +338,7 @@ function App() {
           </main>
           <Footer />
           <CartDrawer />
+          <WishlistDrawer />
           <Toaster position="top-right" />
         </AuthProvider>
       </BrowserRouter>

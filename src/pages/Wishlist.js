@@ -68,6 +68,7 @@ const Wishlist = () => {
       const updatedWishlist = wishlistItems.filter(item => item.id !== productId);
       setWishlistItems(updatedWishlist);
       localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+      window.dispatchEvent(new Event('wishlistUpdated'));
       toast.success('Removed from wishlist');
       return;
     }
@@ -82,6 +83,7 @@ const Wishlist = () => {
       
       const updatedWishlist = wishlistItems.filter(item => item.id !== productId);
       setWishlistItems(updatedWishlist);
+      window.dispatchEvent(new Event('wishlistUpdated'));
       toast.success('Removed from wishlist');
     } catch (error) {
       console.error('Error removing from wishlist:', error);
